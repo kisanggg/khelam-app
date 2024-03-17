@@ -1,0 +1,17 @@
+.signInWrapper{
+    text-align: center;
+    margin-top: 60px;
+}
+.checkbox{
+    text-align: left;
+    margin-left: 460px;
+}
+.firsta {
+    margin-right: 250px;
+    font-size: 13px;
+}
+.seconda {
+    position: absolute;
+    margin-left: 150px;
+    font-size: 13px;
+}

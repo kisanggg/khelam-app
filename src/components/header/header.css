@@ -1,0 +1,94 @@
+.header {
+  display: flex;
+  /* background-color: rgb(250, 13, 13); */
+}
+
+.header-wrapper {
+  background-color: red;
+  display: flex;
+  position: absolute;
+  width: 400px;
+}
+.div-wrapper{
+  width: 650px;
+  height: 0px;
+  border-top: 52px solid red;
+  border-right:40px solid black;
+}
+.div1-wrapper{
+  width: 610px;
+  height: 0px;
+  border-top: 51px solid red;
+  border-right: 40px solid #454242;
+}
+.div{
+  position: absolute;
+ height: 103px;
+}
+.header-wrapper img {
+  margin: 8px;
+  margin-left: 40px;
+  margin-top: 11px;
+  width: 80px;
+  height: 80px;
+}
+.wrapper {
+  margin-left: 40px;
+  display: flex;
+}
+.wrapper p {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  margin-top: 52px;
+  margin-left: 25px;
+  position: absolute;
+}
+.wrapper h1 {
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.sub-header {
+  width: 700px;
+}
+.signUp {
+  background-color: black;
+  display: flex;
+  width: 600;
+}
+
+.signUp a:hover {
+  color: rgb(29, 120, 247) !important;
+}
+.navBar {
+  height: 51px;
+  background-color:rgb(67, 67, 67) ;
+  
+}
+.nav {
+  background-color: rgb(67, 67, 67);
+  height: 40px;
+  margin-left: 49px;
+}
+.nav-link {
+  margin-left: 20px;
+  font-size: 13px;
+  padding: 12px;
+  height: 50px;
+  color: aliceblue;
+}
+.nav-link:hover {
+  color: rgb(78, 151, 255) !important;
+}
+.nav-link:focus{
+  background-color: rgb(228, 44, 44);
+  color:rgba(20, 20, 20, 0.812)!important;
+  font-weight: 600;
+}
+.nav button {
+  background-color: rgb(222, 24, 24);
+  border: 1px solid rgb(16, 16, 16);
+
+}
+.nav button:hover {
+  background-color: rgb(75, 5, 5);
+}
