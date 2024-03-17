@@ -1,0 +1,15 @@
+.mainWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gurkhaWrapper p{
+    font-size: 15px;
+    margin: 10px;
+
+}
+.phoneWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

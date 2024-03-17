@@ -7,6 +7,8 @@ import Sports from "./components/sports/Sports";
 import Contact from "./components/contact/Contact";
 import Signup from "./components/signup/Signup";
 import Signin from "./components/signin/Signin";
+import BasketballTimes from "./components/sports/BasketballTimes";
+import FutsalGurkha from "./components/sports/FutsalGurkha";
 
 const App = () => {
   return (
@@ -19,8 +21,10 @@ const App = () => {
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
         <Route path='/login' element={<Signin/>}></Route>
+        <Route path="/basketball/times" element={<BasketballTimes/>} />
+        <Route path="/futsal/gurkha" element={<FutsalGurkha/>} />
+       
       </Routes>
-      
     </>
   );
 };

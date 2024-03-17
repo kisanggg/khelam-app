@@ -1,0 +1,36 @@
+.times {
+  padding: 40px;
+  background-color: rgb(0 4 21 / 94%);
+  backdrop-filter: blur(0.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper h4 {
+  margin-left: 10px;
+}
+.wrapper p {
+  margin-left: 10px;
+  font-size: 15px;
+}
+.wrapper {
+  color: aliceblue;
+}
+.phoneWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardWrapper {
+  margin: 20px;
+  margin-top: 30px;
+}
+.cardWrapper h1 {
+  font-size: 30px;
+  margin-left: 60px;
+}
+.cardWrapper p {
+  text-align: left;
+  font-size: 22px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

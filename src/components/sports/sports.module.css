@@ -6,9 +6,9 @@
     display: flex;
     background-color: rgba(41, 39, 39, 0.5);
     backdrop-filter: blur(0.5px);
-    height: 250px;
+    height: 220px;
     position: absolute;
-    margin-top: 300px;
+    margin-top: 320px;
     width: 1263px;
 }
 

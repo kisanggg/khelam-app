@@ -29,7 +29,7 @@ const Header = () => {
         </div>
         <div className='navBar'>
           <nav className="nav">
-            <Link to="/home" className="nav-link" style={{marginLeft:"103px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
+            <Link to="/home" className="nav-link" style={{marginLeft:"101px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
             <Link to="/about" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}>ABOUT</Link>
             <Link to="/sports" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}} >SPORTS</Link>
             <Link to="/contact" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}  >CONTACT</Link>
