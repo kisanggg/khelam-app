@@ -4,7 +4,6 @@ import logo from '../../images/logo.png';
 import signup from '../../images/signup.png';
 import { Search } from 'react-bootstrap-icons';
 import {Link} from 'react-router-dom';
-import { NavDropdown } from 'react-bootstrap';
 const Header = () => {
   return (
     <div className='header'>
@@ -30,13 +29,9 @@ const Header = () => {
         </div>
         <div className='navBar'>
           <nav className="nav">
-            <Link to="/home" className="nav-link" style={{marginLeft:"10px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
+            <Link to="/home" className="nav-link" style={{marginLeft:"103px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
             <Link to="/about" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}>ABOUT</Link>
             <Link to="/sports" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}} >SPORTS</Link>
-            {/* <NavDropdown title="SPORTS" className="nav-link" style={{color:"white",fontSize:"13px"}}>
-              <NavDropdown.Item to='/basketball'>Basketball</NavDropdown.Item>
-              <NavDropdown.Item to='/Cricket'>Cricket</NavDropdown.Item>
-            </NavDropdown> */}
             <Link to="/contact" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}  >CONTACT</Link>
             <button style={{ marginLeft: "56px", width: "45px",height:"51px" }}><Search size={30} style={{ color: "white",marginTop:"0px" }} /></button>
           </nav>

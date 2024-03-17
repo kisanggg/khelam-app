@@ -1,0 +1,30 @@
+.mainContainer{
+    display: flex;
+}
+
+.sportsContainer{
+    display: flex;
+    background-color: rgba(41, 39, 39, 0.5);
+    backdrop-filter: blur(0.5px);
+    height: 250px;
+    position: absolute;
+    margin-top: 300px;
+    width: 1263px;
+}
+
+.firstContainer p{
+   margin-left: 65px;
+   color: aliceblue;
+   margin-top: 10px;
+}
+
+.secondContainer p{
+    margin-left: 65px;
+    color: aliceblue;
+    margin-top: 10px;
+}
+#dropdownbutton1{
+    background-color: aliceblue;
+    color:black ;
+}
+
