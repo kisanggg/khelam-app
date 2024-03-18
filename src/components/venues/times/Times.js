@@ -6,6 +6,8 @@ import img4 from "../../../images/img4.png";
 import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import ReactCardSlider from "react-card-slider-component";
+import 'react-calendar/dist/Calendar.css';
+import BookingCalendar from "../calendar/BookingCalendar";
 const Times = () => {
   const slides = [
     { image: img3, title: "FUTSAL", clickEvent: sliderClick },
@@ -38,7 +40,9 @@ const Times = () => {
           </div>
         </div>
       </div>
-      <div></div>
+      <div>
+      <BookingCalendar/>
+      </div>
       <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>
         <div className="cards">

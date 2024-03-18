@@ -1,0 +1,19 @@
+.bookingForm{
+    background-color: rgba(38, 38, 38, 0.5);
+     backdrop-filter: blur(0.5px);
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.emailWrapper{
+    display: flex;
+    
+}
+.bookingWrapper{
+    display: flex;
+}
+.rTime{
+    display: flex;
+}
