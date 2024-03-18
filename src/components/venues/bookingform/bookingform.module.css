@@ -1,6 +1,28 @@
 .bookingForm{
-    background-color: rgba(38, 38, 38, 0.5);
+    background-color: "rgba(43, 40, 40, 0.5)";
      backdrop-filter: blur(0.5px);
+     color: white;
+}
+.header h4{
+margin: 5px;
+font-size: 20px;
+}
+.header p{
+    font-size: 12px;
+    margin-left: 5px;
+}
+.phoneWrapper{
+    display: flex;
+}
+.formWrapper label{
+margin-left: 20px;
+
+}
+.fName{
+    margin-left: 22px;
+}
+.lName{
+    margin-left: 43px;
 }
 .header{
     display: flex;
@@ -9,11 +31,29 @@
 }
 .emailWrapper{
     display: flex;
+    justify-content: space-around;
     
 }
 .bookingWrapper{
     display: flex;
+    justify-content: space-around;
 }
 .rTime{
     display: flex;
+    justify-content: space-around;
+}
+.bDate{
+    width: 190px;
+    height: 30px;
+}
+.bButton{
+    background-color:red ;
+    color: white;
+    width: 120px;
+    height: 35px;
+    border: 1px solid rgb(245, 2, 2);
+    border-radius: 15px;
+    margin: 20px;
+    margin-left: 180px;
+
 }

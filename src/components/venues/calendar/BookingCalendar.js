@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
-
+import "react-calendar/dist/Calendar.css";
 import BookingForm from "../bookingform/BookingForm";
 import { Modal } from "react-bootstrap";
+import styles from './bookingcalendar.module.css'
+
 const BookingCalendar = () => {
-  const [bookings, setBooking] = useState({});
-  const [selectedDate,setSelectedDate]=useState(null);
-  const [showModal,setShowModal]=useState(false);
+  const [bookings, setBookings] = useState({});
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const tileClassname = ({ date }) => {
     const dateString = date.toISOString().split("T")[0];
-    return bookings[dateString] && bookings[dateString].length > 0 ? "booked" : "available";
+    return bookings[dateString] && bookings[dateString].length > 0
+      ? "booked"
+      : "available";
   };
 
   const tileContent = ({ date }) => {
-    const dateString = date.toISOString().split('T')[0];
+    const dateString = date.toISOString().split("T")[0];
     return (
       <div className="tileContent">
-        {bookings[dateString] && bookings[dateString].length > 0 ? 'booked' : <button onClick={() => bookDate(date)}>Book now</button>}
+        {bookings[dateString] && bookings[dateString].length > 0 ? (
+          "booked"
+        ) : (
+          <button onClick={() => bookDate(date)}>Book now</button>
+        )}
       </div>
     );
   };
@@ -27,25 +34,35 @@ const BookingCalendar = () => {
     setSelectedDate(date);
     setShowModal(true);
   };
-  const handleCloseModal=()=>{
+
+  const handleCloseModal = () => {
     setSelectedDate(null);
     setShowModal(false);
-  }
+  };
 
   return (
     <div>
-      <Calendar 
+      <Calendar
         tileClassName={tileClassname}
         tileContent={tileContent}
+        className={styles.calendarWrapper}
       />
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-            <Modal.Title>Book Date</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-      {selectedDate &&(
-        <BookingForm date={selectedDate} onClose={handleCloseModal}/>
-      )}
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        style={{
+          backgroundColor: "rgba(43, 40, 40, 0.5)",
+          backdropFilter: "blur(0.5px)",
+        }}
+      >
+        <Modal.Body style={{backgroundColor:"black"}}>
+          {selectedDate && (
+            <BookingForm
+              date={selectedDate}
+              onClose={handleCloseModal}
+              setBookings={setBookings} 
+            />
+          )}
         </Modal.Body>
       </Modal>
     </div>

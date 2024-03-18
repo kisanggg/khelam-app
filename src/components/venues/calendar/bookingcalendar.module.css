@@ -1,0 +1,9 @@
+.calendarWrapper{
+    width: 1300px;
+    background-color: red;
+}
+.modalWrapper{
+    background-color: rgba(43, 40, 40, 0.5);
+    backdrop-filter: blur(0.5px);
+
+}
