@@ -49,6 +49,9 @@ const Times = () => {
           <ReactCardSlider slides={slides} />
         </div>
       </div>
+      <div className="footer">
+    <p>©2024 Khelam.com.np. All Rights Reserved'</p>
+  </div>
     </div>
   );
 };

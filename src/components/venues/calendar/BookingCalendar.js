@@ -65,6 +65,7 @@ const BookingCalendar = () => {
           )}
         </Modal.Body>
       </Modal>
+   
     </div>
   );
 };
