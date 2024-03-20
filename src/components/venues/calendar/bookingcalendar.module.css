@@ -1,9 +1,111 @@
-.calendarWrapper{
-    width: 1300px;
-    background-color: red;
-}
-.modalWrapper{
-    background-color: rgba(43, 40, 40, 0.5);
-    backdrop-filter: blur(0.5px);
 
+
+.modalWrapper {
+  background-color: rgba(43, 40, 40, 0.5);
+  backdrop-filter: blur(0.5px);
+}
+.days {
+ margin-left: 0px;
+ background-color: black;
+ height: 150vh;
+}
+.sundayWrapper {
+  display: flex;
+}
+.times {
+  border: 1px solid black;
+  background-color: white;
+  width: 100px;
+  height: 110px;
+  font-size: 23px;
+  text-align: center;
+}
+.sunday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.btn {
+  background-color: red;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 15px;
+  font-size: 12px;
+  color: white;
+  height: 30px;
+  margin-top: 20px;
+}
+.mondayWrapper {
+  display: flex;
+}
+.monday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.tuesdayWrapper {
+  display: flex;
+}
+.tuesday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.wedWrapper {
+  display: flex;
+}
+.wednesday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.thuWrapper {
+  display: flex;
+}
+.thursday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.friWrapper {
+  display: flex;
+}
+.friday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.satWrapper {
+  display: flex;
+}
+.saturday {
+  border: 1px solid black;
+  width: 120px;
+  height: 110px;
+  background-color: rgb(212, 210, 210);
+  text-align: center;
+  margin: 0px;
+}
+.caret {
+  border: 1px solid black;
+  height: 110px;
+  width: 60px;
+  background-color: red;
 }

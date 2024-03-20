@@ -7,7 +7,8 @@ import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import ReactCardSlider from "react-card-slider-component";
 import 'react-calendar/dist/Calendar.css';
-import BookingCalendar from "../calendar/BookingCalendar";
+import BigCalendar from "../calendar/BigCalendar";
+// import BookingCalendar from "../calendar/BookingCalendar";
 const Times = () => {
   const slides = [
     { image: img3, title: "FUTSAL", clickEvent: sliderClick },
@@ -19,7 +20,7 @@ const Times = () => {
     console.log("hi");
   }
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div className={styles.times}>
         <img
           src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
@@ -41,7 +42,7 @@ const Times = () => {
         </div>
       </div>
       <div>
-      <BookingCalendar/>
+        <BigCalendar/>
       </div>
       <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>

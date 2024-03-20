@@ -1,17 +1,28 @@
-import React from "react";
+import React  from "react";
 import styles from "./bookingform.module.css";
 import { TelephoneFill, Phone, Stopwatch } from "react-bootstrap-icons";
+import SubmittedForm from "./SubmittedForm";
+import { useState } from "react";
 
-const BookingForm = ({ date, onClose,setBookings}) => {
-    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
+  
+  const [isBooked,setIsBooked]=useState(false);
+  console.log("Date prop:", date);
+  if (!(date instanceof Date)) {
+    return <div>Error: Invalid date</div>;
+  }
+
+  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("booking submitted for date:", localDate);
     setBookings((prevBookings) => {
-        const dateString = localDate.toISOString().split("T")[0];
-        return { ...prevBookings, [dateString]: true };
-      });
-      onClose();
+      const dateString = localDate.toISOString().split("T")[0];
+      return { ...prevBookings, [dateString]: true };
+    });
+    setIsBooked(true);
+    console.log("Booking submitted for time:", selectedTime);
+    
+    onClose();
   };
 
   return (
@@ -36,7 +47,7 @@ const BookingForm = ({ date, onClose,setBookings}) => {
           </div>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className={styles.formWrapper}>
+      <form className={styles.formWrapper}>
         <label htmlFor="Name">Name</label>
         <br />
         <input type="text" className={styles.fName} placeholder="First Name" />
@@ -71,10 +82,9 @@ const BookingForm = ({ date, onClose,setBookings}) => {
             </label>
             <br />
             <input
-            type="date"
-            className={styles.bDate}
-            value={localDate.toISOString().split("T")[0]}
-            disabled
+              type="date"
+              className={styles.bDate}
+              
             />
           </div>
           <div style={{ marginTop: "10px" }}>
@@ -91,8 +101,15 @@ const BookingForm = ({ date, onClose,setBookings}) => {
                   marginLeft: "160px",
                   marginTop: "4px",
                 }}
+                
+               
               />
-              <input type="text" className={styles.bTime} />
+              <input
+                type="text"
+                className={styles.bTime}
+                value={selectedTime}
+                readOnly
+              />
             </div>
           </div>
         </div>
@@ -103,26 +120,14 @@ const BookingForm = ({ date, onClose,setBookings}) => {
             </label>
             <br />
             <select style={{ width: "190px", height: "30px" }}>
-              <option>06 AM</option>
-              <option>07 AM</option>
-              <option>08 AM</option>
-              <option>09 AM</option>
-              <option>10 AM</option>
-              <option>11 AM</option>
-              <option>12 PM</option>
-              <option>01 PM</option>
-              <option>02 PM</option>
-              <option>03 PM</option>
-              <option>04 PM</option>
-              <option>05 PM</option>
-              <option>06 PM</option>
-              <option>07 PM</option>
-              <option>08 PM</option>
-              <option>09 PM</option>
+              <option>30 mins</option>
+              <option>1 hour</option>
+              <option>2 hour</option>
+              <option>3 hour</option>
             </select>
           </div>
           <div style={{ marginTop: "10px" }}>
-            <lable htmlFor="bookingType">Booking Type</lable>
+            <label htmlFor="bookingType">Booking Type</label>
             <br />
             <select style={{ width: "190px", height: "30px" }}>
               <option>Full Court</option>
@@ -138,7 +143,9 @@ const BookingForm = ({ date, onClose,setBookings}) => {
             style={{ marginLeft: "20px", width: "425px", height: "80px" }}
           ></textarea>
         </div>
-        <button type="submit" className={styles.bButton}>
+        <button type="submit" className={styles.bButton} onClick={handleSubmit} disabled={isBooked}
+        style={{backgroundColor:isBooked?"pink":""}}
+        >
           Book
         </button>
       </form>

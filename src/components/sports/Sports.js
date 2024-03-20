@@ -62,7 +62,6 @@ const Sports = () => {
     </div>
       {selectedSports && selectedVenue && (
         <div className={styles.selectedSection}>
-          {/* <h2>{selectedVenue} - {selectedSports}</h2> */}
          
           {renderSportSection(selectedVenue, selectedSports)}
         </div>
