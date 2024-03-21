@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styles from "./bookingcalendar.module.css";
 import BookingForm from "../bookingform/BookingForm";
 import { Modal } from "react-bootstrap";
 import { CaretRightFill } from "react-bootstrap-icons";
+import Slider from "react-slick";
 const BigCalendar = () => {
   const time = [
     "06 AM",
@@ -21,17 +24,33 @@ const BigCalendar = () => {
     "7 PM",
     "8 PM",
   ];
+  const slideSettings={
+    dots:false,
+    infinite:true,
+    speed:500,
+    slidesToScroll:10,
+    slidesToShow:10,
+    initialSlide:0,
+    nextArrow:(
+      <div className={styles.nextArrow} style={{backgroundColor:"red",color:"white",height
+      :"110px",width:"50px"}}>
+        <CaretRightFill size={30} className={styles.sliderArrow} style={{marginTop:"40px"}}/>
+      </div>
+    ), 
+    prevArrow:<></>,
+    responsive:[]
+  };
 
   const [bookingStatus, setBookingStatus] = useState(
     Array(time.length).fill(false)
   );
 
   const [showModal, setShowModal] = useState(false);
-  
+  const [bookings, setBookings] = useState({});
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  
-  const bookdate = (date,selectedTime) => {
+
+  const bookdate = (date, selectedTime) => {
     console.log("booked");
     setSelectedDate(date);
     setSelectedTime(selectedTime);
@@ -43,18 +62,16 @@ const BigCalendar = () => {
     setSelectedTime(null);
     setShowModal(false);
   };
-  
 
   return (
-    <div >
+    <div>
       <div className={styles.days}>
-      <div className={styles.sundayWrapper}>
-      <div
+        <div className={styles.sundayWrapper}>
+          <div
             style={{
               display: "flex",
               marginLeft: "0px",
               marginTop: "3px",
-              textAlign: "center",
             }}
           >
             <div className={styles.sunday} style={{ width: "120px" }}>
@@ -67,20 +84,25 @@ const BigCalendar = () => {
               >
                 MAR 2024
               </p>
-              <h4><b>03</b></h4>
+              <h4>
+                <b>03</b>
+              </h4>
               <p>SUNDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus [index]}
+                    disabled={bookingStatus[index]}
                     style={{
-                      backgroundColor:bookingStatus[index]?"pink":""
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
                     }}
                   >
                     BOOK NOW
@@ -88,11 +110,7 @@ const BigCalendar = () => {
                 </div>
               );
             })}
-            <div className={styles.caret}>
-              <CaretRightFill
-                size={60}
-                style={{ color: "white", marginTop: "25px", marginLeft: "0px" }}
-              />
+            </Slider>
             </div>
           </div>
         </div>
@@ -102,7 +120,6 @@ const BigCalendar = () => {
               display: "flex",
               marginLeft: "0px",
               marginTop: "3px",
-              textAlign: "center",
             }}
           >
             <div className={styles.monday}>
@@ -120,29 +137,33 @@ const BigCalendar = () => {
               </h4>
               <p>MONDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-            <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
         <div className={styles.tuesdayWrapper}>
-          <div
-            style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}
-          >
+          <div style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}>
             <div className={styles.tuesday}>
               <p
                 style={{
@@ -158,29 +179,33 @@ const BigCalendar = () => {
               </h4>
               <p>TUESDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-            <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
         <div className={styles.wedWrapper}>
-          <div
-            style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}
-          >
+          <div style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}>
             <div className={styles.wednesday}>
               <p
                 style={{
@@ -196,29 +221,33 @@ const BigCalendar = () => {
               </h4>
               <p>WEDNESDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-            <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
         <div className={styles.thuWrapper}>
-          <div
-            style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}
-          >
+          <div style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}>
             <div className={styles.thursday}>
               <p
                 style={{
@@ -234,29 +263,33 @@ const BigCalendar = () => {
               </h4>
               <p>THURSDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-            <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
         <div className={styles.friWrapper}>
-          <div
-            style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}
-          >
+          <div style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}>
             <div className={styles.friday}>
               <p
                 style={{
@@ -272,29 +305,33 @@ const BigCalendar = () => {
               </h4>
               <p>FRIDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-            <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
         <div className={styles.satWrapper}>
-          <div
-            style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}
-          >
+          <div style={{ display: "flex", marginLeft: "0px", marginTop: "3px" }}>
             <div className={styles.saturday}>
               <p
                 style={{
@@ -310,27 +347,33 @@ const BigCalendar = () => {
               </h4>
               <p>SATURDAY</p>
             </div>
+            <div className={styles.sliderWrapper}>
+            <Slider {...slideSettings}>
             {time.map((t, index) => {
               return (
+
                 <div key={index} className={styles.times}>
                   {t}
                   <br />
                   <button
                     className={styles.btn}
                     onClick={() => bookdate(new Date(), t)}
+                    disabled={bookingStatus[index]}
+                    style={{
+                      backgroundColor: bookingStatus[index] ? "pink" : "",
+                    }}
                   >
                     BOOK NOW
                   </button>
                 </div>
               );
             })}
-          <div className={styles.caret}>
-             <CaretRightFill size={60} style={{color:"white",marginTop:"25px",marginLeft:"0px"}}/>
+            </Slider>
             </div>
           </div>
         </div>
       </div>
-     
+
       <div>
         <Modal
           show={showModal}
@@ -341,14 +384,12 @@ const BigCalendar = () => {
           }}
         >
           <Modal.Body style={{ backgroundColor: "black" }}>
-            
-              <BookingForm
-                date={selectedDate}
-                selectedTime={selectedTime}
-                onClose={handleCloseModal}
-                setBookings={setBookingStatus}
-
-              />
+            <BookingForm
+              date={selectedDate}
+              selectedTime={selectedTime}
+              onClose={handleCloseModal}
+              setBookings={setBookings}
+            />
           </Modal.Body>
         </Modal>
       </div>
