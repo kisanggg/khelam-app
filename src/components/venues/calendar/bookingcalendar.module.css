@@ -1,5 +1,9 @@
 
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .modalWrapper {
   background-color: rgba(43, 40, 40, 0.5);
   backdrop-filter: blur(0.5px);
@@ -103,9 +107,23 @@
   text-align: center;
   margin: 0px;
 }
-.caret {
-  border: 1px solid black;
-  height: 110px;
-  width: 60px;
-  background-color: red;
-}
+
+.sliderWrapper {
+    width: 1140px;
+    height: 109.7px;
+    margin-top: 0px;
+    padding: 0px;
+    background-color: #f5f5f5; 
+  }
+  .sliderWrap{
+    width: 1130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .sliderWrap svg{
+  color: red;
+ }
+ .sliderWrap svg:hover{
+  color: rgb(202, 0, 0);
+ }

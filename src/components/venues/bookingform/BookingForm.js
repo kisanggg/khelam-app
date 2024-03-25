@@ -1,12 +1,24 @@
-import React  from "react";
+import React from "react";
 import styles from "./bookingform.module.css";
 import { TelephoneFill, Phone, Stopwatch } from "react-bootstrap-icons";
 import SubmittedForm from "./SubmittedForm";
-import { useState } from "react";
+import { useState, useRef} from "react";
+import { Modal } from "react-bootstrap";
 
 const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
-  
-  const [isBooked,setIsBooked]=useState(false);
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+  const bookingDateRef = useRef(null);
+  const bookingTimeRef = useRef(null);
+  const reserveTimeRef = useRef(null);
+  const bookingTypeRef = useRef(null);
+  const noteRef = useRef(null);
+
+  const [formData, setFormData] = useState({});
+  const [isBooked, setIsBooked] = useState(false);
+  const [displayModal,setDisplayModal]=useState(false);
   console.log("Date prop:", date);
   if (!(date instanceof Date)) {
     return <div>Error: Invalid date</div>;
@@ -15,14 +27,31 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
   const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBookings((prevBookings) => {
-      const dateString = localDate.toISOString().split("T")[0];
-      return { ...prevBookings, [dateString]: true };
-    });
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const fullName = `${firstName} ${lastName}`;
+
+    const formData = {
+      name: fullName,
+      phone: phoneRef.current.value,
+      email: emailRef.current.value,
+      date: bookingDateRef.current.value,
+      time: bookingTimeRef.current.value,
+      hour: reserveTimeRef.current.value,
+      type: bookingTypeRef.current.value,
+      note: noteRef.current.value,
+    };
+    setFormData(formData);
     setIsBooked(true);
-    console.log("Booking submitted for time:", selectedTime);
-    
+    setDisplayModal(true);
+    console.log("submitted form",formData);
     onClose();
+  };
+
+  const handleCloseModal = () => {
+    setIsBooked(false);
+    setFormData({});
+    setDisplayModal(false)
   };
 
   return (
@@ -47,18 +76,30 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
           </div>
         </div>
       </div>
-      <form className={styles.formWrapper}>
+      <form className={styles.formWrapper} onSubmit={handleSubmit}>
         <label htmlFor="Name">Name</label>
         <br />
-        <input type="text" className={styles.fName} placeholder="First Name" />
-        <input type="text" className={styles.lName} placeholder="Last Name" />
+        <input
+          type="text"
+          className={styles.fName}
+          placeholder="First Name"
+          ref={firstNameRef}
+          name="firstName"
+        />
+        <input
+          type="text"
+          className={styles.lName}
+          placeholder="Last Name"
+          ref={lastNameRef}
+          name="lastName"
+        />
         <div className={styles.emailWrapper}>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="Email" style={{ marginLeft: "0px" }}>
               Email
             </label>
             <br />
-            <input type="text" className={styles.email} />
+            <input type="text" className={styles.email} ref={emailRef} name="email" />
           </div>
 
           <div style={{ marginTop: "10px" }}>
@@ -69,6 +110,8 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
             <input
               type="tel"
               className={styles.tel}
+              name="phone"
+              ref={phoneRef}
               onInput={(e) =>
                 (e.target.value = e.target.value.replace(/[^0-9]/g, ""))
               }
@@ -81,11 +124,7 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
               Booking Date
             </label>
             <br />
-            <input
-              type="date"
-              className={styles.bDate}
-              
-            />
+            <input type="date" className={styles.bDate} ref={bookingDateRef} name="bookingDate" />
           </div>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="bookingTime" style={{ marginLeft: "0px" }}>
@@ -101,12 +140,12 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
                   marginLeft: "160px",
                   marginTop: "4px",
                 }}
-                
-               
               />
               <input
                 type="text"
                 className={styles.bTime}
+                name="bookingTime"
+                ref={bookingTimeRef}
                 value={selectedTime}
                 readOnly
               />
@@ -119,7 +158,11 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
               Reserve Time
             </label>
             <br />
-            <select style={{ width: "190px", height: "30px" }}>
+            <select
+              name="reserveTime"
+              ref={reserveTimeRef}
+              style={{ width: "190px", height: "30px" }}
+            >
               <option>30 mins</option>
               <option>1 hour</option>
               <option>2 hour</option>
@@ -129,7 +172,11 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="bookingType">Booking Type</label>
             <br />
-            <select style={{ width: "190px", height: "30px" }}>
+            <select
+              name="bookingType"
+              ref={bookingTypeRef}
+              style={{ width: "190px", height: "30px" }}
+            >
               <option>Full Court</option>
               <option>Half Court</option>
             </select>
@@ -140,15 +187,33 @@ const BookingForm = ({ date, selectedTime, onClose, setBookings }) => {
           <br />
           <textarea
             type="text"
+            name="note"
+            ref={noteRef}
             style={{ marginLeft: "20px", width: "425px", height: "80px" }}
           ></textarea>
         </div>
-        <button type="submit" className={styles.bButton} onClick={handleSubmit} disabled={isBooked}
-        style={{backgroundColor:isBooked?"pink":""}}
-        >
+        <button type="submit" className={styles.bButton} disabled={isBooked}>
           Book
         </button>
       </form>
+      <Modal 
+      show={displayModal}
+      onHide={handleCloseModal}
+      style={{
+        backgroundColor: "rgba(43, 40, 40, 0.5)",
+        backdropFilter: "blur(0.5px)",
+      }}
+      >
+      <Modal.Body style={{ backgroundColor: "black" }}>
+        {isBooked &&(
+        <SubmittedForm
+          formData={formData}
+          onClose={handleCloseModal}
+        />
+        )}
+        
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

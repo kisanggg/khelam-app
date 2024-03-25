@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import styles from "./bookingcalendar.module.css";
 import BookingForm from "../bookingform/BookingForm";
 import { Modal } from "react-bootstrap";
 import { CaretRightFill } from "react-bootstrap-icons";
 import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import styles from "./bookingcalendar.module.css";
 const BigCalendar = () => {
   const time = [
     "06 AM",
@@ -32,9 +32,8 @@ const BigCalendar = () => {
     slidesToShow:10,
     initialSlide:0,
     nextArrow:(
-      <div className={styles.nextArrow} style={{backgroundColor:"red",color:"white",height
-      :"110px",width:"50px"}}>
-        <CaretRightFill size={30} className={styles.sliderArrow} style={{marginTop:"40px"}}/>
+      <div className={styles.nextArrow} >
+        <CaretRightFill size={30} className={styles.sliderArrow} />
       </div>
     ), 
     prevArrow:<></>,
@@ -90,7 +89,7 @@ const BigCalendar = () => {
               <p>SUNDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -138,7 +137,7 @@ const BigCalendar = () => {
               <p>MONDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -180,7 +179,7 @@ const BigCalendar = () => {
               <p>TUESDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -222,7 +221,7 @@ const BigCalendar = () => {
               <p>WEDNESDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -264,7 +263,7 @@ const BigCalendar = () => {
               <p>THURSDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -306,7 +305,7 @@ const BigCalendar = () => {
               <p>FRIDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 
@@ -348,7 +347,7 @@ const BigCalendar = () => {
               <p>SATURDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider {...slideSettings}>
+            <Slider className={styles.sliderWrap} {...slideSettings}>
             {time.map((t, index) => {
               return (
 

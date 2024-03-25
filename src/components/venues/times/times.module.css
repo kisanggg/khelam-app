@@ -37,3 +37,36 @@
   font-size: 22px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.cardsWrap{
+  width: 1200px;
+}
+.timeSlider{
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+.timeSlider svg{
+  margin-top: 100px;
+}
+.timeSlider svg:hover{
+  color: rgb(196, 196, 196);
+}
+.prevArrow{
+  margin-top: 90px !important;
+}
+
+.timescardDiv{
+  height: 340px !important;
+}
+.timesFooter{
+  text-align: center;
+  height: 170px;
+  background-color: #0d0d0d;
+  color: white;
+  margin-top:50px ;
+}
+.timesFooter p{
+  padding-top : 140px;
+}

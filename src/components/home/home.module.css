@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.text-wrapper {
+.textWrapper {
   position: absolute;
   width: 540px;
   height: 150px;
@@ -32,7 +32,7 @@
   }
 }
 
-.text-wrapper p {
+.textWrapper p {
   font-size: 40px;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -75,38 +75,28 @@
 .form button:hover {
   background-color: rgb(174, 2, 2);
 }
-.sub-wrapper {
+.subWrapper {
   margin-top: 30px;
   background-color: black;
   display: flex;
 }
-.image-wrapper {
+.imageWrapper {
   border: 10px solid rgb(48, 48, 48);
 }
-.card-wrapper {
+.cardWrapper {
   margin: 20px;
   margin-top: 30px;
 }
-.card-wrapper h1{
+.cardWrapper h1 {
   font-size: 30px;
   margin-left: 60px;
 }
-.card-wrapper p {
+.cardWrapper p {
   text-align: left;
   font-size: 22px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.cards {
-  display: flex;
-  justify-content: space-evenly;
-  overflow: auto;
-}
-.leftArrow:hover {
-  color: rgb(140, 140, 140);
-}
-.rightArrow:hover {
-  color: rgb(140, 140, 140);
-}
+
 .footer {
   margin-top: 100px;
   width: 1263px;
@@ -119,10 +109,18 @@
   margin-top: 120px;
   text-align: center;
 }
-.slider-card{
-  width: 280px;
-  height: 300px;
+
+.cards {
+  width: 1100px;
 }
-.slider-card-title{
-  font-size: 30px;
+.innerSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1200px; 
 }
+.innerSlider svg:hover{
+    color: rgb(171, 170, 170);
+}
+

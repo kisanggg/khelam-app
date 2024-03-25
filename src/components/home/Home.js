@@ -5,36 +5,65 @@ import img3 from "../../images/img3.png";
 import img4 from "../../images/img4.png";
 import img5 from "../../images/img5.png";
 import img6 from "../../images/img6.png";
-import ReactCardSlider from "react-card-slider-component";
-import "./home.css";
-import { Lock, Person } from "react-bootstrap-icons";
-import { InputGroup, Form } from "react-bootstrap";
+import { Lock, Person, ArrowLeftCircleFill, ArrowRightCircleFill } from "react-bootstrap-icons";
+import { InputGroup, Form, Card } from "react-bootstrap";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css"
+import styles from './home.module.css';
 const Home = () => {
-  const slides = [
-    { image: img3, title: "FUTSAL", clickEvent: sliderClick },
-    { image: img4, title: "BASKETBALL", clickEvent: sliderClick },
-    { image: img5, title: "CRICKET", clickEvent: sliderClick },
-    { image: img6, title: "BADMINTON", clickEvent: sliderClick },
-  ];
-
-  function sliderClick() {
-    console.log("hi");
-  }
+  const settings=
+    {
+      dots:false,
+      infinite:true,
+      speed:500,
+      slidesToShow:4,
+      slidesToScroll:4,
+      initialSlide:0,
+      prevArrow: <ArrowLeftCircleFill  size={80} />, 
+      nextArrow: <ArrowRightCircleFill  size={80} />,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ] 
+    };
 
   return (
     <>
-      <div className="home" style={{ display: "flex" }}>
+      <div className={styles.home} style={{ display: "flex" }}>
         <img src={img1} alt="err" width={1300} height={500}></img>
-        <div className="text-wrapper">
+        <div className={styles.textWrapper}>
           <p>Book YOUR Time</p>
         </div>
       </div>
-      <div className="sub-wrapper">
-        <div className="form">
+      <div className={styles.subWrapper}>
+        <div className={styles.form}>
           <h1>JOIN US</h1>
 
           <InputGroup
-            className="username"
+            className={styles.username}
             style={{ height: "40px", width: "270px", marginLeft: "60px" }}
           >
             <InputGroup.Text id="basic-addon1">
@@ -48,7 +77,7 @@ const Home = () => {
           </InputGroup>
           <br />
           <InputGroup
-            className="password"
+            className={styles.password}
             style={{ height: "40px", width: "270px", marginLeft: "60px" }}
           >
             <InputGroup.Text id="basic-addon1" style={{}}>
@@ -61,23 +90,56 @@ const Home = () => {
               aria-describedby="basic-addon1"
             />
           </InputGroup>
-          <a href="/forgot" className="forgotDetails">
+          <a href="/forgot" className={styles.forgotDetails}>
             forgot details?
           </a>
           <br />
           <button>LOGIN</button>
         </div>
-        <div className="image-wrapper">
+        <div className={styles.imageWrapper}>
           <img src={img2} alt="err" width={840} height={350}></img>
         </div>
       </div>
-      <div className="card-wrapper">
+      <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>
-        <div className="cards">
-          <ReactCardSlider slides={slides} />
+        <div className={styles.cards} >
+          <Slider className={styles.innerSlider} useCSS={true} {...settings}>
+          <div className={styles.cardDiv}>
+          <Card style={{width:"15rem",marginLeft:"20px",boxShadow:"4px 4px 5px #e5e4e4"}}>
+              <Card.Img src={img3}/>
+            <Card.Body>
+              <Card.Title>Futsal</Card.Title>
+            </Card.Body>
+          </Card>
+          </div>
+          <div className={styles.cardDiv}>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
+              <Card.Img src={img4}/>
+            <Card.Body>
+              <Card.Title>Basketball</Card.Title>
+            </Card.Body>
+          </Card>
+          </div>
+          <div className={styles.cardDiv}>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
+              <Card.Img src={img5}/>
+            <Card.Body>
+              <Card.Title>Cricket</Card.Title>
+            </Card.Body>
+          </Card>
+          </div>
+          <div className={styles.cardDiv}>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
+              <Card.Img src={img6} style={{borderRadius:"0px"}}/>
+            <Card.Body>
+              <Card.Title>Badminton</Card.Title>
+            </Card.Body>
+          </Card>
+          </div>
+          </Slider>
         </div>
       </div>
-      <div className="footer">
+      <div className={styles.footer}>
         <p>©2024 Khelam.com.np. All Rights Reserved'</p>
       </div>
     </>
