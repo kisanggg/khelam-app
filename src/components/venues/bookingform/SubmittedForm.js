@@ -27,19 +27,18 @@ const SubmittedForm = ({formData,onClose}) => {
           </div>
         </div>
       </div>
-      <h3>Hello User,<br/> Please Check your booking detail</h3>
-      <p>NAME:{formData.name}</p>
-      <p>PHONE NO:{formData.phone}</p>
-      <p>EMAIL: {formData.email}</p>
-      <p>DATE: {formData.date}</p>
-      <p>TIME: {formData.time}</p>
-      <p>HOUR: {formData.hour}</p>
-      <p>TYPE:{formData.type}</p>
-      <p>NOTE:{formData.note}</p>
+      <h4>Hello User,<br/> Please Check your booking details:</h4>
+      <p>NAME     :{formData.name}</p>
+      <p>PHONE NO :{formData.phone}</p>
+      <p>EMAIL    : {formData.email}</p>
+      <p>Date     : {formData.date.toDateString()}</p>
+      <p>TIME     : {formData.time}</p>
+      <p>HOUR     : {formData.hour}</p>
+      <p>TYPE     :{formData.type}</p>
+      <p>NOTE     :{formData.note}</p>
       <p>Cost: Rs.1000</p>
       <button className={styles.confirmBtn}>Confirm</button>
       </div>
-      
       </div>
     </div>
   )

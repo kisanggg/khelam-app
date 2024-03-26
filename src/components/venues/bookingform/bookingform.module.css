@@ -54,3 +54,10 @@
   margin: 20px;
   margin-left: 180px;
 }
+.submittedFormWrapper{
+    background-color: rgba(43, 40, 40, 0.5);
+    backdrop-filter: blur(0.5px);
+}
+.submittedFormBody{
+    background-color: black;
+}

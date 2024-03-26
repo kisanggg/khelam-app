@@ -24,33 +24,28 @@ const BigCalendar = () => {
     "7 PM",
     "8 PM",
   ];
-  const slideSettings={
-    dots:false,
-    infinite:true,
-    speed:500,
-    slidesToScroll:10,
-    slidesToShow:10,
-    initialSlide:0,
-    nextArrow:(
-      <div className={styles.nextArrow} >
+  const slideSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToScroll: 10,
+    slidesToShow: 10,
+    initialSlide: 0,
+    nextArrow: (
+      <div className={styles.nextArrow}>
         <CaretRightFill size={30} className={styles.sliderArrow} />
       </div>
-    ), 
-    prevArrow:<></>,
-    responsive:[]
+    ),
+    prevArrow: <></>,
   };
 
-  const [bookingStatus, setBookingStatus] = useState(
-    Array(time.length).fill(false)
-  );
-
   const [showModal, setShowModal] = useState(false);
-  const [bookings, setBookings] = useState({});
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [bookedTime, setBookedTime] = useState({});
 
   const bookdate = (date, selectedTime) => {
-    console.log("booked");
     setSelectedDate(date);
     setSelectedTime(selectedTime);
     setShowModal(true);
@@ -60,6 +55,31 @@ const BigCalendar = () => {
     setSelectedDate(null);
     setSelectedTime(null);
     setShowModal(false);
+  };
+
+  const handleBooking = (formData) => {
+    if (!(formData.date instanceof Date)) {
+      console.error("Error: formData.date is not a Date object.");
+      return;
+    }
+    if (formData.time === undefined) {
+      console.error("Error: formData.time is undefined.");
+      return;
+    }
+    console.log("Form data:", formData);
+    const bookingKey = `${formData.date.toDateString()} ${formData.time}`;
+    console.log("Booking key:", bookingKey);
+    setBookedTime((prevBookedTime) => ({
+      ...prevBookedTime,
+      [bookingKey]: true,
+    }));
+    console.log("Booked time:", bookedTime);
+    setBookedTime((prevBookedTime) => {
+      const updatedBookedTime = { ...prevBookedTime, [bookingKey]: true };
+      console.log("Updated bookedTime:", updatedBookedTime);
+      return updatedBookedTime;
+    });
+    handleCloseModal();
   };
 
   return (
@@ -89,27 +109,29 @@ const BigCalendar = () => {
               <p>SUNDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  const bookingKey = selectedDate
+                    ? `${selectedDate.toDateString()} ${t}`
+                    : null;
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      {bookingKey && bookedTime[bookingKey] ? (
+                        <span className={styles.booked}>Booked</span>
+                      ) : (
+                        <button
+                          className={styles.btn}
+                          onClick={() => bookdate(selectedDate, t)}
+                        >
+                          BOOK NOW
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -137,27 +159,26 @@ const BigCalendar = () => {
               <p>MONDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={`${styles.times} `}>
+                      {t}
+                      <br />
+                      {bookedTime[t] ? (
+                        <span>Booked</span>
+                      ) : (
+                        <button
+                          className={styles.btn}
+                          onClick={() => bookdate(new Date(), t)}
+                        >
+                          BOOK NOW
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -179,27 +200,22 @@ const BigCalendar = () => {
               <p>TUESDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      <button
+                        className={styles.btn}
+                        onClick={() => bookdate(new Date(), t)}
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -221,27 +237,22 @@ const BigCalendar = () => {
               <p>WEDNESDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      <button
+                        className={styles.btn}
+                        onClick={() => bookdate(new Date(), t)}
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -263,27 +274,22 @@ const BigCalendar = () => {
               <p>THURSDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      <button
+                        className={styles.btn}
+                        onClick={() => bookdate(new Date(), t)}
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -305,27 +311,22 @@ const BigCalendar = () => {
               <p>FRIDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      <button
+                        className={styles.btn}
+                        onClick={() => bookdate(new Date(), t)}
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -347,27 +348,22 @@ const BigCalendar = () => {
               <p>SATURDAY</p>
             </div>
             <div className={styles.sliderWrapper}>
-            <Slider className={styles.sliderWrap} {...slideSettings}>
-            {time.map((t, index) => {
-              return (
-
-                <div key={index} className={styles.times}>
-                  {t}
-                  <br />
-                  <button
-                    className={styles.btn}
-                    onClick={() => bookdate(new Date(), t)}
-                    disabled={bookingStatus[index]}
-                    style={{
-                      backgroundColor: bookingStatus[index] ? "pink" : "",
-                    }}
-                  >
-                    BOOK NOW
-                  </button>
-                </div>
-              );
-            })}
-            </Slider>
+              <Slider className={styles.sliderWrap} {...slideSettings}>
+                {time.map((t, index) => {
+                  return (
+                    <div key={index} className={styles.times}>
+                      {t}
+                      <br />
+                      <button
+                        className={styles.btn}
+                        onClick={() => bookdate(new Date(), t)}
+                      >
+                        BOOK NOW
+                      </button>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -387,7 +383,7 @@ const BigCalendar = () => {
               date={selectedDate}
               selectedTime={selectedTime}
               onClose={handleCloseModal}
-              setBookings={setBookings}
+              onBooking={handleBooking}
             />
           </Modal.Body>
         </Modal>
