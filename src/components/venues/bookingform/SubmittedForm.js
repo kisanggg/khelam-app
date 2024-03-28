@@ -2,6 +2,27 @@ import React from 'react'
 import { TelephoneFill,Phone } from 'react-bootstrap-icons'
 import styles from "./submittedform.module.css"
 const SubmittedForm = ({formData,onClose}) => {
+  const handleClose=()=>{
+    onClose();
+  }
+  const calculateCost = () => {
+    const hour = parseInt(formData.hour);
+    let cost = 0;
+    switch (hour) {
+      case 1:
+        cost = 1000;
+        break;
+      case 2:
+        cost = 2000;
+        break;
+      case 3:
+        cost = 3000;
+        break;
+      default:
+        cost = 0;
+    }
+    return cost;
+  }
   return (
     <div>
       <div className={styles.modalWrapper}>
@@ -31,13 +52,13 @@ const SubmittedForm = ({formData,onClose}) => {
       <p>NAME     :{formData.name}</p>
       <p>PHONE NO :{formData.phone}</p>
       <p>EMAIL    : {formData.email}</p>
-      <p>Date     : {formData.date.toDateString()}</p>
+      <p>Date     : {formData.date}</p>
       <p>TIME     : {formData.time}</p>
       <p>HOUR     : {formData.hour}</p>
       <p>TYPE     :{formData.type}</p>
       <p>NOTE     :{formData.note}</p>
-      <p>Cost: Rs.1000</p>
-      <button className={styles.confirmBtn}>Confirm</button>
+      <p>Cost: Rs.{calculateCost()}</p>
+      <button className={styles.confirmBtn} onClick={handleClose}>Confirm</button>
       </div>
       </div>
     </div>

@@ -1,136 +1,139 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.modalWrapper {
-  background-color: rgba(43, 40, 40, 0.5);
-  backdrop-filter: blur(0.5px);
-}
-.days {
- margin-left: 0px;
- background-color: black;
- height: 150vh;
-}
-.sundayWrapper {
-  display: flex;
-}
-.times {
-  border: 1px solid black;
-  background-color: white;
-  width: 100px;
-  height: 110px;
-  font-size: 23px;
-  text-align: center;
-}
-.sunday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.btn {
-  background-color: red;
-  border: 1px solid rgb(255, 0, 0);
-  border-radius: 15px;
-  font-size: 12px;
-  color: white;
-  height: 30px;
-  margin-top: 20px;
-}
-.btn:hover{
-  background-color: rgba(165, 9, 9, 0.793);
-}
-.mondayWrapper {
-  display: flex;
-}
-.monday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.tuesdayWrapper {
-  display: flex;
-}
-.tuesday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.wedWrapper {
-  display: flex;
-}
-.wednesday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.thuWrapper {
-  display: flex;
-}
-.thursday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.friWrapper {
-  display: flex;
-}
-.friday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-.satWrapper {
-  display: flex;
-}
-.saturday {
-  border: 1px solid black;
-  width: 120px;
-  height: 110px;
-  background-color: rgb(212, 210, 210);
-  text-align: center;
-  margin: 0px;
-}
-
-.sliderWrapper {
-    width: 1140px;
-    height: 109.7px;
-    margin-top: 0px;
-    padding: 0px;
-    background-color: #f5f5f5; 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  .sliderWrap{
-    width: 1130px;
+  .calendarContainer {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin-left: 0px;
+  }
+  
+  .dayContainer {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    padding: 10px;
+    height: 150px;
+    width: 1150px;
+
+  }
+  .timeSlider{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #f00c0c;
+    height: 130px;
+    width: 1100px;
   }
+  .timeContainer{
+    margin-left: 141px;
+    transform: translateY(-100%);
+    height: 135px;
+    margin-top: 5px;
+  }
+  .timeSlider svg{
+    color: white;
+    margin-top: 40px;
+  }
+  .timeSlider svg:hover{
+    color: #d3d0d0;
+  }
+  .dateHeader {
+    text-align: center;
+    width: 140px;
+    height: 130px;
+    background-color: rgb(187, 183, 183);
+    color: white;
+    padding: 5px;
+  }
+  .monthWrapper{
+   background-color:red;
+   height: 30px;
+   color:rgb(255, 255, 255);
+   width:140px;
+   margin-left:-5px !important;
+   margin-top: -5px;
+  }
+  .month {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .dayNumber {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .dayName {
+    font-size: 1.1rem;
+    color: black;
+  }
+  
+  .timeSlot {
+    width: 50px;
+    background: #f9f9f9;
+    border: 1px solid black;
+    border-radius: 0px;
+    text-align: center;
+    height: 133px;
+    width: 150px;
+    font-size: 25px;
+    padding-top: 15px;
+  }
+  
+  .timeLabel {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .bookButton {
+    border: none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 14px;
+    width: 80px;
+    margin-top: -2px;
+  }
+  
+  .bookButton {
+    background-color: #f00c0c; 
+  }
+  .bookButton:hover{
+    background-color: #a00404;
 
- .sliderWrap svg{
-  color: red;
+  }
+  .sliderWrapper{
+    flex-grow: 1;
+    width: 0;
+    min-width: 0;
+  }
+ /* .slick-slider{
+  display: flex !important;
+ } */
+ .bookedText{
+  font-size: 20px;
  }
- .sliderWrap svg:hover{
-  color: rgb(145, 0, 0);
- }
- .booked{
-  background-color: rgb(212, 113, 130);
- }
+
+ 
+  .days {
+    margin-left: 0px;
+    background-color: black;
+    height: 200vh;
+  } 
+  .booked {
+    background-color: rgb(255, 135, 135);
+    pointer-events: none;
+  }
+  .notAvailableText{
+    font-size: 15px;
+  }
+  .disabled{
+    background-color: rgb(104, 104, 104);
+    border: 1px solid black;
+  }
+  .notAvailableText{
+    color: white;
+  }

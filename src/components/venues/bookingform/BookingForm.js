@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./bookingform.module.css";
-import { TelephoneFill, Phone, Stopwatch } from "react-bootstrap-icons";
-import { useState, useRef,useEffect} from "react";
+import { TelephoneFill, Phone, CalendarEvent, Alarm } from "react-bootstrap-icons";
+import { useState, useRef} from "react";
 import { Modal } from "react-bootstrap";
 import SubmittedForm from "./SubmittedForm";
 
-const BookingForm = ({  selectedTime, onClose,onBooking}) => {
+const BookingForm = ({selectedTime,onClose,onBooking,selectedDate,onSubmit}) => {
+  
   const firstNameRef = useRef(null);
-  const lastNameRef = useRef(null);
+  const lastNameRef = useRef(null); 
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
   const bookingDateRef = useRef(null);
@@ -15,7 +16,6 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
   const reserveTimeRef = useRef(null);
   const bookingTypeRef = useRef(null);
   const noteRef = useRef(null);
-
   const [formData, setFormData] = useState({});
   const [displayModal,setDisplayModal]=useState(false);
   
@@ -23,29 +23,27 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
   
   const Submit = (e) => {
     e.preventDefault();
+    
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const fullName = `${firstName} ${lastName}`;
-    const date = new Date(bookingDateRef.current.value);
+    
 
     const formData = {
       name: fullName,
       phone: phoneRef.current.value,
       email: emailRef.current.value,
-      date: date,
+      date: bookingDateRef.current.value,
       time: bookingTimeRef.current.value,
       hour: reserveTimeRef.current.value,
       type: bookingTypeRef.current.value,
       note: noteRef.current.value,
     };
-
-    console.log("Selected Date:", formData.date);
-    console.log("Selected times:", formData.time);
     setFormData(formData);
     console.log("submitted form",formData);
-    onBooking(formData);
+    onBooking(selectedTime);
     setDisplayModal(true); 
-    console.log(displayModal)
+    
   };
 
   const handleCloseModal = () => {
@@ -53,7 +51,7 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
     setDisplayModal(false);
     onClose();
   };
-
+  
   return (
     <>
     <div className={styles.bookingForm}>
@@ -102,7 +100,7 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
               Email
             </label>
             <br />
-            <input type="text" className={styles.email} ref={emailRef} name="email"  required/>
+            <input type="text" className={styles.email} ref={emailRef} name="email" required/>
           </div>
 
           <div style={{ marginTop: "10px" }}>
@@ -128,7 +126,22 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
               Booking Date
             </label>
             <br />
-            <input type="date" className={styles.bDate} ref={bookingDateRef} name="bookingDate" required/>
+            <div style={{display:"flex"}}>
+              <CalendarEvent
+              size={20}
+              style={{
+                position: "absolute",
+                color: "red",
+                marginLeft: "160px",
+                marginTop: "4px",
+              }}
+              />
+
+            <input type="date" className={styles.bDate} ref={bookingDateRef} name="bookingDate" 
+            value={selectedDate}
+            readOnly
+            required/>
+            </div>
           </div>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="bookingTime" style={{ marginLeft: "0px" }}>
@@ -136,7 +149,7 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
             </label>
             <br />
             <div style={{ display: "flex" }}>
-              <Stopwatch
+              <Alarm
                 size={20}
                 style={{
                   position: "absolute",
@@ -167,19 +180,18 @@ const BookingForm = ({  selectedTime, onClose,onBooking}) => {
               ref={reserveTimeRef}
               style={{ width: "190px", height: "30px" }}
             >
-              <option>30 mins</option>
               <option>1 hour</option>
               <option>2 hour</option>
               <option>3 hour</option>
             </select>
           </div>
           <div style={{ marginTop: "10px" }}>
-            <label htmlFor="bookingType">Booking Type</label>
+            <label htmlFor="bookingType" style={{ marginLeft: "0px" }}>Booking Type</label>
             <br />
             <select
               name="bookingType"
               ref={bookingTypeRef}
-              style={{ width: "190px", height: "30px" }}
+              style={{ width: "184px", height: "30px" }}
             >
               <option>Full Court</option>
               <option>Half Court</option>

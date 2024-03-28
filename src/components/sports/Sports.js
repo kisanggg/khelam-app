@@ -20,7 +20,7 @@ const Sports = () => {
   return (
     <>
     <div className={styles.mainContainer}>
-      <img src='https://flex.f6s.com/content-resource/media/938025.jpg' alt='err' width={1268} height={550} />
+      <img src='https://flex.f6s.com/content-resource/media/938025.jpg' alt='err' width={1280} height={610} />
       <div className={styles.sportsContainer}>
         <div className={styles.firstContainer}>
           <p>Sports</p>
