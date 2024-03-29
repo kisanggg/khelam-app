@@ -25,11 +25,11 @@ const Header = () => {
       <div className='sub-header'>
         <div className='signUp' style={{ height: "52px" }}>
           <img src={signup} alt='err' style={{ marginLeft: "530px", width: "20px", height: "20px", marginTop: "10px" }} />
-          <a href="/signup" className='nav-link' style={{ textAlign: "end", marginTop: "9px", color: "white", fontSize: "15px",marginLeft:"0px" }}>signup</a>
+          <a href="/signup" className='nava-link' style={{ textAlign: "end", marginTop: "9px", color: "white", fontSize: "15px",marginLeft:"0px" }}>signup</a>
         </div>
         <div className='navBar'>
           <nav className="nav">
-            <Link to="/home" className="nav-link" style={{marginLeft:"101px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
+            <Link to="/home" className="nav-link" style={{marginLeft:"100px",color:"white",fontSize:"13px",padding:"15px"}}>HOME</Link>
             <Link to="/about" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}>ABOUT</Link>
             <Link to="/sports" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}} >SPORTS</Link>
             <Link to="/contact" className="nav-link" style={{color:"white",fontSize:"13px",padding:"15px"}}  >CONTACT</Link>

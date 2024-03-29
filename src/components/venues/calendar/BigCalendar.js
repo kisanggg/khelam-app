@@ -53,14 +53,14 @@ const BigCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [bookedTime, setBookedTime] = useState({});
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
-  
+
   useEffect(() => {
-    // const disabledDates = ["2024-03-04", "2024-03-07"]; 
+    // const disabledDates = ["2024-03-04", "2024-03-07"];
     const disabledTimeSlots = [
       { date: "2024-03-03", time: "08 AM" },
       { date: "2024-03-05", time: "11 AM" },
-      { date: "2024-03-08", time: "12 PM"}
-    ]; 
+      { date: "2024-03-08", time: "12 PM" },
+    ];
     //   disabledDates.forEach((date) => {
     //   days.forEach((day) => {
     //     if (day.date === date) {
@@ -103,16 +103,8 @@ const BigCalendar = () => {
       disabledSlot,
     ]);
   };
-  // const handleFormSubmit = () => {
-  //   const bookingKey = `${selectedDate} ${selectedTime}`;
-  //   setBookedTime((prevBookedTime) => ({
-  //     ...prevBookedTime,
-  //     [bookingKey]: true,
-  //   }));
-  //   handleCloseModal();
-  // };
   return (
-    <div style={{ height: "1150px" }}>
+    <div style={{ height: "1100px" }}>
       <div className={styles.days}>
         <div className={styles.sundayWrapper}>
           <div className={styles.calendarContainer}>
@@ -149,12 +141,12 @@ const BigCalendar = () => {
                           }`}
                         >
                           {time}
-                          <br/>
+                          <br />
                           {disabledTimeSlots.some(
                             (slot) => slot.date === date && slot.time === time
                           ) ? (
                             <span className={styles.notAvailableText}>
-                              Not Available 
+                              Not Available
                             </span>
                           ) : (
                             <>
@@ -166,7 +158,7 @@ const BigCalendar = () => {
                                 <button
                                   onClick={() => handleBooking(date, time)}
                                   disabled={isBooked}
-                                  className={ styles.bookButton}
+                                  className={styles.bookButton}
                                 >
                                   Book Now
                                 </button>
@@ -195,7 +187,6 @@ const BigCalendar = () => {
         >
           <Modal.Body style={{ backgroundColor: "black" }}>
             <BookingForm
-              
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               onClose={handleCloseModal}

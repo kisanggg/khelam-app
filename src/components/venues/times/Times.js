@@ -78,32 +78,32 @@ const Times = () => {
         <Slider className={styles.timeSlider} {...timeSettings}>
           <div className={styles.timescardDiv}>
           <Card style={{width:"15rem",marginLeft:"20px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img3}/>
-            <Card.Body>
+              <Card.Img  className={styles.cardImg} src={img3}/>
+            <Card.Body className={styles.timesCardBody}>
               <Card.Title>Futsal</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className="timescardDiv">
           <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img4}/>
-            <Card.Body>
+              <Card.Img className={styles.cardImg} src={img4}/>
+            <Card.Body className={styles.timesCardBody}>
               <Card.Title>Basketball</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className="timescardDiv">
           <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img5}/>
-            <Card.Body>
+              <Card.Img className={styles.cardImg} src={img5}/>
+            <Card.Body className={styles.timesCardBody}>
               <Card.Title>Cricket</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className="timescardDiv">
           <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img6} style={{borderRadius:"0px"}}/>
-            <Card.Body>
+              <Card.Img src={img6} className={styles.cardImg}/>
+            <Card.Body className={styles.timesCardBody}>
               <Card.Title>Badminton</Card.Title>
             </Card.Body>
           </Card>

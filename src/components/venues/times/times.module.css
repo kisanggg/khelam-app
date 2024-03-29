@@ -72,3 +72,14 @@
 .timesFooter p{
   padding-top : 140px;
 }
+.cardImg{
+  margin: 20px !important;
+  margin-left: 15px !important;
+  height: 220px;
+  width: 210px !important;
+}
+.timesCardBody{
+  border-top: 1px solid rgb(149, 148, 148);
+  width: 180px;
+  margin-left: 30px;
+}

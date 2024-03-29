@@ -73,6 +73,7 @@ const Home = () => {
               placeholder="Username"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              required
             />
           </InputGroup>
           <br />
@@ -105,33 +106,33 @@ const Home = () => {
         <div className={styles.cards} >
           <Slider className={styles.innerSlider} useCSS={true} {...settings}>
           <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"20px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img3}/>
-            <Card.Body>
+          <Card style={{width:"15rem",marginLeft:"20px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
+              <Card.Img src={img3} className={styles.homeCardImg}/>
+            <Card.Body className={styles.homeCardBody}>
               <Card.Title>Futsal</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img4}/>
-            <Card.Body>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
+              <Card.Img src={img4} className={styles.homeCardImg}/>
+            <Card.Body className={styles.homeCardBody}>
               <Card.Title>Basketball</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img5}/>
-            <Card.Body>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
+              <Card.Img src={img5} className={styles.homeCardImg}/>
+            <Card.Body className={styles.homeCardBody}>
               <Card.Title>Cricket</Card.Title>
             </Card.Body>
           </Card>
           </div>
           <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4"}}>
-              <Card.Img src={img6} style={{borderRadius:"0px"}}/>
-            <Card.Body>
+          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
+              <Card.Img src={img6} className={styles.homeCardImg}/>
+            <Card.Body className={styles.homeCardBody}>
               <Card.Title>Badminton</Card.Title>
             </Card.Body>
           </Card>

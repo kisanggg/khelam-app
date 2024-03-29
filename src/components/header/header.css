@@ -76,6 +76,9 @@
   height: 50px;
   color: aliceblue;
 }
+.nava-link{
+  text-decoration: none;
+}
 .nav-link:hover {
   color: rgb(78, 151, 255) !important;
 }
