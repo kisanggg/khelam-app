@@ -98,7 +98,9 @@
   }
   
   .bookButton {
+    margin-top: 20px;
     background-color: #f00c0c; 
+    width: 90px;
   }
   .bookButton:hover{
     background-color: #a00404;
@@ -109,9 +111,7 @@
     width: 0;
     min-width: 0;
   }
- /* .slick-slider{
-  display: flex !important;
- } */
+
  .bookedText{
   font-size: 20px;
  }

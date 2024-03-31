@@ -5,7 +5,7 @@ import { useState, useRef} from "react";
 import { Modal } from "react-bootstrap";
 import SubmittedForm from "./SubmittedForm";
 
-const BookingForm = ({selectedTime,onClose,onBooking,selectedDate,onSubmit}) => {
+const BookingForm = ({selectedTime,onClose,selectedDate,onSubmit,onBooking}) => {
   
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null); 
@@ -29,7 +29,7 @@ const BookingForm = ({selectedTime,onClose,onBooking,selectedDate,onSubmit}) => 
     const fullName = `${firstName} ${lastName}`;
     
 
-    const formData = {
+    const formData=({
       name: fullName,
       phone: phoneRef.current.value,
       email: emailRef.current.value,
@@ -38,10 +38,10 @@ const BookingForm = ({selectedTime,onClose,onBooking,selectedDate,onSubmit}) => 
       hour: reserveTimeRef.current.value,
       type: bookingTypeRef.current.value,
       note: noteRef.current.value,
-    };
+    });
     setFormData(formData);
     console.log("submitted form",formData);
-    onBooking(selectedTime);
+    onSubmit(formData)
     setDisplayModal(true); 
     
   };

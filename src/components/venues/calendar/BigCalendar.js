@@ -4,15 +4,16 @@ import { Modal } from "react-bootstrap";
 import { CaretRightFill } from "react-bootstrap-icons";
 import Slider from "react-slick";
 import styles from "./bookingcalendar.module.css";
+import moment from "moment";
 const BigCalendar = () => {
   const days = [
-    { date: "2024-03-03", day: "SUNDAY" },
-    { date: "2024-03-04", day: "MONDAY" },
-    { date: "2024-03-05", day: "TUESDAY" },
-    { date: "2024-03-06", day: "WEDNESDAY" },
-    { date: "2024-03-07", day: "THURSDAY" },
-    { date: "2024-03-08", day: "FRIDAY" },
-    { date: "2024-03-09", day: "SATURDAY" },
+    { date: new Date("2024-03-03"), day: "SUNDAY" },
+    { date: new Date("2024-03-04"), day: "MONDAY" },
+    { date: new Date("2024-03-05"), day: "TUESDAY" },
+    { date: new Date("2024-03-06"), day: "WEDNESDAY" },
+    { date: new Date("2024-03-07"), day: "THURSDAY" },
+    { date: new Date("2024-03-08"), day: "FRIDAY" },
+    { date: new Date("2024-03-09"), day: "SATURDAY" },
   ];
 
   const times = [
@@ -31,14 +32,14 @@ const BigCalendar = () => {
     "06 PM",
     "07 PM",
     "08 PM",
-  ];
+  ].map((time) => moment(time, "hh A").toDate());
 
   const slideSettings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToScroll: 9,
-    slidesToShow: 9,
+    slidesToScroll: 8,
+    slidesToShow: 8,
     initialSlide: 0,
     nextArrow: (
       <div className={styles.nextArrow}>
@@ -55,20 +56,12 @@ const BigCalendar = () => {
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
 
   useEffect(() => {
-    // const disabledDates = ["2024-03-04", "2024-03-07"];
     const disabledTimeSlots = [
-      { date: "2024-03-03", time: "08 AM" },
-      { date: "2024-03-05", time: "11 AM" },
-      { date: "2024-03-08", time: "12 PM" },
+      { date: new Date("2024-03-03"), time: moment("08 AM", "hh A").toDate() },
+      { date: new Date("2024-03-05"), time: moment("11 AM", "hh A").toDate() },
+      { date: new Date("2024-03-08"), time: moment("12 PM", "hh A").toDate() },
     ];
-    //   disabledDates.forEach((date) => {
-    //   days.forEach((day) => {
-    //     if (day.date === date) {
-    //       day.disabled = true;
-    //     }
-    //   });
-    // });
-
+    console.log("disabled slots", disabledTimeSlots);
     disabledTimeSlots.forEach((slot) => {
       handleDisableTimeSlots(slot.date, slot.time);
     });
@@ -83,19 +76,23 @@ const BigCalendar = () => {
     setShowModal(false);
   };
 
-  const handleBooking = (date, time) => {
-    const bookingKey = `${date} ${time}`;
-    setSelectedTime(time);
-    setSelectedDate(date);
-    setBookedTime((prevBookedTime) => ({
-      ...prevBookedTime,
-      [bookingKey]: true,
-    }));
-
-    if (!showModal) {
-      setShowModal(true);
-    }
-  };
+  const handleBooking = (date, time, rveTimeRef) => {
+    const formattedDate = moment(date).format("YYYY-MM-DD");
+    const formattedTime = moment(time, "hh A").format("hh A");
+        
+        const bookingKey = `${formattedDate} ${formattedTime}`;
+        setBookedTime((prevBookedTime) => ({
+          ...prevBookedTime,
+          [bookingKey]: true,
+        }));
+        setShowModal(true);
+        setSelectedDate(formattedDate); 
+        setSelectedTime(formattedTime);
+      }
+  
+  
+  
+ 
   const handleDisableTimeSlots = (date, time) => {
     const disabledSlot = { date, time };
     setDisabledTimeSlots((prevDisabledTimeSlots) => [
@@ -103,6 +100,15 @@ const BigCalendar = () => {
       disabledSlot,
     ]);
   };
+  const visibleTimeSlots = times.filter((time) => {
+    const currentTime = new Date();
+    return time > currentTime;
+  });
+
+  slideSettings.slidesToShow = Math.min(
+    visibleTimeSlots.length,
+    slideSettings.slidesToShow
+  );
   return (
     <div style={{ height: "1100px" }}>
       <div className={styles.days}>
@@ -115,9 +121,7 @@ const BigCalendar = () => {
                     <p className={styles.month}>MAR 2024</p>
                   </div>
                   <div>
-                    <span className={styles.dayNumber}>
-                      {date.split("-")[2]}
-                    </span>
+                    <span className={styles.dayNumber}>{date.getDate()}</span>
                     <br />
                     <span className={styles.dayName}>{day}</span>
                   </div>
@@ -125,25 +129,38 @@ const BigCalendar = () => {
                 <div className={styles.timeContainer}>
                   <Slider {...slideSettings} className={styles.timeSlider}>
                     {times.map((time) => {
-                      const bookingKey = `${date} ${time}`;
-                      const isBooked = !!bookedTime[bookingKey];
+                      const bookingKey = `${moment(date).format(
+                        "YYYY-MM-DD"
+                      )} ${moment(time).format("hh A")}`;
+                      const isBooked =!!bookedTime[bookingKey];
+                      
+                      const currentTime = new Date();
+
+                      if (time < currentTime) {
+                        return null;
+                      }
                       return (
                         <div
                           key={time}
                           className={`${styles.timeSlot} ${
                             isBooked ? styles.booked : ""
                           } ${
-                            disabledTimeSlots.some(
-                              (slot) => slot.date === date && slot.time === time
-                            )
+                            disabledTimeSlots.some((slot) => {
+                              return (
+                                slot.date.getTime() === date.getTime() &&
+                                slot.time.getTime() === time.getTime()
+                              );
+                            })
                               ? styles.disabled
                               : ""
                           }`}
                         >
-                          {time}
+                          {moment(time).format("hh A")}
                           <br />
                           {disabledTimeSlots.some(
-                            (slot) => slot.date === date && slot.time === time
+                            (slot) =>
+                              slot.date.getTime() === date.getTime() &&
+                              slot.time.getTime() === time.getTime()
                           ) ? (
                             <span className={styles.notAvailableText}>
                               Not Available
@@ -156,7 +173,12 @@ const BigCalendar = () => {
                                 </span>
                               ) : (
                                 <button
-                                  onClick={() => handleBooking(date, time)}
+                                 onClick={()=>{
+                                  setSelectedDate( moment(date).format("YYYY-MM-DD"));
+                                  setSelectedTime(moment(time, "hh A").format("hh A"));
+                                  setShowModal(true);
+                                 }}
+                                  // onClick={() => handleBooking(date, time)}
                                   disabled={isBooked}
                                   className={styles.bookButton}
                                 >
@@ -190,7 +212,10 @@ const BigCalendar = () => {
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               onClose={handleCloseModal}
-              onBooking={handleBooking}
+              onSubmit={(formData) => {
+                handleBooking(selectedDate, selectedTime,formData.hour); 
+              }}
+         
             />
           </Modal.Body>
         </Modal>
