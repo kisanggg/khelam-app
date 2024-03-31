@@ -6,9 +6,8 @@ import img4 from "../../../images/img4.png";
 import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import { Card } from "react-bootstrap";
-import 'react-calendar/dist/Calendar.css';
-import BigCalendar from "../calendar/BigCalendar";
 import Slider from "react-slick";
+import BigCalendar from '../calendar/BigCalendar';
 const Times = () => {
   const timeSettings=
     {
@@ -112,8 +111,8 @@ const Times = () => {
         </div>
       </div>
       <div className={styles.timesFooter}>
-    <p>©2024 Khelam.com.np. All Rights Reserved'</p>
-  </div>
+        <p>©2024 Khelam.com.np. All Rights Reserved'</p>
+      </div>
     </div>
   );
 };

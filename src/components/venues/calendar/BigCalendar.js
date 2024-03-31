@@ -79,20 +79,17 @@ const BigCalendar = () => {
   const handleBooking = (date, time, rveTimeRef) => {
     const formattedDate = moment(date).format("YYYY-MM-DD");
     const formattedTime = moment(time, "hh A").format("hh A");
-        
-        const bookingKey = `${formattedDate} ${formattedTime}`;
-        setBookedTime((prevBookedTime) => ({
-          ...prevBookedTime,
-          [bookingKey]: true,
-        }));
-        setShowModal(true);
-        setSelectedDate(formattedDate); 
-        setSelectedTime(formattedTime);
-      }
-  
-  
-  
- 
+
+    const bookingKey = `${formattedDate} ${formattedTime}`;
+    setBookedTime((prevBookedTime) => ({
+      ...prevBookedTime,
+      [bookingKey]: true,
+    }));
+    setShowModal(true);
+    setSelectedDate(formattedDate);
+    setSelectedTime(formattedTime);
+  };
+
   const handleDisableTimeSlots = (date, time) => {
     const disabledSlot = { date, time };
     setDisabledTimeSlots((prevDisabledTimeSlots) => [
@@ -110,7 +107,7 @@ const BigCalendar = () => {
     slideSettings.slidesToShow
   );
   return (
-    <div style={{ height: "1100px" }}>
+    <div style={{ height: "1080px" }}>
       <div className={styles.days}>
         <div className={styles.sundayWrapper}>
           <div className={styles.calendarContainer}>
@@ -132,8 +129,8 @@ const BigCalendar = () => {
                       const bookingKey = `${moment(date).format(
                         "YYYY-MM-DD"
                       )} ${moment(time).format("hh A")}`;
-                      const isBooked =!!bookedTime[bookingKey];
-                      
+                      const isBooked = !!bookedTime[bookingKey];
+
                       const currentTime = new Date();
 
                       if (time < currentTime) {
@@ -173,11 +170,15 @@ const BigCalendar = () => {
                                 </span>
                               ) : (
                                 <button
-                                 onClick={()=>{
-                                  setSelectedDate( moment(date).format("YYYY-MM-DD"));
-                                  setSelectedTime(moment(time, "hh A").format("hh A"));
-                                  setShowModal(true);
-                                 }}
+                                  onClick={() => {
+                                    setSelectedDate(
+                                      moment(date).format("YYYY-MM-DD")
+                                    );
+                                    setSelectedTime(
+                                      moment(time, "hh A").format("hh A")
+                                    );
+                                    setShowModal(true);
+                                  }}
                                   // onClick={() => handleBooking(date, time)}
                                   disabled={isBooked}
                                   className={styles.bookButton}
@@ -213,9 +214,8 @@ const BigCalendar = () => {
               selectedTime={selectedTime}
               onClose={handleCloseModal}
               onSubmit={(formData) => {
-                handleBooking(selectedDate, selectedTime,formData.hour); 
+                handleBooking(selectedDate, selectedTime, formData.hour);
               }}
-         
             />
           </Modal.Body>
         </Modal>

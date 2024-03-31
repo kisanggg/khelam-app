@@ -1,0 +1,80 @@
+.dunkWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(18 50 94);
+    color: white;
+    /* margin-bottom: 20px; */
+}
+.locationWrapper{
+    margin-bottom: 0px;
+}
+.phoneWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.telephone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.telephone p{
+    margin-top: 10px;
+    margin-left: 8px
+}
+.phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+.phone p{
+    margin-top: 10px;
+    margin-left: 8px
+}
+.cardWrapper h1{
+    margin-left: 60px;
+    font-size: 35px;
+    margin-bottom: 0px;
+}
+.dunkSlider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.dunkSlider svg{
+    margin-top: -17px;
+}
+.dunkcardDiv{
+    width: 290px !important;
+    height: 300px;
+    margin-bottom: 30px;
+}
+.cardImg{
+    width: 220px !important;
+    height: 230px;
+    margin-top: 15px;
+    margin-left: 9px;
+}
+.dunkCardBody{
+    border-top: 1px solid rgb(193, 189, 189);
+    margin-top: 15px;
+    width: 180px;
+    margin-left: 28px;
+    text-align: center;
+}
+.dunkFooter{
+    background-color: black;
+    color: white;
+    height: 170px;
+    margin-top: 70px;
+}
+.dunkFooter p{
+    text-align: center;
+    padding-top: 140px;
+
+}
