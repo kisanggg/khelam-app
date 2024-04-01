@@ -1,4 +1,4 @@
-.mainContainer{
+.mainContainer {
   width: 98.7vw;
 }
 .times {
@@ -37,48 +37,48 @@
   font-size: 22px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.cardsWrap{
+.cardsWrap {
   width: 1200px;
   margin-left: 15px;
   margin-top: 30px;
 }
-.timeSlider{
+.timeSlider {
   width: 1200px;
   display: flex;
   justify-content: center;
   text-align: center;
   margin: 0 auto;
 }
-.timeSlider svg{
+.timeSlider svg {
   margin-top: 100px;
 }
-.timeSlider svg:hover{
+.timeSlider svg:hover {
   color: rgb(196, 196, 196);
 }
-.prevArrow{
+.prevArrow {
   margin-top: 90px !important;
 }
 
-.timescardDiv{
+.timescardDiv {
   height: 340px !important;
 }
-.timesFooter{
+.timesFooter {
   text-align: center;
   height: 170px;
   background-color: #0d0d0d;
   color: white;
-  margin-top:50px ;
+  margin-top: 50px;
 }
-.timesFooter p{
-  padding-top : 140px;
+.timesFooter p {
+  padding-top: 140px;
 }
-.cardImg{
+.cardImg {
   margin: 20px !important;
   margin-left: 15px !important;
   height: 220px;
   width: 209px !important;
 }
-.timesCardBody{
+.timesCardBody {
   border-top: 1px solid rgb(149, 148, 148);
   width: 180px;
   margin-left: 30px;
