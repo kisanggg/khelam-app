@@ -33,10 +33,11 @@ const Signin = () => {
               type="text"
               placeholder="Email Address"
               style={{
-                width: "350px",
+                width: "320px",
                 margin: "10px",
-                marginLeft: "460px",
-                height: "50px",
+                marginLeft: "480px",
+                height: "40px",
+                border:"1px solid black"
               }}
               required
             />
@@ -47,10 +48,11 @@ const Signin = () => {
               type={displayPassword ? "text" : "password"}
               placeholder="Password"
               style={{
-                width: "350px",
+                width: "320px",
                 margin: "10px",
-                marginLeft: "460px",
-                height: "50px",
+                marginLeft: "480px",
+                height: "40px",
+                border:"1px solid black"
               }}
               required
               onChange={(e)=>setPassword(e.target.value)}
@@ -58,12 +60,12 @@ const Signin = () => {
             {displayPassword?(
               <EyeSlashFill
               onClick={()=>setDisplayPassword(!displayPassword)}
-              style={{position:"absolute",marginLeft:"780px",marginTop:"25px"}}
+              style={{position:"absolute",marginLeft:"770px",marginTop:"22px"}}
               />
             ):(
               <EyeFill
               onClick={()=>setDisplayPassword(!displayPassword)}
-              style={{position:"absolute",marginLeft:"780px",marginTop:"25px"}}
+              style={{position:"absolute",marginLeft:"770px",marginTop:"22px"}}
               />
             )}
             </div>
@@ -74,7 +76,7 @@ const Signin = () => {
               Remember me
             </label>
           </div>
-          <Button type="submit" style={{ width: "150px", marginTop: "30px" }}>
+          <Button type="submit" style={{ width: "150px", marginTop: "30px",marginLeft:"10px" }}>
             Sign In
           </Button>
         </Form>
@@ -83,11 +85,12 @@ const Signin = () => {
             display: "flex",
             justifyContent: "space-evenly",
             marginTop: "25px",
+            marginLeft:"20px"
           }}
         >
-          <a href="/forgot" className={styles.firsta}>
+          {/* <a href="/forgot" className={styles.firsta}>
             Forgot Password?
-          </a>
+          </a> */}
 
           <a href="/signup" className={styles.seconda}>
             Don't have an account? Sign Up

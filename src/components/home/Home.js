@@ -95,7 +95,7 @@ const Home = () => {
             forgot details?
           </a>
           <br />
-          <button type="submit">LOGIN</button>
+          <button>LOGIN</button>
         </div>
         <div className={styles.imageWrapper}>
           <img src={img2} alt="err" width={840} height={350}></img>
