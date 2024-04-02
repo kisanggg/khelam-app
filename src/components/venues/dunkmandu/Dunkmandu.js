@@ -63,12 +63,12 @@ const Dunkmandu = () => {
           <p className={styles.locationWrapper}>Imadol, Lalitpur</p>
           <div className={styles.phoneWrapper}>
             <div className={styles.telephone}>
-              <TelephoneFill size={18} style={{ color: "#a09e9e" }} />
-              <p>9828211108</p>
+              <TelephoneFill size={18} style={{ color: "red" }} />
+              <p>01-2453652 ,</p>
             </div>
             <div className={styles.phone}>
-              <Phone size={18} style={{ color: "#a09e9e" }} />
-              <p>010128273</p>
+              <Phone size={18} style={{ color: "red" }} />
+              <p>9802542632</p>
             </div>
           </div>
         </div>

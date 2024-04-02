@@ -60,14 +60,14 @@ const Times = () => {
           height={100}
         />
         <div className={styles.wrapper}>
-          <h4>Times</h4>
+          <h4>Club Name</h4>
           <p>Imadol, Lalitpur</p>
           <div className={styles.phoneWrapper}>
             <p>
-              <TelephoneFill /> 0105410006
+              <TelephoneFill  style={{color:"red"}}/> 01-2453652 ,
             </p>
             <p>
-              <Phone /> 9812345678
+              <Phone   style={{color:"red"}}/> 9802542632
             </p>
           </div>
         </div>

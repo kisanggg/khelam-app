@@ -76,15 +76,58 @@ const BigCalendar = () => {
     setShowModal(false);
   };
 
-  const handleBooking = (date, time, rveTimeRef) => {
+  const handleBooking = (date, time, hour) => {
     const formattedDate = moment(date).format("YYYY-MM-DD");
     const formattedTime = moment(time, "hh A").format("hh A");
 
     const bookingKey = `${formattedDate} ${formattedTime}`;
-    setBookedTime((prevBookedTime) => ({
-      ...prevBookedTime,
-      [bookingKey]: true,
-    }));
+    console.log("hour:", hour);
+    const nextTimeIndex =
+      times.findIndex((t) => moment(t).format("hh A") === formattedTime) + 1;
+    console.log("next time index", nextTimeIndex);
+    if (hour.includes("2 hour")) {
+      const nextTimeIndex =
+        times.findIndex((t) => moment(t).format("hh A") === formattedTime) + 1;
+      if (nextTimeIndex < times.length) {
+        const nextTime = times[nextTimeIndex];
+        const nextFormattedTime = moment(nextTime).format("hh A");
+        const nextBookingKey = `${formattedDate} ${nextFormattedTime}`;
+        console.log("next booking key", nextBookingKey);
+        setBookedTime((prevBookedTime) => ({
+          ...prevBookedTime,
+          [bookingKey]: true,
+          [nextBookingKey]: true,
+        }));
+      }
+    } else if (hour.includes("3 hour")) {
+      const currentIndex = times.findIndex(
+        (t) => moment(t).format("hh A") === formattedTime
+      );
+      const nextTimeIndex1 = currentIndex + 1;
+      const nextTimeIndex2 = currentIndex + 2;
+      if (nextTimeIndex1 < times.length && nextTimeIndex2 < times.length) {
+        const nextTime1 = times[nextTimeIndex1];
+        const nextTime2 = times[nextTimeIndex2];
+        const nextFormattedTime1 = moment(nextTime1).format("hh A");
+        const nextFormattedTime2 = moment(nextTime2).format("hh A");
+        const nextBookingKey1 = `${formattedDate} ${nextFormattedTime1}`;
+        const nextBookingKey2 = `${formattedDate} ${nextFormattedTime2}`;
+        console.log("next booking key 1", nextBookingKey1);
+        console.log("next booking key 2", nextBookingKey2);
+        setBookedTime((prevBookedTime) => ({
+          ...prevBookedTime,
+          [bookingKey]: true,
+          [nextBookingKey1]: true,
+          [nextBookingKey2]: true,
+        }));
+      }
+    } else {
+      console.log("else rendered");
+      setBookedTime((prevBookedTime) => ({
+        ...prevBookedTime,
+        [bookingKey]: true,
+      }));
+    }
     setShowModal(true);
     setSelectedDate(formattedDate);
     setSelectedTime(formattedTime);
@@ -198,7 +241,6 @@ const BigCalendar = () => {
           </div>
         </div>
       </div>
-
       <div>
         <Modal
           show={showModal}
@@ -223,5 +265,4 @@ const BigCalendar = () => {
     </div>
   );
 };
-
 export default BigCalendar;

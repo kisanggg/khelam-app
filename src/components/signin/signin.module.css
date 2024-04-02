@@ -1,23 +1,58 @@
-.signInWrapper{
-    text-align: center;
-    margin-top: 60px;
+.signInWrapper {
+  text-align: center;
+  padding-top: 40px;
+  height: 500px;
+  background-color: rgb(252, 248, 248);
+  color: rgb(0, 0, 0);
 }
-.signInForm{
-    margin-top: 30px;
+.signInWrapper h3 {
+  text-align: left;
+  margin-left: 480px;
+  margin-top: 30px;
 }
-.checkbox{
-    text-align: left;
-    margin-left: 490px;
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  text-align: left;
+  margin-left: 10px;
+}
+.phoneWrapper {
+  display: flex;
+}
+.wrapper p {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.signInForm {
+  margin-top: 10px;
+}
+.checkbox {
+  text-align: left;
+  margin-left: 480px;
 }
 .firsta {
-    margin-right: 250px;
-    font-size: 13px;
+  margin-right: 250px;
+  font-size: 13px;
 }
 .seconda {
-    position: absolute;
-    margin-left: -10px;
-    font-size: 13px;
+  position: absolute;
+  margin-left: -10px;
+  font-size: 13px;
+  color: rgb(0, 0, 0);
 }
-a:hover{
-    color: rgb(70, 70, 208);
+a:hover {
+  color: rgb(70, 70, 208);
+}
+.signinButton {
+  background-color: red;
+  border: 1px solid rgb(252, 252, 252);
+  height: 40px;
+  border-radius: 8px;
+  color: aliceblue;
+}
+.signinButton:hover {
+  background-color: rgb(200, 9, 9);
 }
