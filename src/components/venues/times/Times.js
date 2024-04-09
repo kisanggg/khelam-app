@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styles from "./times.module.css";
 import {
   ArrowLeftCircleFill,
@@ -14,6 +14,12 @@ import { Card } from "react-bootstrap";
 import Slider from "react-slick";
 import BigCalendar from "../calendar/BigCalendar";
 const Times = () => {
+  useEffect(() => {
+    console.log('Times component mounted');
+    return () => {
+      console.log('Times component unmounted');
+    };
+  }, []);
   const timeSettings = {
     dots: false,
     infinite: true,
@@ -73,7 +79,7 @@ const Times = () => {
         </div>
       </div>
       <div>
-        <BigCalendar />
+        <BigCalendar/>
       </div>
       <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>

@@ -1,0 +1,90 @@
+.adminWrapper{
+    background-color: rgb(255, 255, 255);
+    color: white;
+    height: 1000px;
+}
+.adminWrapper h1{
+    text-align: center;
+}
+.bodyWrapper{
+    margin-left: 181px;
+    margin-right: 181px;
+    width: 900px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(16, 16, 16);
+    border-radius: 10px;
+    height: 870px;
+}
+.formWrapper{
+    padding:30px;
+    /* margin-left: 100px;
+    margin-right: 100px; */
+    width: 900px;
+    /* border: 2px solid rgb(184, 182, 182); */
+    border-radius: 10px;
+    /* display: flex; */
+}   
+.formControl{
+    width: 410px!important;
+    border:1px solid black;
+}
+.nameWrapper{
+    display: flex;
+}
+
+.submitBtn{
+    margin-top: 30px;
+    background-color: red !important;
+    width: 150px;
+    height: 40px;
+    margin-left: 350px;
+}
+.submitBtn:hover{
+    background-color: rgb(176, 8, 8) !important;
+}
+.uploadButton{
+    height: 37px;
+    width: 120px;
+    margin-top: 47px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 15px !important;
+    margin-left: 17px;
+}
+.arrowLeft{
+    margin-left: 20px;
+    color: rgb(199, 195, 195);
+    margin-top: 20px;
+}
+.arrowLeft:hover{
+    color: grey;
+}
+.adminSignup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerWrapper{
+    margin-left: 10px;
+}
+.phoneWrapper{
+    display: flex;
+}
+.flexSecondwrapper{
+    margin-left: 10px;
+    margin-top: 0px;
+}
+.signUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    border: 1px solid white;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(17, 15, 32);
+    margin-left: 0px;
+    color: white;
+}

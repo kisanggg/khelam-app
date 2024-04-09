@@ -14,6 +14,7 @@
 .phoneWrapper {
   display: flex;
 }
+
 .formWrapper label {
   margin-left: 20px;
 }
@@ -59,5 +60,5 @@
   backdrop-filter: blur(0.5px);
 }
 .submittedFormBody {
-  background-color: black;
+  background-color: rgb(16, 15, 15);
 }

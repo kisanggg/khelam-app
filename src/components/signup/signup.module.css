@@ -1,59 +1,14 @@
-.formWrapper {
-  background-color: rgb(255, 249, 249);
-  text-align: center;
-  height: 570px;
-  color: rgb(18, 18, 18);
+.container {
+    text-align: center;
+    background-color: black;
+    height: 482px;
 }
-.signUp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 20px;
+
+.signupBtnWrapper {
+    padding-top: 20px;
 }
-.wrapper {
-  text-align: left;
-  margin-left: 10px;
-}
-.wrapper p {
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-.phoneWrapper {
-  display: flex;
-}
-.formWrapper h4 {
-  margin-top: 50px;
-  color: rgb(2, 2, 2);
-  text-align: left;
-  margin-left: 470px;
-}
-.signUpForm {
-  background-color: rgb(255, 255, 255);
-  margin: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.signUpForm input {
-  margin-left: 0px;
-}
-.termsWrapper {
-  text-align: center;
-}
-.termsWrapper label {
-  font-size: 14px;
-}
-a:hover {
-  color: rgb(68, 97, 179) !important;
-}
-.signupButton {
-  width: 150px;
-  height: 40px;
-  border: 1px solid rgb(255, 252, 252);
-  border-radius: 8px;
-  background-color: red;
-  color: rgb(254, 255, 255);
-  margin-top: 0px;
-}
-.signupButton:hover {
-  background-color: rgb(209, 3, 3);
+
+.userButton {
+    margin-left: 0px;
+    margin-top: 10px;
 }

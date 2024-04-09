@@ -7,8 +7,10 @@ import {
   FileLockFill,
   TelephoneFill,
   Phone,
+  ArrowLeftCircleFill,
 } from "react-bootstrap-icons";
 import Home from "../home/Home";
+import { Link } from "react-router-dom";
 const Signin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [email, setEmail] = useState("");
@@ -36,6 +38,9 @@ const Signin = () => {
   }
   return (
     <div>
+      <Link to="/usersignup">
+        <ArrowLeftCircleFill size={30} className={styles.backArrow}/>
+      </Link>
       <div className={styles.signInWrapper}>
         <div className={styles.signIn}>
           <img
@@ -45,7 +50,7 @@ const Signin = () => {
             height={100}
           />
           <div className={styles.wrapper}>
-            <h4>Club Name</h4>
+            <h4>HiTech</h4>
             <p>Imadol, Lalitpur</p>
             <div className={styles.phoneWrapper}>
               <p>
@@ -58,6 +63,7 @@ const Signin = () => {
             </div>
           </div>
         </div>
+        <div className={styles.formWrapper}>
         <h3>
           Sign In
           <FileLockFill size={25} />
@@ -70,7 +76,7 @@ const Signin = () => {
               style={{
                 width: "320px",
                 margin: "10px",
-                marginLeft: "480px",
+                marginLeft: "40px",
                 height: "40px",
                 border: "1px solid black",
               }}
@@ -86,7 +92,7 @@ const Signin = () => {
                 style={{
                   width: "320px",
                   margin: "10px",
-                  marginLeft: "480px",
+                  marginLeft: "40px",
                   height: "40px",
                   border: "1px solid black",
                 }}
@@ -98,7 +104,7 @@ const Signin = () => {
                   onClick={() => setDisplayPassword(!displayPassword)}
                   style={{
                     position: "absolute",
-                    marginLeft: "770px",
+                    marginLeft: "330px",
                     marginTop: "22px",
                   }}
                 />
@@ -107,7 +113,7 @@ const Signin = () => {
                   onClick={() => setDisplayPassword(!displayPassword)}
                   style={{
                     position: "absolute",
-                    marginLeft: "770px",
+                    marginLeft: "330px",
                     marginTop: "22px",
                   }}
                 />
@@ -116,7 +122,7 @@ const Signin = () => {
           </Form.Group>
           <div className={styles.checkbox}>
             <input type="checkbox" style={{ marginLeft: "0px" }} />
-            <label htmlFor="remember" style={{ marginLeft: "3px" }}>
+            <label htmlFor="remember" style={{ marginLeft: "5px" }}>
               Remember me
             </label>
           </div>
@@ -143,6 +149,7 @@ const Signin = () => {
           <a href="/signup" className={styles.seconda}>
             Don't have an account? Sign Up
           </a>
+        </div>
         </div>
       </div>
     </div>

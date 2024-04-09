@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect,useMemo, useContext  } from "react";
 import { Form, InputGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import styles from "./sports.module.css";
 import Times from "../venues/times/Times";
 import Dunkmandu from "../venues/dunkmandu/Dunkmandu";
+import { DataContext } from "../../DataContext";
 
 const Sports = () => {
-  const [selectedSports, setSelectedSports] = useState("");
-  const [selectedVenue, setSelectedVenue] = useState("");
+  useEffect(() => {
+    console.log('Sports component mounted');
+    return () => {
+      console.log('Sports component unmounted');
+    };
+  }, []);
+  const {selectedSports,setSelectedSports,selectedVenue,setSelectedVenue}=useContext(DataContext)
 
   const handleSportsOptionClick = (option) => {
     setSelectedSports(option);
@@ -15,6 +21,33 @@ const Sports = () => {
   const handleVenueOptionClick = (option) => {
     setSelectedVenue(option);
   };
+  const renderSportSection = useMemo(
+    () => {
+      return (venue, sport) => {
+        switch (venue) {
+          case "Times":
+            switch (sport) {
+              case "Basketball":
+              case "Futsal":
+                return <Times />;
+              default:
+                return null;
+            }
+          case "Dunkmandu":
+            switch (sport) {
+              case "Basketball":
+              case "Futsal":
+                return <Dunkmandu />;
+              default:
+                return null;
+            }
+          default:
+            return null;
+        }
+      };
+    },
+    [] 
+  );
 
   return (
     <>
@@ -84,11 +117,6 @@ const Sports = () => {
                 <Dropdown.Item onClick={() => handleVenueOptionClick("Times")}>
                   Times
                 </Dropdown.Item>
-                {/* <Dropdown.Item
-                  onClick={() => handleVenueOptionClick("Dunkmandu")}
-                >
-                  Dunkmandu
-                </Dropdown.Item> */}
               </DropdownButton>
             </InputGroup>
           </div>
@@ -101,47 +129,6 @@ const Sports = () => {
       )}
     </>
   );
-};
-
-const renderSportSection = (venue, sport) => {
-  switch (venue) {
-    case "Times":
-      switch (sport) {
-        case "Basketball":
-          return (
-            <div>
-              <Times />
-            </div>
-          );
-        case "Futsal":
-          return (
-            <div>
-              <Times />
-            </div>
-          );
-        default:
-          return null;
-      }
-    case "Dunkmandu":
-      switch (sport) {
-        case "Basketball":
-          return (
-            <div>
-              <Dunkmandu />
-            </div>
-          );
-        case "Futsal":
-          return (
-            <div>
-              <Dunkmandu />
-            </div>
-          );
-        default:
-          return null;
-      }
-    default:
-      return null;
-  }
 };
 
 export default Sports;

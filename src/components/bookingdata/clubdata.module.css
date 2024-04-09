@@ -1,0 +1,45 @@
+.clubdataWrapper {
+    padding-top: 20px;
+}
+
+.headingWrapper {
+    text-align: center;
+}
+
+.subHeadingWrapper {
+    text-align: center;
+}
+
+.adminHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    margin-left: 10px;
+}
+
+.wrapper p {
+    margin-bottom: 5px;
+}
+
+.phoneWrapper {
+    display: flex;
+}
+
+.clubdataWrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.clubdataWrapper th,
+.clubdataWrapper td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.clubdataWrapper td {
+    padding-left: 10px !important;
+    padding-right: 0% !important;
+}

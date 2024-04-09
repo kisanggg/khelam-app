@@ -1,0 +1,104 @@
+.mainWrapper{
+    background-color: rgb(255, 255, 255);
+    width: 1263px;
+    height:700px ;
+}
+.formWrapper {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    height: 630px;
+    color: white;
+    width: 520px;
+    border: 2px solid rgb(126, 123, 123);
+    border-radius: 10px;
+    margin-left: 371px;
+    margin-right: 371px;
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+    /* padding-top: 5px; */
+}
+
+.signUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    width: 516px;
+    border: 1px solid black;
+    border-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(0 4 21 / 94%);
+    color: white;
+    /* margin-left: 3px; */
+    /* border-bottom: 2px solid white; */
+}
+
+.wrapper {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.wrapper p {
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: 470;
+}
+
+.phoneWrapper {
+    display: flex;
+}
+
+.formWrapper h4 {
+    margin-top: 50px;
+    color: rgb(5, 5, 5);
+    text-align: left;
+    margin-left: 95px;
+}
+
+.signUpForm {
+    background-color: rgb(255, 255, 255);
+    margin: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.signUpForm input {
+    margin-left: 0px;
+}
+
+.termsWrapper {
+    text-align: center;
+}
+
+.termsWrapper label {
+    font-size: 14px;
+}
+
+a:hover {
+    color: rgb(68, 97, 179) !important;
+}
+
+.signupButton {
+    width: 150px;
+    height: 40px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    background-color: red;
+    color: rgb(254, 255, 255);
+    margin-top: 0px;
+}
+
+.signupButton:hover {
+    background-color: rgb(209, 3, 3);
+}
+.backArrow{
+    text-align: left !important;
+    margin-left: 0px;
+    color: rgb(141, 139, 139);
+    margin: 20px;
+    margin-bottom: 0px;
+}
+.backArrow:hover{
+    color: rgb(179, 178, 178);
+}

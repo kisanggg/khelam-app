@@ -22,7 +22,6 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
   const noteRef = useRef(null);
   const [formData, setFormData] = useState({});
   const [displayModal, setDisplayModal] = useState(false);
-
   const Submit = (e) => {
     e.preventDefault();
 
@@ -40,6 +39,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
       type: bookingTypeRef.current.value,
       note: noteRef.current.value,
     };
+   
     setFormData(formData);
     console.log("submitted form", formData);
     onSubmit(formData);
@@ -79,7 +79,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
           <label htmlFor="Name" style={{ marginLeft: "23px" }}>
             Name
           </label>
-          <br />
+          <br />  
           <input
             type="text"
             className={styles.fName}
