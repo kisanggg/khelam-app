@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const DataContext = React.createContext();
 export const DataProvider = ({ children }) => {
@@ -27,30 +27,33 @@ export const DataProvider = ({ children }) => {
     "05 PM",
     "06 PM",
     "07 PM",
-    "08 PM",
   ].map((time) => moment(time, "hh A").toDate());
 
   const [bookedTime, setBookedTime] = useState({});
-
-  const updateBookingStatus = (bookingKey, isBooked) => {
-    setBookedTime((prevBookedTime) => ({
-      ...prevBookedTime,
-      [bookingKey]: isBooked,
-    }));
+  const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
+  
+  const [formDataList, setFormDataList] = useState([]);
+  const [displayModal, setDisplayModal]=useState(false)
+  const addFormData = (formData) => {
+    setFormDataList((prevFormDataList) => [...prevFormDataList, formData]);
   };
-  const [selectedSports, setSelectedSports] = useState("");
-  const [selectedVenue, setSelectedVenue] = useState("");
+ 
+  useEffect(() => {
+    console.log("DataProvider - bookedTime:", bookedTime);
+  }, [bookedTime]);
+
   const value = {
     days,
-    setDays,
     times,
+    setDays,
     bookedTime,
+    addFormData,
+    displayModal,
+    formDataList,
     setBookedTime,
-    updateBookingStatus,
-    selectedSports,
-    setSelectedSports,
-    selectedVenue,
-    setSelectedVenue,
+    setDisplayModal,
+    disabledTimeSlots,
+    setDisabledTimeSlots,
   };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };

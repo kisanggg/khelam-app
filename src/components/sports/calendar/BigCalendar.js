@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import BookingForm from "../bookingform/BookingForm";
+import { useParams, useLocation } from "react-router-dom";
+import BookingForm from "../../venues/bookingform/BookingForm";
 import { Modal } from "react-bootstrap";
 import { CaretRightFill } from "react-bootstrap-icons";
 import Slider from "react-slick";
@@ -8,14 +9,24 @@ import moment from "moment";
 import { DataContext } from "../../../DataContext";
 
 const BigCalendar = () => {
-  const { days, bookedTime, setBookedTime, times, updateBookingStatus } =
-    useContext(DataContext);
-    useEffect(() => {
-      console.log('BigCalendar mounted');
-      return () => {
-        console.log('BigCalendar unmounted');
-      };
-    }, []);
+  const { id } = useParams();
+  const location = useLocation();
+  console.log("Current path:", id);
+  console.log("Current location:", location.pathname);
+  const {
+    days,
+    bookedTime,
+    setBookedTime,
+    times,
+    disabledTimeSlots,
+    setDisabledTimeSlots,
+  } = useContext(DataContext);
+  useEffect(() => {
+    console.log("BigCalendar mounted");
+    return () => {
+      console.log("BigCalendar unmounted");
+    };
+  }, []);
   const slideSettings = {
     dots: false,
     infinite: true,
@@ -34,14 +45,8 @@ const BigCalendar = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
 
   useEffect(() => {
-    const disabledTimeSlots = [
-      { date: new Date("2024-03-03"), time: moment("08 AM", "hh A").toDate() },
-      { date: new Date("2024-03-05"), time: moment("11 AM", "hh A").toDate() },
-      { date: new Date("2024-03-08"), time: moment("12 PM", "hh A").toDate() },
-    ];
     console.log("disabled slots", disabledTimeSlots);
     disabledTimeSlots.forEach((slot) => {
       handleDisableTimeSlots(slot.date, slot.time);
@@ -61,15 +66,15 @@ const BigCalendar = () => {
     const formattedDate = moment(date).format("YYYY-MM-DD");
     const formattedTime = moment(time, "hh A").format("hh A");
     const bookingKey = `${formattedDate} ${formattedTime}`;
-    console.log("booked time", bookedTime);
+
     if (hour.includes("2 hour")) {
       const nextTimeIndex =
-      times.findIndex((t) => moment(t).format("hh A") === formattedTime) + 1;
+        times.findIndex((t) => moment(t).format("hh A") === formattedTime) + 1;
       if (nextTimeIndex < times.length) {
         const nextTime = times[nextTimeIndex];
         const nextFormattedTime = moment(nextTime).format("hh A");
         const nextBookingKey = `${formattedDate} ${nextFormattedTime}`;
-        console.log("next booking key", nextBookingKey);
+
         setBookedTime((prevBookedTime) => ({
           ...prevBookedTime,
           [bookingKey]: true,
@@ -89,6 +94,7 @@ const BigCalendar = () => {
         const nextFormattedTime2 = moment(nextTime2).format("hh A");
         const nextBookingKey1 = `${formattedDate} ${nextFormattedTime1}`;
         const nextBookingKey2 = `${formattedDate} ${nextFormattedTime2}`;
+
         setBookedTime((prevBookedTime) => ({
           ...prevBookedTime,
           [bookingKey]: true,
@@ -97,13 +103,11 @@ const BigCalendar = () => {
         }));
       }
     } else {
-      console.log("else rendered");
       setBookedTime((prevBookedTime) => ({
         ...prevBookedTime,
         [bookingKey]: true,
       }));
     }
-    updateBookingStatus(bookingKey, true);
     setShowModal(true);
     setSelectedDate(formattedDate);
     setSelectedTime(formattedTime);
@@ -120,7 +124,6 @@ const BigCalendar = () => {
     const currentTime = new Date();
     return time > currentTime;
   });
-
   slideSettings.slidesToShow = Math.min(
     visibleTimeSlots.length,
     slideSettings.slidesToShow

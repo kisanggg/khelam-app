@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./bookingform.module.css";
 import {
   TelephoneFill,
@@ -9,8 +9,42 @@ import {
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 import SubmittedForm from "./SubmittedForm";
+import { DataContext } from "../../../DataContext";
 
 const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
+  const pradesh = [
+    "Province No. 1",
+    "Province No. 2",
+    "Province No. 3",
+    "Gandaki Pradesh",
+    "Province No. 5",
+    "Karnali Pradesh",
+    "Sudurpashchim Pradesh",
+  ];
+  const districtByPradesh = {
+    "Province No. 1": ["Khotang", "Ilam", "Jhapa", "Okhaldhunga", "Dhankuta"],
+    "Province No. 2": ["Saptari", "Siraha", "Dhanusa", "Bara", "Parsa"],
+    "Province No. 3": [
+      "Rasuwa",
+      "Kathmandu",
+      "Lalitpur",
+      "Nuwakot",
+      "Chitwan",
+      "Dhading",
+    ],
+    "Gandaki Pradesh": ["Baglung", "Gorkha", "Manang", "Mustang", "Lamjung"],
+    "Province No. 5": ["Dang", "Palpa", "Pyuthan", "Rolpa", "Bardiya"],
+    "Karnali Pradesh": ["Humla", "Jumla", "Kalikot", "Mugu", "Surkhet"],
+    "Sudurpashchim Pradesh": [
+      "Bajhang",
+      "Bajura",
+      "Achham",
+      "Kailali",
+      "Darchula",
+    ],
+  };
+  const [selectedProvince, setSelectedProvince] = useState(pradesh[0]);
+
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -19,16 +53,18 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
   const bookingTimeRef = useRef(null);
   const reserveTimeRef = useRef(null);
   const bookingTypeRef = useRef(null);
+  const pradeshRef = useRef(null);
+  const districtRef = useRef(null);
   const noteRef = useRef(null);
   const [formData, setFormData] = useState({});
-  const [displayModal, setDisplayModal] = useState(false);
+  const { displayModal, setDisplayModal, addFormData } =
+    useContext(DataContext);
   const Submit = (e) => {
     e.preventDefault();
 
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const fullName = `${firstName} ${lastName}`;
-
     const formData = {
       name: fullName,
       phone: phoneRef.current.value,
@@ -37,9 +73,11 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
       time: bookingTimeRef.current.value,
       hour: reserveTimeRef.current.value,
       type: bookingTypeRef.current.value,
+      pradesh : pradeshRef.current.value,
+      district : districtRef.current.value,
       note: noteRef.current.value,
     };
-   
+    addFormData(formData);
     setFormData(formData);
     console.log("submitted form", formData);
     onSubmit(formData);
@@ -79,7 +117,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
           <label htmlFor="Name" style={{ marginLeft: "23px" }}>
             Name
           </label>
-          <br />  
+          <br />
           <input
             type="text"
             className={styles.fName}
@@ -210,6 +248,37 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               >
                 <option>Full Court</option>
                 <option>Half Court</option>
+              </select>
+            </div>
+          </div>
+          <div style={{display:"flex",marginTop:"10px"}}>
+            <div>
+              <label htmlFor="Pradesh" style={{ marginLeft: "25px" }}>
+                Pradesh
+              </label>
+              <br />
+              <select
+                style={{ marginLeft: "25px", width: "184px" }}
+                ref={pradeshRef}
+                value={selectedProvince}
+                onChange={(e) => setSelectedProvince(e.target.value)}
+              >
+                {pradesh.map((p, index) => (
+                  <option key={index} value={p}>
+                    {p}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="districtbypradesh" style={{marginLeft:"50px"}}>
+                District
+              </label>
+              <br />
+              <select style={{ width: "184px",marginLeft:"50px"}} ref={districtRef}>
+                {districtByPradesh[selectedProvince].map((d, index) => (
+                  <option key={index} value={d}>{d}</option>
+                ))}
               </select>
             </div>
           </div>

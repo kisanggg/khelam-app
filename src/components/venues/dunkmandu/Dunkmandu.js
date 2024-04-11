@@ -12,7 +12,7 @@ import img5 from "../../../images/img5.png";
 import img6 from "../../../images/img6.png";
 import { Card } from "react-bootstrap";
 import Slider from "react-slick";
-import BigCalendar from "../calendar/BigCalendar";
+import BigCalendar from "../../sports/calendar/BigCalendar";
 const Dunkmandu = () => {
   const dunkSettings = {
     dots: false,

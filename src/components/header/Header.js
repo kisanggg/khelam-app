@@ -33,8 +33,8 @@ const Header = () => {
               marginTop: "10px",
             }}
           />
-          <a
-            href="/signup"
+          <Link
+           to="/signup"
             className="nava-link"
             style={{
               textAlign: "end",
@@ -45,7 +45,7 @@ const Header = () => {
             }}
           >
             signup
-          </a>
+          </Link>
         </div>
         <div className="navBar">
           <nav className="nav">
@@ -69,7 +69,7 @@ const Header = () => {
               ABOUT
             </Link>
             <Link
-              to="/sports"
+              to="/sports/123"
               className="nav-link"
               style={{ color: "white", fontSize: "13px", padding: "15px" }}
             >

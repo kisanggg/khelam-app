@@ -104,7 +104,6 @@ const Adminsignup = () => {
 
   const validateForm = (data) => {
     const error = {};
-    console.log("data", data);
     if (!data.firstName.trim()) {
       error.firstName = "First Name is required";
     }

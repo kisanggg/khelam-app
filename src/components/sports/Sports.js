@@ -1,18 +1,24 @@
-import React, { useEffect,useMemo, useContext  } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, InputGroup, Dropdown, DropdownButton } from "react-bootstrap";
+import { useParams, useLocation } from "react-router-dom";
 import styles from "./sports.module.css";
-import Times from "../venues/times/Times";
+import Times from "./times/Times";
 import Dunkmandu from "../venues/dunkmandu/Dunkmandu";
-import { DataContext } from "../../DataContext";
 
 const Sports = () => {
+  const { id } = useParams();
+  const location = useLocation();
+  const [selectedSports, setSelectedSports] = useState("");
+  const [selectedVenue, setSelectedVenue] = useState("");
+
   useEffect(() => {
-    console.log('Sports component mounted');
+    console.log("Sports component mounted");
+    console.log("Id:", id);
+    console.log("Location:", location.pathname);
     return () => {
-      console.log('Sports component unmounted');
+      console.log("Sports component unmounted");
     };
-  }, []);
-  const {selectedSports,setSelectedSports,selectedVenue,setSelectedVenue}=useContext(DataContext)
+  }, [id, location.pathname]);
 
   const handleSportsOptionClick = (option) => {
     setSelectedSports(option);
@@ -21,33 +27,29 @@ const Sports = () => {
   const handleVenueOptionClick = (option) => {
     setSelectedVenue(option);
   };
-  const renderSportSection = useMemo(
-    () => {
-      return (venue, sport) => {
-        switch (venue) {
-          case "Times":
-            switch (sport) {
-              case "Basketball":
-              case "Futsal":
-                return <Times />;
-              default:
-                return null;
-            }
-          case "Dunkmandu":
-            switch (sport) {
-              case "Basketball":
-              case "Futsal":
-                return <Dunkmandu />;
-              default:
-                return null;
-            }
+
+  const renderSportSection = (venue, sport) => {
+    switch (venue) {
+      case "Times":
+        switch (sport) {
+          case "Basketball":
+          case "Futsal":
+            return <Times />;
           default:
             return null;
         }
-      };
-    },
-    [] 
-  );
+      case "Dunkmandu":
+        switch (sport) {
+          case "Basketball":
+          case "Futsal":
+            return <Dunkmandu />;
+          default:
+            return null;
+        }
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
@@ -73,6 +75,7 @@ const Sports = () => {
               />
               <DropdownButton
                 id="sports-dropdown"
+                // title="Select Sports"
                 style={{
                   backgroundColor: "white",
                   color: "black",
@@ -80,14 +83,10 @@ const Sports = () => {
                   borderLeft: "1px solid #e3e3e3",
                 }}
               >
-                <Dropdown.Item
-                  onClick={() => handleSportsOptionClick("Basketball")}
-                >
+                <Dropdown.Item onClick={() => handleSportsOptionClick("Basketball")}>
                   Basketball
                 </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => handleSportsOptionClick("Futsal")}
-                >
+                <Dropdown.Item onClick={() => handleSportsOptionClick("Futsal")}>
                   Futsal
                 </Dropdown.Item>
               </DropdownButton>
@@ -107,6 +106,7 @@ const Sports = () => {
               />
               <DropdownButton
                 id="venue-dropdown"
+                // title="Select Venue"
                 style={{
                   backgroundColor: "white",
                   color: "black",
