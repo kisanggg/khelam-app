@@ -56,26 +56,37 @@
 .detailsBtn {
     border: 1px solid rgb(255, 135, 135);
     border-radius: 10px;
-    width: 60px;
+    width: 70px;
+    height: 30px;
     background-color: #df1515;
     color: white;
     margin-top: 18px;
 }
-
+.detailsBtn:hover{
+    background-color: #c00808;
+}
 .bookBtn {
     border: 1px solid white;
     border-radius: 10px;
-    width: 60px;
+    width: 70px;
+    height: 30px;
     background-color: #fb0014;
     color: white;
+}
+.bookBtn:hover{
+    background-color: #c00808;
 }
 
 .disableBtn {
     border: 1px solid white;
     border-radius: 10px;
-    width: 60px;
+    width: 70px !important;
+    height: 30px !important;
     margin-top: 5px;
-    background-color: #9e9e9e;
+    background-color: #a9a6a6;
+}
+.disableBtn:hover{
+    background-color:rgb(145, 141, 141) ;
 }
 
 .closeBtn {
@@ -98,6 +109,21 @@
 }
 
 .confirmBtn {
-    margin-left: 0px;
+    margin-left: 180px;
+    margin-top: 20px;
     width: 100px;
+}
+.errorWrapper{
+    margin-left: 82px;
+}
+.detailsButton{
+    border: 1px solid rgb(255, 135, 135);
+    background-color: #df1515;
+    color: white;
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+}
+.detailsButton:hover{
+    background-color: #c00808;
 }

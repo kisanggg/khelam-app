@@ -5,7 +5,7 @@ import { Table, Modal, Form, Button } from "react-bootstrap";
 import { DataContext } from "../../DataContext";
 import moment from "moment";
 
-const Clubbookingdata = () => {
+const Clubbookingdata = ({ formData }) => {
   const {
     days,
     times,
@@ -16,7 +16,6 @@ const Clubbookingdata = () => {
     displayModal,
     setDisplayModal,
     formDataList,
-    setFormDataList,
   } = useContext(DataContext);
 
   const [showModal, setShowModal] = useState(false);
@@ -27,7 +26,6 @@ const Clubbookingdata = () => {
   const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
   const [formErrors, setFormErrors] = useState({});
-  const [latestBookedSlots, setLatestBookedSlots] = useState({});
 
   const validateForm = () => {
     const errors = {};
@@ -36,7 +34,7 @@ const Clubbookingdata = () => {
     }
     if (!contactNumber.trim()) {
       errors.contactNumber = "Contact Number is required";
-    } else if (!/^[0-9]+$/.test(contactNumber.trim())) {
+    }else if (!/^[0-9]+$/.test(contactNumber.trim())) {
       errors.contactNumber = "Contact Number should contain only digits";
     }
     if (!address.trim()) {
@@ -49,17 +47,17 @@ const Clubbookingdata = () => {
   const handleShowDetails = (formData) => {
     setDisplayModal(true);
     setSelectedFormData(formData);
-    console.log("selectedFormData:", selectedFormData);
   };
 
   const handleCloseModal = () => {
-    setDisplayModal(false);
-    setShowModal(false);
-    setFullName("");
-    setAddress("");
-    setContactNumber("");
-    setFormErrors({});
-  };
+  setShowModal(false);
+  setSelectedDate(null);
+  setSelectedTime(null);
+  setFullName("");
+  setContactNumber("");
+  setAddress("");
+  setFormErrors({});
+};
 
   const isSlotDisabled = (date, time) => {
     const dateString = moment(date).format("YYYY-MM-DD");
@@ -78,22 +76,12 @@ const Clubbookingdata = () => {
       if (selectedDate && selectedTime) {
         const dateString = moment(selectedDate).format("YYYY-MM-DD");
         const timeString = moment(selectedTime).format("hh A");
-        const newBooking={
-          date:dateString,
-          time:timeString,
-          Name:fullName,
-          Contact:contactNumber,
-          Address:address,
-        }
-        setLatestBookedSlots(newBooking);
-        setFormDataList([...formDataList,newBooking]);
         const bookingKey = `${dateString} ${timeString}`;
         setBookedTime((prevBookedTime) => ({
           ...prevBookedTime,
           [bookingKey]: true,
         }));
       }
-      handleCloseModal();
     }
   };
 
@@ -111,29 +99,31 @@ const Clubbookingdata = () => {
   const renderSlotContent = (date, time, isBooked, isDisabled) => {
     const dateString = moment(date).format("YYYY-MM-DD");
     const timeString = moment(time).format("hh A");
-  
-    if (isBooked) {
-      const bookedSlots = formDataList.filter(
-        (formData) => formData.date === dateString && formData.time === timeString
-      );
-     
-  
+    const slotFormData = formDataList.find(
+      (formData) => formData.date === dateString && formData.time === timeString
+    );
+
+    if (isBooked && slotFormData) {
       return (
         <div className={styles.bookedSlot}>
           Booked
-          {bookedSlots.map((formData, index) => (
-            <button
-              key={index}
-              className={styles.detailsBtn}
-              onClick={() => handleShowDetails(formData)}
-            >
-              Details
-            </button>
-          ))}
+          <button
+            className={styles.detailsBtn}
+            onClick={() => handleShowDetails(slotFormData)}
+          >
+            Details
+          </button>
         </div>
       );
     } else if (isDisabled) {
       return <div className={styles.disabledSlot}>Not Available</div>;
+    } else if (isBooked) {
+      return (
+        <div>
+          <p>Booked</p>
+          <button className={styles.detailsButton}>Details</button>
+        </div>
+      );
     } else {
       return (
         <div className={styles.availableSlot}>
@@ -158,13 +148,13 @@ const Clubbookingdata = () => {
       );
     }
   };
-  
 
   const handleContactNumberChange = (e) => {
     const input = e.target.value;
     const numericInput = input.replace(/\D/g, "");
     setContactNumber(numericInput);
   };
+
 
   return (
     <div className={styles.clubdataWrapper}>
@@ -228,87 +218,46 @@ const Clubbookingdata = () => {
           </tbody>
         </Table>
       </div>
-      <Modal show={displayModal} onHide={handleCloseModal}>
+
+      <Modal show={showModal} onHide={handleCloseModal} className={styles.formModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Booking Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedFormData ? (
-            <div className={styles.bookingDetails}>
-              <p>Name: {selectedFormData.name}</p>
-              <p>Contact: {selectedFormData.phone}</p>
-              <p>Email: {selectedFormData.email}</p>
-              <p>Date: {selectedFormData.date}</p>
-              <p>Time: {selectedFormData.time}</p>
-              <p>Pradesh:{selectedFormData.pradesh}</p>
-              <p>District:{selectedFormData.district}</p>
-            </div>
-          ) : (
-            <p>No booking details available</p>
-          )}
-        </Modal.Body>
-      </Modal>
-      <Modal
-        show={showModal}
-        onHide={handleCloseModal}
-        className={styles.formModal}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Book</Modal.Title>
+          <Modal.Title>Book Slot</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form>
+            <Form.Group controlId="fullName">
               <Form.Label>Full Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="full name"
-                className={styles.input}
                 value={fullName}
+                className={styles.input}
                 onChange={(e) => setFullName(e.target.value)}
                 isInvalid={!!formErrors.fullName}
-              ></Form.Control>
-              <Form.Control.Feedback
-                type="invalid"
-                className={styles.errorWrapper}
-              >
-                {formErrors.fullName}
-              </Form.Control.Feedback>
-            </Form>
-            <Form>
-              <Form.Label>Contact</Form.Label>
+              />
+              <Form.Control.Feedback type="invalid"  className={styles.errorWrapper}>{formErrors.fullName}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="contactNumber">
+              <Form.Label>Contact Number</Form.Label>
               <Form.Control
                 type="tel"
-                placeholder="number"
-                className={styles.input}
                 value={contactNumber}
-                onChange={handleContactNumberChange}
+                className={styles.input}
+                onChange={ handleContactNumberChange}
                 isInvalid={!!formErrors.contactNumber}
-              ></Form.Control>
-              <Form.Control.Feedback
-                type="invalid"
-                className={styles.errorWrapper}
-              >
-                {formErrors.contactNumber}
-              </Form.Control.Feedback>
-            </Form>
-            <Form>
+              />
+              <Form.Control.Feedback type="invalid"  className={styles.errorWrapper}>{formErrors.contactNumber}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="address">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="address"
-                className={styles.input}
                 value={address}
+                className={styles.input}
                 onChange={(e) => setAddress(e.target.value)}
                 isInvalid={!!formErrors.address}
-              ></Form.Control>
-              <Form.Control.Feedback
-                type="invalid"
-                className={styles.errorWrapper}
-              >
-                {formErrors.address}
-              </Form.Control.Feedback>
-            </Form>
+              />
+              <Form.Control.Feedback type="invalid" className={styles.errorWrapper}>{formErrors.address}</Form.Control.Feedback>
+            </Form.Group>
             <Button type="submit" className={styles.confirmBtn}>
               Confirm
             </Button>

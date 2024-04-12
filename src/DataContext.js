@@ -31,7 +31,6 @@ export const DataProvider = ({ children }) => {
 
   const [bookedTime, setBookedTime] = useState({});
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
-  
   const [formDataList, setFormDataList] = useState([]);
   const [displayModal, setDisplayModal]=useState(false)
   const addFormData = (formData) => {
@@ -40,7 +39,8 @@ export const DataProvider = ({ children }) => {
  
   useEffect(() => {
     console.log("DataProvider - bookedTime:", bookedTime);
-  }, [bookedTime]);
+    console.log("DataProvider - formDataList:", formDataList); 
+  }, [bookedTime,formDataList]);
 
   const value = {
     days,
@@ -50,6 +50,7 @@ export const DataProvider = ({ children }) => {
     addFormData,
     displayModal,
     formDataList,
+    setFormDataList,
     setBookedTime,
     setDisplayModal,
     disabledTimeSlots,
