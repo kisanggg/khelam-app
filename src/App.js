@@ -12,6 +12,7 @@ import Usersignup from "./components/signup/user/Usersignup";
 import Clubbookingdata from "./components/bookingdata/Clubbookingdata";
 import { DataProvider } from "./DataContext";
 import BigCalendar from "./components/sports/calendar/BigCalendar";
+import SubmittedClubData from "./components/bookingdata/SubmittedClubData";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/usersignup" element={<Usersignup />} />
           <Route path="/calendar/:id" element={<BigCalendar />} />
           <Route path="/clubbookingdata" element={<Clubbookingdata />} />
+          {/* <Route path="/submittedclubdata" element={<SubmittedClubData/>}/> */}
         </Routes>
       </DataProvider>
     </>

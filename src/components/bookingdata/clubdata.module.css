@@ -1,6 +1,6 @@
-.clubdataWrapper {
+/* .clubdataWrapper {
     padding-top: 20px;
-}
+} */
 
 .headingWrapper {
     text-align: center;
@@ -14,6 +14,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #011533;
+    color: white;
+    padding: 10px;
 }
 
 .wrapper {
@@ -51,6 +54,7 @@
 .disabledSlot {
     background-color: rgb(109, 109, 109) !important;
     color: white !important;
+    margin-top: 19px;
 }
 
 .detailsBtn {
@@ -127,3 +131,7 @@
 .detailsButton:hover{
     background-color: #c00808;
 }
+/* .bookingDetailsModal{
+    background-color: black;
+    color: white;
+} */

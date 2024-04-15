@@ -10,55 +10,77 @@ const Clubbookingdata = () => {
     days,
     times,
     bookedTime,
+    formDataList,
+    displayModal,
     setBookedTime,
+    setDisplayModal,
+    setFormDataList,
     disabledTimeSlots,
     setDisabledTimeSlots,
-    displayModal,
-    setDisplayModal,
-    formDataList,
-    setFormDataList,
   } = useContext(DataContext);
 
   const [showModal, setShowModal] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [fullName, setFullName] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
-  const [address, setAddress] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const [latestBookedSlots, setLatestBookedSlots] = useState({});
+  const [bookedModal, setBookedModal] = useState(false);
+  const [selectedBookingDetails, setSelectedBookingDetails] = useState({});
+  const [data, setData] = useState({
+    fullName: "",
+    contactNumber: "",
+    address: "",
+    bookedBy: "",
+  });
 
   const validateForm = () => {
     const errors = {};
-    if (!fullName.trim()) {
+    if (!data.fullName.trim()) {
       errors.fullName = "Full Name is required";
     }
-    if (!contactNumber.trim()) {
+    if (!data.contactNumber.trim()) {
       errors.contactNumber = "Contact Number is required";
-    } else if (!/^[0-9]+$/.test(contactNumber.trim())) {
+    } else if (!/^[0-9]+$/.test(data.contactNumber.trim())) {
       errors.contactNumber = "Contact Number should contain only digits";
     }
-    if (!address.trim()) {
+    if (!data.address.trim()) {
       errors.address = "Address is required";
+    }
+    if (!data.bookedBy.trim()) {
+      errors.bookedBy = "Required";
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
   const handleShowDetails = (formData) => {
-    setDisplayModal(true);
+    console.log("form data:",formData)
     setSelectedFormData(formData);
-    console.log("selectedFormData:", selectedFormData);
+    console.log("formDataList:", formDataList);
+
+    const isInternalBooking= formData.source==="Internal";
+    if(isInternalBooking){
+        setBookedModal(true);
+        setDisplayModal(false); 
+        console.log("booked modal")
+    }else{
+        setDisplayModal(true);
+        console.log("displaymodal")
+    }
   };
 
   const handleCloseModal = () => {
     setDisplayModal(false);
     setShowModal(false);
-    setFullName("");
-    setAddress("");
-    setContactNumber("");
+    setData({
+      fullName: "",
+      contactNumber: "",
+      address: "",
+      bookedBy: "",
+    });
     setFormErrors({});
+    setBookedModal(false);
   };
 
   const isSlotDisabled = (date, time) => {
@@ -78,15 +100,14 @@ const Clubbookingdata = () => {
       if (selectedDate && selectedTime) {
         const dateString = moment(selectedDate).format("YYYY-MM-DD");
         const timeString = moment(selectedTime).format("hh A");
-        const newBooking={
-          date:dateString,
-          time:timeString,
-          Name:fullName,
-          Contact:contactNumber,
-          Address:address,
-        }
+        const newBooking = {
+          date: dateString,
+          time: timeString,
+          ...data,
+          source: "internal",
+        };
         setLatestBookedSlots(newBooking);
-        setFormDataList([...formDataList,newBooking]);
+        setFormDataList([...formDataList, newBooking]);
         const bookingKey = `${dateString} ${timeString}`;
         setBookedTime((prevBookedTime) => ({
           ...prevBookedTime,
@@ -111,26 +132,27 @@ const Clubbookingdata = () => {
   const renderSlotContent = (date, time, isBooked, isDisabled) => {
     const dateString = moment(date).format("YYYY-MM-DD");
     const timeString = moment(time).format("hh A");
-  
+
     if (isBooked) {
       const bookedSlots = formDataList.filter(
-        (formData) => formData.date === dateString && formData.time === timeString
+        (formData) =>
+          formData.date === dateString && formData.time === timeString
       );
-     
-  
       return (
-        <div className={styles.bookedSlot}>
-          Booked
+        <>
           {bookedSlots.map((formData, index) => (
-            <button
-              key={index}
-              className={styles.detailsBtn}
-              onClick={() => handleShowDetails(formData)}
-            >
-              Details
-            </button>
+            <>
+              Booked
+              <button
+                key={index}
+                className={styles.detailsBtn}
+                onClick={() => handleShowDetails(formData)}
+              >
+                Details
+              </button>
+            </>
           ))}
-        </div>
+        </>
       );
     } else if (isDisabled) {
       return <div className={styles.disabledSlot}>Not Available</div>;
@@ -158,13 +180,6 @@ const Clubbookingdata = () => {
       );
     }
   };
-  
-
-  const handleContactNumberChange = (e) => {
-    const input = e.target.value;
-    const numericInput = input.replace(/\D/g, "");
-    setContactNumber(numericInput);
-  };
 
   return (
     <div className={styles.clubdataWrapper}>
@@ -180,9 +195,9 @@ const Clubbookingdata = () => {
           <p>Imadol, Lalitpur</p>
           <div className={styles.phoneWrapper}>
             <p>
-              <TelephoneFill style={{ color: "red" }} /> 01-2453652
+              <TelephoneFill style={{ color: "red" }} /> 01-2453652,
             </p>
-            <p>
+            <p style={{ marginLeft: "5px" }}>
               <Phone style={{ color: "red" }} /> 9802542632
             </p>
           </div>
@@ -201,10 +216,13 @@ const Clubbookingdata = () => {
           <tbody>
             {days.map(({ date, day }) => {
               const dateString = moment(date).format("YYYY-MM-DD");
-              const daydatecombined = `${day} (${dateString})`;
+
               return (
                 <tr key={dateString}>
-                  <td className={styles.daydatecCell}>{daydatecombined}</td>
+                  <td className={styles.daydatecCell}>
+                    {day}
+                    <br />({dateString})
+                  </td>
                   {times.map((time) => {
                     const timeString = moment(time).format("hh A");
                     const bookingKey = `${dateString} ${timeString}`;
@@ -229,10 +247,10 @@ const Clubbookingdata = () => {
         </Table>
       </div>
       <Modal show={displayModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className={styles.bookingDetailsModal}>
           <Modal.Title>Booking Details</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.bookingDetailsModal}>
           {selectedFormData ? (
             <div className={styles.bookingDetails}>
               <p>Name: {selectedFormData.name}</p>
@@ -244,7 +262,7 @@ const Clubbookingdata = () => {
               <p>District:{selectedFormData.district}</p>
             </div>
           ) : (
-            <p>No booking details available</p>
+            <p>No booking details available.</p>
           )}
         </Modal.Body>
       </Modal>
@@ -264,10 +282,16 @@ const Clubbookingdata = () => {
                 type="text"
                 placeholder="full name"
                 className={styles.input}
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                value={data.fullName}
+                onChange={(e) =>
+                  setData((prevData) => ({
+                    ...prevData,
+                    fullName: e.target.value,
+                  }))
+                }
                 isInvalid={!!formErrors.fullName}
-              ></Form.Control>
+              />
+
               <Form.Control.Feedback
                 type="invalid"
                 className={styles.errorWrapper}
@@ -281,9 +305,16 @@ const Clubbookingdata = () => {
                 type="tel"
                 placeholder="number"
                 className={styles.input}
-                value={contactNumber}
-                onChange={handleContactNumberChange}
+                value={data.contactNumber}
                 isInvalid={!!formErrors.contactNumber}
+                onChange={(e) => {
+                  const input = e.target.value;
+                  const numericInput = input.replace(/\D/g, "");
+                  setData((prevData) => ({
+                    ...prevData,
+                    contactNumber: numericInput,
+                  }));
+                }}
               ></Form.Control>
               <Form.Control.Feedback
                 type="invalid"
@@ -298,8 +329,8 @@ const Clubbookingdata = () => {
                 type="text"
                 placeholder="address"
                 className={styles.input}
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                value={data.address}
+                onChange={(e) => setData({ ...data, address: e.target.value })}
                 isInvalid={!!formErrors.address}
               ></Form.Control>
               <Form.Control.Feedback
@@ -309,10 +340,40 @@ const Clubbookingdata = () => {
                 {formErrors.address}
               </Form.Control.Feedback>
             </Form>
+            <Form>
+              <Form.Label>Booked By</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="booked by"
+                className={styles.input}
+                value={data.bookedBy}
+                onChange={(e) => setData({ ...data, bookedBy: e.target.value })}
+                isInvalid={!!formErrors.bookedBy}
+              />
+            </Form>
+            <Form.Control.Feedback
+              type="invalid"
+              className={styles.errorWrapper}
+            >
+              {formErrors.bookedBy}
+            </Form.Control.Feedback>
             <Button type="submit" className={styles.confirmBtn}>
               Confirm
             </Button>
           </Form>
+        </Modal.Body>
+      </Modal>
+      <Modal onShow={bookedModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>Booking Details </Modal.Header>
+        <Modal.Body>
+          {selectedFormData && (
+            <>
+              <p>Fullname: {selectedFormData.fullName}</p>
+              <p>Contact Number: {selectedFormData.contactNumber}</p>
+              <p>Address: {selectedFormData.address}</p>
+              <p>Booked By: {selectedFormData.bookedBy}</p>
+            </>
+          )}
         </Modal.Body>
       </Modal>
     </div>
