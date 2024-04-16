@@ -66,9 +66,11 @@
     color: white;
     margin-top: 18px;
 }
-.detailsBtn:hover{
+
+.detailsBtn:hover {
     background-color: #c00808;
 }
+
 .bookBtn {
     border: 1px solid white;
     border-radius: 10px;
@@ -77,7 +79,8 @@
     background-color: #fb0014;
     color: white;
 }
-.bookBtn:hover{
+
+.bookBtn:hover {
     background-color: #c00808;
 }
 
@@ -89,8 +92,9 @@
     margin-top: 5px;
     background-color: #a9a6a6;
 }
-.disableBtn:hover{
-    background-color:rgb(145, 141, 141) ;
+
+.disableBtn:hover {
+    background-color: rgb(145, 141, 141);
 }
 
 .closeBtn {
@@ -98,29 +102,37 @@
     width: 100px !important;
     position: absolute;
 }
-.formModal label{
+
+.formModal label {
     margin-left: 80px;
 }
-.footerWrapper{
+
+.footerWrapper {
     display: block !important;
     margin-left: 160px;
 }
+
 .input {
     border: 1px solid black !important;
     width: 300px !important;
     height: 35px;
     margin-left: 80px;
 }
-
+/* .tableHead th{
+    background-color: rgb(98, 98, 98) !important;
+    color: white;
+} */
 .confirmBtn {
     margin-left: 180px;
     margin-top: 20px;
     width: 100px;
 }
-.errorWrapper{
+
+.errorWrapper {
     margin-left: 82px;
 }
-.detailsButton{
+
+.detailsButton {
     border: 1px solid rgb(255, 135, 135);
     background-color: #df1515;
     color: white;
@@ -128,10 +140,21 @@
     width: 70px;
     height: 30px;
 }
-.detailsButton:hover{
+
+.detailsButton:hover {
     background-color: #c00808;
 }
-/* .bookingDetailsModal{
-    background-color: black;
-    color: white;
+
+.internalModal {
+    background-color: rgba(21, 20, 20, 0.5);
+    backdrop-filter: blur(0.5);
+}
+
+.modal-header button {
+    color: red;
+}
+
+/* .daydateCell{
+    background-color: #c00808 !important;
+    color: white !important;
 } */

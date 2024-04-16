@@ -20,13 +20,12 @@ const Clubbookingdata = () => {
   } = useContext(DataContext);
 
   const [showModal, setShowModal] = useState(false);
-  const [selectedFormData, setSelectedFormData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const [latestBookedSlots, setLatestBookedSlots] = useState({});
   const [bookedModal, setBookedModal] = useState(false);
-  const [selectedBookingDetails, setSelectedBookingDetails] = useState({});
+  const [selectedFormData, setSelectedFormData] = useState(null);
   const [data, setData] = useState({
     fullName: "",
     contactNumber: "",
@@ -55,18 +54,18 @@ const Clubbookingdata = () => {
   };
 
   const handleShowDetails = (formData) => {
-    console.log("form data:",formData)
-    setSelectedFormData(formData);
+    console.log("form data:", formData);
+    setData(formData);
     console.log("formDataList:", formDataList);
 
-    const isInternalBooking= formData.source==="Internal";
-    if(isInternalBooking){
-        setBookedModal(true);
-        setDisplayModal(false); 
-        console.log("booked modal")
-    }else{
-        setDisplayModal(true);
-        console.log("displaymodal")
+    const isInternalBooking = formData.source === "internal";
+    if (isInternalBooking) {
+      setBookedModal(true);
+      setDisplayModal(false);
+      console.log("booked modal");
+    } else {
+      setDisplayModal(true);
+      console.log("displaymodal");
     }
   };
 
@@ -205,7 +204,7 @@ const Clubbookingdata = () => {
       </div>
       <div className={styles.clubdataWrapper}>
         <Table striped bordered hover style={{ border: "1px solid black" }}>
-          <thead>
+          <thead className={styles.tableHead}>
             <tr>
               <th>Day/Date</th>
               {times.map((time, index) => (
@@ -216,10 +215,9 @@ const Clubbookingdata = () => {
           <tbody>
             {days.map(({ date, day }) => {
               const dateString = moment(date).format("YYYY-MM-DD");
-
               return (
                 <tr key={dateString}>
-                  <td className={styles.daydatecCell}>
+                  <td className={styles.daydateCell}>
                     {day}
                     <br />({dateString})
                   </td>
@@ -363,15 +361,21 @@ const Clubbookingdata = () => {
           </Form>
         </Modal.Body>
       </Modal>
-      <Modal onShow={bookedModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>Booking Details </Modal.Header>
+      <Modal
+        show={bookedModal}
+        onHide={handleCloseModal}
+        className={styles.internalModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Booking Details</Modal.Title>
+        </Modal.Header>
         <Modal.Body>
-          {selectedFormData && (
+          {data && (
             <>
-              <p>Fullname: {selectedFormData.fullName}</p>
-              <p>Contact Number: {selectedFormData.contactNumber}</p>
-              <p>Address: {selectedFormData.address}</p>
-              <p>Booked By: {selectedFormData.bookedBy}</p>
+              <p>Fullname: {data.fullName}</p>
+              <p>Contact Number: {data.contactNumber}</p>
+              <p>Address: {data.address}</p>
+              <p>Booked By: {data.bookedBy}</p>
             </>
           )}
         </Modal.Body>
