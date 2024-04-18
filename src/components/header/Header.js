@@ -6,6 +6,7 @@ import { Search } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
+    <>
     <div className="header">
       <div
         className="divv"
@@ -27,7 +28,7 @@ const Header = () => {
             src={signup}
             alt="err"
             style={{
-              marginLeft: "530px",
+              marginLeft: "520px",
               width: "20px",
               height: "20px",
               marginTop: "10px",
@@ -83,14 +84,17 @@ const Header = () => {
               CONTACT
             </Link>
             <button
-              style={{ marginLeft: "57px", width: "45px", height: "51px" }}
+              style={{ marginLeft:"55px",width: "45px", height: "51px",border:"1px solid red" }}
             >
-              <Search size={30} style={{ color: "white", marginTop: "0px" }} />
+            <Search size={30}
+            style={{ color: "white", marginTop: "0px" }} 
+            />
             </button>
           </nav>
         </div>
       </div>
     </div>
+    </>
   );
 };
 

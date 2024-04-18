@@ -26,25 +26,25 @@ const Home = () => {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             infinite: true,
-            dots: true
+            dots:false
           }
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             initialSlide: 2
           }
         },
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 4,
+            slidesToScroll: 4
           }
         }
       ] 
@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <>
       <div className={styles.home} style={{ display: "flex" }}>
-        <img src={img1} alt="err" width={1300} height={500}></img>
+        <img src={img1} alt="err" width={1400} height={500}></img>
         <div className={styles.textWrapper}>
           <p>Book YOUR Time</p>
         </div>
@@ -61,7 +61,6 @@ const Home = () => {
       <div className={styles.subWrapper}>
         <div className={styles.form}>
           <h1>JOIN US</h1>
-
           <InputGroup
             className={styles.username}
             style={{ height: "40px", width: "270px", marginLeft: "60px" }}

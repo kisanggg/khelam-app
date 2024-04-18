@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
-import { TelephoneFill, Phone } from "react-bootstrap-icons";
-import styles from "./clubdata.module.css";
+import {
+  TelephoneFill,
+  Phone,
+  XSquareFill,
+  CheckSquareFill,
+} from "react-bootstrap-icons";
 import { Table, Modal, Form, Button } from "react-bootstrap";
 import { DataContext } from "../../DataContext";
 import moment from "moment";
-
+import styles from "./clubdata.module.css";
 const Clubbookingdata = () => {
   const {
     days,
@@ -40,8 +44,6 @@ const Clubbookingdata = () => {
     }
     if (!data.contactNumber.trim()) {
       errors.contactNumber = "Contact Number is required";
-    } else if (!/^[0-9]+$/.test(data.contactNumber.trim())) {
-      errors.contactNumber = "Contact Number should contain only digits";
     }
     if (!data.address.trim()) {
       errors.address = "Address is required";
@@ -54,6 +56,7 @@ const Clubbookingdata = () => {
   };
 
   const handleShowDetails = (formData) => {
+    setSelectedFormData(formData);
     console.log("form data:", formData);
     setData(formData);
     console.log("formDataList:", formDataList);
@@ -140,8 +143,9 @@ const Clubbookingdata = () => {
       return (
         <>
           {bookedSlots.map((formData, index) => (
-            <>
-              Booked
+            <div className={styles.bookedWrapper}>
+              <p>Booked</p>
+              <br />
               <button
                 key={index}
                 className={styles.detailsBtn}
@@ -149,32 +153,35 @@ const Clubbookingdata = () => {
               >
                 Details
               </button>
-            </>
+            </div>
           ))}
         </>
       );
     } else if (isDisabled) {
-      return <div className={styles.disabledSlot}>Not Available</div>;
+      return (
+        <div className={styles.disabledSlot}>
+          <p>Not<br/> Available</p>
+        </div>
+      );
     } else {
       return (
         <div className={styles.availableSlot}>
-          Available
-          <button
+          <p>Available</p>
+          <br />
+          <CheckSquareFill
+            size={30}
             onClick={() => {
               setSelectedDate(date);
               setSelectedTime(time);
               setShowModal(true);
             }}
             className={`${styles.bookBtn} ${styles.bookedBtn}`}
-          >
-            Book
-          </button>
-          <button
+          />
+          <XSquareFill
             onClick={() => handleDisableSlot(date, time)}
             className={styles.disableBtn}
-          >
-            Disable
-          </button>
+            size={30}
+          />
         </div>
       );
     }
@@ -202,13 +209,35 @@ const Clubbookingdata = () => {
           </div>
         </div>
       </div>
-      <div className={styles.clubdataWrapper}>
-        <Table striped bordered hover style={{ border: "1px solid black" }}>
+      <div className={styles.clubTableWrapper}>
+        <Table
+          striped
+          bordered
+          hover
+          responsive
+          className={styles.tableWrapper}
+        >
           <thead className={styles.tableHead}>
             <tr>
-              <th>Day/Date</th>
+              <th className={styles.daydateHeadWrapper}>
+                <div className={styles.dayheadWrapper}>Day/Date</div>
+              </th>
+              <th colSpan={3}></th>
               {times.map((time, index) => (
-                <th key={index}>{moment(time).format("hh A")}</th>
+                <th
+                  key={index}
+                  colSpan={3}
+                  style={{
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                    color: "black",
+                    border: "1px solid black",
+                  }}
+                >
+                  <div className={styles.timestableHead}>
+                    {moment(time).format("hh A")}
+                  </div>
+                </th>
               ))}
             </tr>
           </thead>
@@ -218,21 +247,27 @@ const Clubbookingdata = () => {
               return (
                 <tr key={dateString}>
                   <td className={styles.daydateCell}>
-                    {day}
-                    <br />({dateString})
+                    <div className={styles.daybodyWrapper}>
+                      {day}
+                      <br />({dateString})
+                    </div>
+                  </td>
+                  <td colSpan={3}>
+                    <div style={{ width: "140px" }}></div>
                   </td>
                   {times.map((time) => {
                     const timeString = moment(time).format("hh A");
                     const bookingKey = `${dateString} ${timeString}`;
                     const isBooked = bookedTime[bookingKey];
                     const isDisabled = isSlotDisabled(date, time);
-
                     return (
                       <td
                         key={`${dateString}-${timeString}`}
+                        style={{ paddingLeft: "40px", paddingRight: "40px" }}
                         className={`${isBooked ? styles.bookedSlot : ""} ${
                           isDisabled ? styles.disabledSlot : ""
                         }`}
+                        colSpan={3}
                       >
                         {renderSlotContent(date, time, isBooked, isDisabled)}
                       </td>
@@ -244,11 +279,15 @@ const Clubbookingdata = () => {
           </tbody>
         </Table>
       </div>
-      <Modal show={displayModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton className={styles.bookingDetailsModal}>
+      <Modal
+        show={displayModal}
+        onHide={handleCloseModal}
+        className={`${styles.bookingDetailsModal} ${styles.centeredModal}`}
+      >
+        <Modal.Header closeButton>
           <Modal.Title>Booking Details</Modal.Title>
         </Modal.Header>
-        <Modal.Body className={styles.bookingDetailsModal}>
+        <Modal.Body className={styles.modalBody}>
           {selectedFormData ? (
             <div className={styles.bookingDetails}>
               <p>Name: {selectedFormData.name}</p>
@@ -267,15 +306,15 @@ const Clubbookingdata = () => {
       <Modal
         show={showModal}
         onHide={handleCloseModal}
-        className={styles.formModal}
+        className={`${styles.formModal} ${styles.centeredModal}`}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Book</Modal.Title>
+          <Modal.Title>Book Now</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.modalBody}>
           <Form onSubmit={handleSubmit}>
             <Form>
-              <Form.Label>Full Name</Form.Label>
+              <Form.Label style={{ marginLeft: "30px" }}>Full Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="full name"
@@ -298,7 +337,7 @@ const Clubbookingdata = () => {
               </Form.Control.Feedback>
             </Form>
             <Form>
-              <Form.Label>Contact</Form.Label>
+              <Form.Label style={{ marginLeft: "30px" }}>Contact</Form.Label>
               <Form.Control
                 type="tel"
                 placeholder="number"
@@ -322,7 +361,7 @@ const Clubbookingdata = () => {
               </Form.Control.Feedback>
             </Form>
             <Form>
-              <Form.Label>Address</Form.Label>
+              <Form.Label style={{ marginLeft: "30px" }}>Address</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="address"
@@ -339,7 +378,7 @@ const Clubbookingdata = () => {
               </Form.Control.Feedback>
             </Form>
             <Form>
-              <Form.Label>Booked By</Form.Label>
+              <Form.Label style={{ marginLeft: "30px" }}>Booked By</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="booked by"
@@ -348,13 +387,13 @@ const Clubbookingdata = () => {
                 onChange={(e) => setData({ ...data, bookedBy: e.target.value })}
                 isInvalid={!!formErrors.bookedBy}
               />
+              <Form.Control.Feedback
+                type="invalid"
+                className={styles.errorWrapper}
+              >
+                {formErrors.bookedBy}
+              </Form.Control.Feedback>
             </Form>
-            <Form.Control.Feedback
-              type="invalid"
-              className={styles.errorWrapper}
-            >
-              {formErrors.bookedBy}
-            </Form.Control.Feedback>
             <Button type="submit" className={styles.confirmBtn}>
               Confirm
             </Button>
@@ -364,12 +403,12 @@ const Clubbookingdata = () => {
       <Modal
         show={bookedModal}
         onHide={handleCloseModal}
-        className={styles.internalModal}
+        className={`${styles.internalModal} ${styles.centeredModal}`}
       >
         <Modal.Header closeButton>
           <Modal.Title>Booking Details</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.modalBody}>
           {data && (
             <>
               <p>Fullname: {data.fullName}</p>

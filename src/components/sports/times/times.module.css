@@ -1,5 +1,11 @@
 .mainContainer {
-  width: 98.7vw;
+  width: 1263px;
+}
+@media (max-width:768px) {
+  .mainContainer{
+    width: 100vw;
+  }
+  
 }
 .times {
   padding: 40px;
@@ -8,6 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ width: 1263px;
 }
 .wrapper h4 {
   margin-left: 10px;
@@ -53,7 +60,7 @@
   margin-top: 100px;
 }
 .timeSlider svg:hover {
-  color: rgb(196, 196, 196);
+  color: rgb(70, 68, 68);
 }
 .prevArrow {
   margin-top: 90px !important;
@@ -63,11 +70,17 @@
   height: 340px !important;
 }
 .timesFooter {
+  width: 1263px;
   text-align: center;
   height: 170px;
   background-color: #0d0d0d;
   color: white;
   margin-top: 50px;
+}
+@media(max-width:768px){
+  .timesFooter{
+    font-size: 12px;
+  }
 }
 .timesFooter p {
   padding-top: 140px;

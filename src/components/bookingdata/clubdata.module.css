@@ -1,6 +1,6 @@
-/* .clubdataWrapper {
-    padding-top: 20px;
-} */
+.clubdataWrapper {
+    width: 1263px;
+}
 
 .headingWrapper {
     text-align: center;
@@ -14,9 +14,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #011533;
+    background-color: #000f22;
     color: white;
     padding: 10px;
+    height: 150px;
+    width: 1263px;
+}
+
+@media(max-width:768px) {
+    .adminHeader {
+        padding: 10px;
+    }
+}
+
+.bookedWrapper p {
+    font-size: 20px;
+    margin-bottom: 0px;
 }
 
 .wrapper {
@@ -32,7 +45,7 @@
 }
 
 .clubdataWrapper table {
-    width: 100%;
+    width: 100vw;
     border-collapse: collapse;
 }
 
@@ -48,53 +61,56 @@
 }
 
 .bookedSlot {
-    background-color: rgb(255, 135, 135) !important;
+    background-color: rgb(255 173 173) !important;
 }
 
 .disabledSlot {
     background-color: rgb(109, 109, 109) !important;
     color: white !important;
-    margin-top: 19px;
+    margin-top: 15px;
+}   
+
+.disabledSlot p {
+    font-size: 20px;
+}
+
+.availableSlot p {
+    font-size: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
 }
 
 .detailsBtn {
-    border: 1px solid rgb(255, 135, 135);
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
     width: 70px;
     height: 30px;
-    background-color: #df1515;
+    background-color: #000000;
     color: white;
-    margin-top: 18px;
+    margin-top: 0px;
 }
 
 .detailsBtn:hover {
-    background-color: #c00808;
+    background-color: #262424;
 }
 
 .bookBtn {
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 70px;
-    height: 30px;
-    background-color: #fb0014;
-    color: white;
+    color: rgb(104, 160, 55);
+    margin-top: 0px;
 }
 
 .bookBtn:hover {
-    background-color: #c00808;
+    color: rgb(61, 101, 27);
 }
 
 .disableBtn {
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 70px !important;
-    height: 30px !important;
-    margin-top: 5px;
-    background-color: #a9a6a6;
+    color: rgb(235, 12, 12);
+    margin-left: 20px;
+    margin-top: 0px;
 }
 
 .disableBtn:hover {
-    background-color: rgb(145, 141, 141);
+    color: rgb(158, 2, 2);
 }
 
 .closeBtn {
@@ -103,8 +119,15 @@
     position: absolute;
 }
 
-.formModal label {
-    margin-left: 80px;
+.formModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .footerWrapper {
@@ -116,20 +139,17 @@
     border: 1px solid black !important;
     width: 300px !important;
     height: 35px;
-    margin-left: 80px;
+    margin-left: 35px;
 }
-/* .tableHead th{
-    background-color: rgb(98, 98, 98) !important;
-    color: white;
-} */
+
 .confirmBtn {
-    margin-left: 180px;
+    margin-left: 130px;
     margin-top: 20px;
     width: 100px;
 }
 
 .errorWrapper {
-    margin-left: 82px;
+    margin-left: 35px;
 }
 
 .detailsButton {
@@ -145,16 +165,126 @@
     background-color: #c00808;
 }
 
-.internalModal {
-    background-color: rgba(21, 20, 20, 0.5);
-    backdrop-filter: blur(0.5);
-}
-
 .modal-header button {
     color: red;
 }
 
-/* .daydateCell{
-    background-color: #c00808 !important;
-    color: white !important;
-} */
+.timeHead {
+    display: flex;
+    width: 100px;
+}
+
+.timeCell {
+    width: 100px;
+    display: flex;
+}
+
+.sliderWrapper {
+    display: flex;
+    width: 1100px;
+}
+
+.dayContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.dayLabel {
+    margin-right: 10px;
+    white-space: nowrap;
+    border: 1px solid black;
+    height: 110px;
+    width: 100px;
+    text-align: center;
+    padding-top: 28px;
+}
+
+.timeSlotsWrapper {
+    overflow-x: auto;
+    padding: 8px;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+}
+
+.timeSlots {
+    display: inline-block;
+    width: 100px !important;
+    flex: none;
+    margin-right: 0px !important;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.tableWrapper {
+    width: 100vw;
+    border: 1px solid rgb(6, 6, 6) !important;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .tableWrapper {
+        width: auto;
+        overflow-x: scroll;
+    }
+}
+
+.tableWrapper th td {
+    width: 50px !important;
+}
+
+.dayheadWrapper {
+    width: 100px;
+}
+
+.timestableHead {
+    width: 100px;
+}
+
+.daybodyWrapper {
+    height: 100px;
+    padding-top: 20px;
+}
+
+.daydateCell {
+    position: absolute;
+    border: 1px solid rgb(0, 0, 0) !important;
+    width: 141px;
+    height: 112px;
+    color: rgb(0, 0, 0) !important;
+}
+
+.daydateHeadWrapper {
+    position: absolute;
+    width: 141px;
+    color: rgb(0, 0, 0) !important;
+    border: 1px solid rgb(4, 4, 4) !important;
+    border-top: 0px;
+}
+
+.bookingDetailsModal,
+.formModal,
+.internalModal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+@media(min-width:768px) {
+    .modal-dialog {
+        max-width: 600px;
+    }
+}
+
+.modal-body {
+    padding: 40px;
+
+}
+
+.modalBody {
+    width: 400px !important;
+}

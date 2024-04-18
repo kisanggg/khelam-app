@@ -20,6 +20,9 @@
   padding: 20px;
   border-radius: 00px;
 }
+.home{
+  width: 1263px;
+}
 .home div {
   animation: 2s linear 0s infinite alternate slidein;
 }
@@ -79,6 +82,8 @@
   margin-top: 30px;
   background-color: black;
   display: flex;
+  margin-right: 0px;
+  width: 1250px;
 }
 .imageWrapper {
   border: 10px solid rgb(48, 48, 48);
@@ -98,6 +103,12 @@
   text-align: left;
   font-size: 22px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media (max-width:576){
+  .cardWrapper h1{
+    font-size: 5px;
+  }
 }
 .homeCardImg{
   margin: 20px !important;

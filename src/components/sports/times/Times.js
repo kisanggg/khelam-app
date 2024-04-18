@@ -33,30 +33,31 @@ const Times = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           infinite: true,
-          dots: true,
+          dots: false
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           initialSlide: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
     ],
   };
   return (
+    <>
     <div className={styles.mainContainer}>
       <div className={styles.times}>
         <img
@@ -78,9 +79,7 @@ const Times = () => {
           </div>
         </div>
       </div>
-      <div>
         <BigCalendar/>
-      </div>
       <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>
         <div className={styles.cardsWrap}>
@@ -148,6 +147,7 @@ const Times = () => {
         <p>©2024 Khelam.com.np. All Rights Reserved'</p>
       </div>
     </div>
+      </>
   );
 };
 

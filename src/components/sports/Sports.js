@@ -57,8 +57,8 @@ const Sports = () => {
         <img
           src="https://flex.f6s.com/content-resource/media/938025.jpg"
           alt="err"
-          width={1280}
-          height={617}
+          width={1263}
+          height={620}
         />
         <div className={styles.sportsContainer}>
           <div className={styles.firstContainer}>
@@ -75,7 +75,6 @@ const Sports = () => {
               />
               <DropdownButton
                 id="sports-dropdown"
-                // title="Select Sports"
                 style={{
                   backgroundColor: "white",
                   color: "black",
@@ -83,10 +82,14 @@ const Sports = () => {
                   borderLeft: "1px solid #e3e3e3",
                 }}
               >
-                <Dropdown.Item onClick={() => handleSportsOptionClick("Basketball")}>
+                <Dropdown.Item
+                  onClick={() => handleSportsOptionClick("Basketball")}
+                >
                   Basketball
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => handleSportsOptionClick("Futsal")}>
+                <Dropdown.Item
+                  onClick={() => handleSportsOptionClick("Futsal")}
+                >
                   Futsal
                 </Dropdown.Item>
               </DropdownButton>
@@ -106,7 +109,6 @@ const Sports = () => {
               />
               <DropdownButton
                 id="venue-dropdown"
-                // title="Select Venue"
                 style={{
                   backgroundColor: "white",
                   color: "black",
