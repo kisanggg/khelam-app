@@ -120,101 +120,152 @@ const BigCalendar = () => {
       disabledSlot,
     ]);
   };
-  const visibleTimeSlots = times.filter((time) => {
-    const currentTime = new Date();
-    return time > currentTime;
-  });
-  slideSettings.slidesToShow = Math.min(
-    visibleTimeSlots.length,
-    slideSettings.slidesToShow
-  );
+
   return (
     <div style={{ height: "1080px" }}>
       <div className={styles.days}>
         <div className={styles.sundayWrapper}>
           <div className={styles.calendarContainer}>
-            {days.map(({ date, day }) => (
-              <div key={date} className={styles.dayContainer}>
-                <div className={styles.dateHeader}>
-                  <div className={styles.monthWrapper}>
-                    <p className={styles.month}>MAR 2024</p>
+            {days.map(({ date, day }) => {
+              return (
+                <div key={date} className={styles.dayContainer}>
+                  <div className={styles.dateHeader}>
+                    <div className={styles.monthWrapper}>
+                      <p className={styles.month}>MAR 2024</p>
+                    </div>
+                    <div>
+                      <span className={styles.dayNumber}>{date.getDate()}</span>
+                      <br />
+                      <span className={styles.dayName}>{day}</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className={styles.dayNumber}>{date.getDate()}</span>
-                    <br />
-                    <span className={styles.dayName}>{day}</span>
-                  </div>
-                </div>
-                <div className={styles.timeContainer}>
-                  <Slider {...slideSettings} className={styles.timeSlider}>
-                    {times.map((time) => {
-                      const bookingKey = `${moment(date).format(
-                        "YYYY-MM-DD"
-                      )} ${moment(time).format("hh A")}`;
-                      const isBooked = !!bookedTime[bookingKey];
-                      const currentTime = new Date();
-
-                      if (time < currentTime) {
-                        return null;
-                      }
-                      return (
-                        <div
-                          key={time}
-                          className={`${styles.timeSlot} ${
-                            isBooked ? styles.booked : ""
-                          } ${
-                            disabledTimeSlots.some((slot) => {
-                              return (
-                                slot.date.getTime() === date.getTime() &&
-                                slot.time.getTime() === time.getTime()
-                              );
-                            })
-                              ? styles.disabled
-                              : ""
-                          }`}
-                        >
-                          {moment(time).format("hh A")}
-                          <br />
-                          {disabledTimeSlots.some(
-                            (slot) =>
-                              slot.date.getTime() === date.getTime() &&
-                              slot.time.getTime() === time.getTime()
-                          ) ? (
-                            <span className={styles.notAvailableText}>
-                              Not Available
-                            </span>
-                          ) : (
-                            <>
-                              {isBooked ? (
-                                <span className={styles.bookedText}>
-                                  Booked
+                  <div className={styles.timeContainer}>
+                    <Slider {...slideSettings} className={styles.timeSlider}>
+                      {times.map((time) => {
+                        const bookingKey = `${moment(date).format(
+                          "YYYY-MM-DD"
+                        )} ${moment(time).format("hh A")}`;
+                        const isBooked = !!bookedTime[bookingKey];
+                        const currentTime = new Date();
+                        if (moment(date).day() === currentTime.getDay()) {
+                          const futureTime = moment(time).isAfter(currentTime);
+                          if (futureTime) {
+                            return (
+                              <div
+                                key={time}
+                                className={`${styles.timeSlot} ${
+                                  isBooked ? styles.booked : ""
+                                } ${
+                                  disabledTimeSlots.some((slot) => {
+                                    return (
+                                      slot.date.getTime() === date.getTime() &&
+                                      slot.time.getTime() === time.getTime()
+                                    );
+                                  })
+                                    ? styles.disabled
+                                    : ""
+                                }`}
+                              >
+                                {moment(time).format("hh A")}
+                                <br />
+                                {disabledTimeSlots.some(
+                                  (slot) =>
+                                    slot.date.getTime() === date.getTime() &&
+                                    slot.time.getTime() === time.getTime()
+                                ) ? (
+                                  <span className={styles.notAvailableText}>
+                                    Not Available
+                                  </span>
+                                ) : (
+                                  <>
+                                    {isBooked ? (
+                                      <span className={styles.bookedText}>
+                                        Booked
+                                      </span>
+                                    ) : (
+                                      <button
+                                        onClick={() => {
+                                          setSelectedDate(
+                                            moment(date).format("YYYY-MM-DD")
+                                          );
+                                          setSelectedTime(
+                                            moment(time, "hh A").format("hh A")
+                                          );
+                                          setShowModal(true);
+                                        }}
+                                        disabled={isBooked}
+                                        className={styles.bookButton}
+                                      >
+                                        Book Now
+                                      </button>
+                                    )}
+                                  </>
+                                )}
+                              </div>
+                            );
+                          } else {
+                            return null;
+                          }
+                        } else {
+                          return (
+                            <div
+                              key={time}
+                              className={`${styles.timeSlot} ${
+                                isBooked ? styles.booked : ""
+                              } ${
+                                disabledTimeSlots.some(
+                                  (slot) =>
+                                    slot.date.getTime() === date.getTime() &&
+                                    slot.time.getTime() === time.getTime()
+                                )
+                                  ? styles.disabled
+                                  : ""
+                              }`}
+                            >
+                              {moment(time).format("hh A")}
+                              <br />
+                              {disabledTimeSlots.some(
+                                (slot) =>
+                                  slot.date.getTime() === date.getTime() &&
+                                  slot.time.getTime() === time.getTime()
+                              ) ? (
+                                <span className={styles.notAvailableText}>
+                                  Not Available
                                 </span>
                               ) : (
-                                <button
-                                  onClick={() => {
-                                    setSelectedDate(
-                                      moment(date).format("YYYY-MM-DD")
-                                    );
-                                    setSelectedTime(
-                                      moment(time, "hh A").format("hh A")
-                                    );
-                                    setShowModal(true);
-                                  }}
-                                  disabled={isBooked}
-                                  className={styles.bookButton}
-                                >
-                                  Book Now
-                                </button>
+                                <>
+                                  {isBooked ? (
+                                    <span className={styles.bookedText}>
+                                      Booked
+                                    </span>
+                                  ) : (
+                                    <button
+                                      onClick={() => {
+                                        setSelectedDate(
+                                          moment(date).format("YYYY-MM-DD")
+                                        );
+                                        setSelectedTime(
+                                          moment(time, "hh A").format("hh A")
+                                        );
+                                        setShowModal(true);
+                                      }}
+                                      disabled={isBooked}
+                                      className={styles.bookButton}
+                                    >
+                                      Book Now
+                                    </button>
+                                  )}
+                                </>
                               )}
-                            </>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </Slider>
+                            </div>
+                          );
+                        }
+                      })}
+                    </Slider>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
