@@ -11,7 +11,7 @@ import Adminsignup from "./components/signup/admin/Adminsignup";
 import Usersignup from "./components/signup/user/Usersignup";
 import Clubbookingdata from "./components/bookingdata/Clubbookingdata";
 import { DataProvider } from "./DataContext";
-import BigCalendar from "./components/sports/calendar/BigCalendar";
+import BigCalendar from "./components/calendar/BigCalendar";
 
 const App = () => {
   return (

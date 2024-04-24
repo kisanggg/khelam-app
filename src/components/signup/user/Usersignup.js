@@ -53,7 +53,7 @@ export default function Usersignup() {
   return (
     <div className={styles.mainWrapper}>
       <Link to="/signup">
-        <ArrowLeftCircleFill size={30} className={styles.backArrow}/>
+        <ArrowLeftCircleFill size={30} className={styles.backArrow} />
       </Link>
       <div className={styles.formWrapper}>
         <div className={styles.signUp}>
@@ -79,10 +79,7 @@ export default function Usersignup() {
         <h4>
           Sign Up <FileLockFill size={30} />
         </h4>
-        <Form
-          className={styles.signUpForm}
-          onSubmit={handleSubmit}
-        >
+        <Form className={styles.signUpForm} onSubmit={handleSubmit}>
           <Form.Group
             controlId="Name"
             style={{ display: "flex", justifyContent: "flex-start" }}
@@ -120,7 +117,7 @@ export default function Usersignup() {
                 width: "311px",
                 marginLeft: "65px",
                 marginTop: "8px",
-                border:"1px solid black"
+                border: "1px solid black",
               }}
               required
             />

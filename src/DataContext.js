@@ -4,14 +4,15 @@ import React, { useState, useEffect } from "react";
 export const DataContext = React.createContext();
 export const DataProvider = ({ children }) => {
   const [days, setDays] = useState([
-    { date: new Date("2024-03-03"), day: "SUNDAY" },
-    { date: new Date("2024-03-04"), day: "MONDAY" },
-    { date: new Date("2024-03-05"), day: "TUESDAY" },
-    { date: new Date("2024-03-06"), day: "WEDNESDAY" },
-    { date: new Date("2024-03-07"), day: "THURSDAY" },
-    { date: new Date("2024-03-08"), day: "FRIDAY" },
-    { date: new Date("2024-03-09"), day: "SATURDAY" },
+     moment().format("YYYY-MM-DD"),
+     moment().add(1, "days").format("YYYY-MM-DD"),
+     moment().add(2, "days").format("YYYY-MM-DD"),
+     moment().add(3, "days").format("YYYY-MM-DD"),
+     moment().add(4, "days").format("YYYY-MM-DD"),
+     moment().add(5, "days").format("YYYY-MM-DD"),
+     moment().add(6, "days").format("YYYY-MM-DD"),
   ]);
+  console.log("days:",days);
   const times = [
     "06 AM",
     "07 AM",
@@ -32,15 +33,15 @@ export const DataProvider = ({ children }) => {
   const [bookedTime, setBookedTime] = useState({});
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
   const [formDataList, setFormDataList] = useState([]);
-  const [displayModal, setDisplayModal]=useState(false)
+  const [displayModal, setDisplayModal] = useState(false);
   const addFormData = (formData) => {
     setFormDataList((prevFormDataList) => [...prevFormDataList, formData]);
   };
- 
+
   useEffect(() => {
     console.log("DataProvider - bookedTime:", bookedTime);
-    console.log("DataProvider - formDataList:", formDataList); 
-  }, [bookedTime,formDataList]);
+    console.log("DataProvider - formDataList:", formDataList);
+  }, [bookedTime, formDataList]);
 
   const value = {
     days,

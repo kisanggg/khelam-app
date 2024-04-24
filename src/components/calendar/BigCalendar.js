@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import BookingForm from "../../venues/bookingform/BookingForm";
+import BookingForm from "../booking/bookingform/BookingForm";
 import { Modal } from "react-bootstrap";
 import { CaretRightFill } from "react-bootstrap-icons";
 import Slider from "react-slick";
 import styles from "./bookingcalendar.module.css";
 import moment from "moment";
-import { DataContext } from "../../../DataContext";
+import { DataContext } from "../../DataContext";
 
 const BigCalendar = () => {
   const { id } = useParams();
@@ -126,18 +126,28 @@ const BigCalendar = () => {
       <div className={styles.days}>
         <div className={styles.sundayWrapper}>
           <div className={styles.calendarContainer}>
-            {days.map(({ date, day }) => {
+            {days.map((date, index) => {
+              console.log("date:", date);
+              const modifiedDay = moment(date).format("dddd").toUpperCase();
+              const modifiedDate = moment(date).format("MMMM D, YYYY");
+
               return (
-                <div key={date} className={styles.dayContainer}>
-                  <div className={styles.dateHeader}>
-                    <div className={styles.monthWrapper}>
-                      <p className={styles.month}>MAR 2024</p>
-                    </div>
-                    <div>
-                      <span className={styles.dayNumber}>{date.getDate()}</span>
-                      <br />
-                      <span className={styles.dayName}>{day}</span>
-                    </div>
+                <div key={index} className={styles.dayContainer}>
+                  <div className={styles.dateWrapper}>
+                    <h6
+                      style={{
+                        borderBottom: "1px solid red",
+                        height: "40px",
+                        paddingTop: "10px",
+                        color: "white",
+                        backgroundColor: "red",
+                      }}
+                    >
+                      {modifiedDay}
+                    </h6>
+                    <h6 style={{ paddingTop: "20px", fontWeight: "700" }}>
+                      {modifiedDate}
+                    </h6>
                   </div>
                   <div className={styles.timeContainer}>
                     <Slider {...slideSettings} className={styles.timeSlider}>

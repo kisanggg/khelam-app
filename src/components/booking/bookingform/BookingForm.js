@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap-icons";
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
-import SubmittedForm from "./SubmittedForm";
+import SubmittedForm from "../submittedform/SubmittedForm";
 import { DataContext } from "../../../DataContext";
 
 const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {

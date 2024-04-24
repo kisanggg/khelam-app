@@ -6,7 +6,7 @@ import img4 from "../../images/img4.png";
 import img5 from "../../images/img5.png";
 import img6 from "../../images/img6.png";
 import { Lock, Person, ArrowLeftCircleFill, ArrowRightCircleFill } from "react-bootstrap-icons";
-import { InputGroup, Form, Card } from "react-bootstrap";
+import { InputGroup, Form, Card, Button } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css"
@@ -49,6 +49,9 @@ const Home = () => {
         }
       ] 
     };
+    const handleSubmit=()=>{
+      
+    }
 
   return (
     <>
@@ -61,6 +64,7 @@ const Home = () => {
       <div className={styles.subWrapper}>
         <div className={styles.form}>
           <h1>JOIN US</h1>
+          <Form onSubmit={handleSubmit()}>
           <InputGroup
             className={styles.username}
             style={{ height: "40px", width: "270px", marginLeft: "60px" }}
@@ -94,7 +98,8 @@ const Home = () => {
             forgot details?
           </a>
           <br />
-          <button>LOGIN</button>
+          <Button>LOGIN</Button>
+          </Form>
         </div>
         <div className={styles.imageWrapper}>
           <img src={img2} alt="err" width={840} height={350}></img>

@@ -160,7 +160,10 @@ const Clubbookingdata = () => {
     } else if (isDisabled) {
       return (
         <div className={styles.disabledSlot}>
-          <p>Not<br/> Available</p>
+          <p>
+            Not
+            <br /> Available
+          </p>
         </div>
       );
     } else {
@@ -248,8 +251,8 @@ const Clubbookingdata = () => {
                 <tr key={dateString}>
                   <td className={styles.daydateCell}>
                     <div className={styles.daybodyWrapper}>
-                      {day}
-                      <br />({dateString})
+                      {moment(date).format("dddd")}
+                      <br />({moment(date).format("MMMM D, YYYY")})
                     </div>
                   </td>
                   <td colSpan={3}>

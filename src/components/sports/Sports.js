@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, InputGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import { useParams, useLocation } from "react-router-dom";
 import styles from "./sports.module.css";
-import Times from "./times/Times";
-import Dunkmandu from "../venues/dunkmandu/Dunkmandu";
+import Times from "../venues/times/Times";
 
 const Sports = () => {
   const { id } = useParams();
@@ -35,14 +34,6 @@ const Sports = () => {
           case "Basketball":
           case "Futsal":
             return <Times />;
-          default:
-            return null;
-        }
-      case "Dunkmandu":
-        switch (sport) {
-          case "Basketball":
-          case "Futsal":
-            return <Dunkmandu />;
           default:
             return null;
         }
