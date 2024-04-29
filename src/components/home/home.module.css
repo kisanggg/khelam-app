@@ -149,6 +149,10 @@
   .footer p {
     font-size: 12px;
   }
+  .facebookIcon,.whatsappIcon,.linkedinIcon,.githubIcon{
+    width: 17px;
+  }
+
 }
 
 @media (max-width: 576px) {
@@ -339,12 +343,12 @@
   border: 1px solid black;
   height: 170px;
   background-color: black;
+  text-align: center;
+  padding-top: 140px;
 }
 
 .footer p {
   color: aliceblue;
-  margin-top: 140px;
-  text-align: center;
 }
 
 .cards {
@@ -371,4 +375,16 @@
   margin-left: 20px;
   margin-right: 20px;
   width: 16rem;
+}
+.facebookIcon{
+  margin-right: 20px;
+}
+.whatsappIcon{
+  margin-right: 20px;
+}
+.linkedinIcon{
+  margin-right: 20px;
+}
+.githubIcon{
+  margin-right: 20px;
 }

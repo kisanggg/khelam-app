@@ -154,7 +154,7 @@ const Header = () => {
                   to="/home"
                   className="nav-link"
                   style={{
-                    marginLeft: "100px",
+                    marginLeft: "80px",
                     color: "white",
                     fontSize: "13px",
                     padding: "15px",
@@ -185,7 +185,7 @@ const Header = () => {
                 </Link>
                 <button
                   style={{
-                    marginLeft: "55px",
+                    marginLeft: "58px",
                     width: "45px",
                     height: "51px",
                     border: "1px solid red",

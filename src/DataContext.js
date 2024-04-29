@@ -23,11 +23,11 @@ export const DataProvider = ({ children }) => {
     "12 PM",
     "01 PM",
     "02 PM",
-    // "03 PM",
-    // "04 PM",
-    // "05 PM",
-    // "06 PM",
-    // "07 PM",
+    "03 PM",
+    "04 PM",
+    "05 PM",
+    "06 PM",
+    "07 PM",
   ].map((time) => moment(time, "hh A").toDate());
 
   const [bookedTime, setBookedTime] = useState({});

@@ -157,7 +157,7 @@ const Times = () => {
           </div>
         </div>
         <div className={styles.timesFooter}>
-          <p>©2024 Khelam.com.np. All Rights Reserved'</p>
+          <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
         </div>
       </div>
     </>

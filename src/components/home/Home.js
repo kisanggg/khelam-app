@@ -10,6 +10,10 @@ import {
   Person,
   ArrowLeftCircleFill,
   ArrowRightCircleFill,
+  Facebook,
+  Whatsapp,
+  Linkedin,
+  Github,
 } from "react-bootstrap-icons";
 import { InputGroup, Form, Card, Button, FormControl } from "react-bootstrap";
 import Slider from "react-slick";
@@ -234,7 +238,7 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.footer}>
-        <p>©2024 Khelam.com.np. All Rights Reserved'</p>
+        <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
       </div>
     </>
   );

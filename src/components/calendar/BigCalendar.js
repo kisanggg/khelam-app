@@ -30,9 +30,9 @@ const BigCalendar = () => {
   const slideSettings = {
     dots: false,
     infinite: true,
-    speed: 500,
-    slidesToScroll: 8,
-    slidesToShow: 8,
+    speed: 700,
+    slidesToScroll: 5,
+    slidesToShow: 7,
     initialSlide: 0,
     nextArrow: (
       <div className={styles.nextArrow}>
@@ -154,6 +154,10 @@ const BigCalendar = () => {
           console.log("date:", date);
           const modifiedDay = moment(date).format("dddd").toUpperCase();
           const modifiedDate = moment(date).format("MMMM D, YYYY");
+          const futureTimes = times.filter((time) =>
+            moment(time).isAfter(new Date())
+          );
+          console.log("future times:", futureTimes);
 
           return (
             <div key={index} className={styles.dayContainer}>

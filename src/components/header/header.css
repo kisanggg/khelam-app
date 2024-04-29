@@ -115,10 +115,11 @@
   }
 
   .logoutLink {
-    color: rgb(255, 255, 255);
-    background-color: red;
+    color: rgb(255, 255, 255) !important;
+    background-color: red !important;
     font-size: 20px !important;
     text-decoration: none !important;
+    margin-left: 0px !important;
   }
 
   .navLink {

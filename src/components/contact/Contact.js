@@ -8,13 +8,7 @@ const Contact = () => {
   };
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+      <div className={styles.container}>
         <div className={styles.contactsContainer}>
           <h2>Send us a message</h2>
           <p>You can contact us with anything related to our service.</p>
@@ -39,7 +33,7 @@ const Contact = () => {
             </Form>
             <Form>
               <FormLabel>
-                <span>*</span> Your Message
+                <span>*</span>Your Message
               </FormLabel>
               <FormControl
                 as="textarea"
@@ -52,28 +46,37 @@ const Contact = () => {
             </Button>
           </Form>
         </div>
-        <div>
+        <div className={styles.subContainer}>
           <div className={styles.locationWrapper}>
-            <GeoAlt size={26} style={{ color: "red", marginTop: "5px" }} />
+            <GeoAlt
+              size={26}
+              style={{ color: "red", marginTop: "5px", marginLeft: "2px" }}
+            />
             <div style={{ marginLeft: "20px" }}>
-              <h4>Find us at the office</h4>
+              <h5>Find us at the office</h5>
               <p>Imadol, Lalitpur</p>
             </div>
           </div>
           <div className={styles.socialmediaWrapper}>
-            <Whatsapp size={23} style={{ color: "red", marginTop: "5px" }} />
+            <Whatsapp
+              size={23}
+              style={{ color: "red", marginTop: "5px", marginLeft: "5px" }}
+            />
             <div style={{ marginLeft: "20px" }}>
-              <h4>Whatsapp us</h4>
+              <h5>Whatsapp us</h5>
               <p>Khelam Customer Service</p>
               <p>01-2453652</p>
               <p>7 AM-3 PM</p>
             </div>
           </div>
           <div className={styles.legalWrapper}>
-            <Bank size={22} style={{ color: "red", marginTop: "5px" }} />
+            <Bank
+              size={22}
+              style={{ color: "red", marginTop: "5px", marginLeft: "5px" }}
+            />
             <div style={{ marginLeft: "20px" }}>
-              <h4>Legal Information</h4>
-              <p>©2024 Khelam.com.np. All Rights Reserved'</p>
+              <h5>Legal Information</h5>
+              <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
             </div>
           </div>
         </div>

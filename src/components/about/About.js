@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./about.module.css";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Facebook, Github, Linkedin, Whatsapp } from "react-bootstrap-icons";
 
 const About = () => {
   return (
@@ -56,6 +57,9 @@ const About = () => {
             </Link>
           </Button>
         </div>
+      </div>
+      <div className={styles.aboutFooter}>
+        <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
       </div>
     </div>
   );

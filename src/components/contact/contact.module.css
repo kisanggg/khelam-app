@@ -1,47 +1,160 @@
-.nameWrapper{
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.nameWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
     margin-bottom: 20px;
 }
-.emailWrapper{
+
+.emailWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
     margin-bottom: 20px;
 }
-.phoneWrapper{
+
+.phoneWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
     margin-bottom: 20px;
 }
-.messageWrapper{
+
+.messageWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
 }
-.contactsContainer{
+
+.contactsContainer {
     padding: 30px;
 }
-.locationWrapper{
+
+.locationWrapper {
     display: flex;
 }
-.socialmediaWrapper{
+
+.locationWrapper h5 {
+    font-weight: 400;
+    color: rgb(79 79 79);
+    margin-bottom: 5px;
+}
+
+.locationWrapper p {
+    color: grey;
+    font-size: 13px;
+}
+
+.socialmediaWrapper {
     display: flex;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
-.socialmediaWrapper p{
+
+.socialmediaWrapper h5 {
+    font-weight: 400;
+    color: rgb(79 79 79);
+    margin-bottom: 5px;
+
+}
+
+.socialmediaWrapper p {
     margin-bottom: 0px;
+    color: grey;
+    font-size: 13px;
 }
-.legalWrapper{
+
+.legalWrapper {
     display: flex;
+    margin-top: 30px;
 }
-.submitButton{
+
+.legalWrapper h5 {
+    font-weight: 400;
+    color: rgb(79 79 79);
+    margin-bottom: 5px;
+}
+
+.legalWrapper p {
+    color: grey;
+    font-size: 13px;
+}
+
+.submitButton {
     width: 500px;
     height: 40px;
     margin-top: 30px;
 }
-.contactsContainer span{
+
+.contactsContainer span {
     color: red;
+}
+
+@media(max-width:768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .subContainer {
+        margin-top: 100px;
+        padding-left: 30px;
+    }
+
+    .locationWrapper {
+        padding: 20px;
+    }
+
+    .locationWrapper h4 {
+        font-size: 15px;
+    }
+
+    .locationWrapper p {
+        font-size: 12px;
+    }
+
+    .socialmediaWrapper {
+        padding: 20px;
+        border-left: 1px solid rgb(67, 67, 67);
+        border-right: 1px solid rgb(67, 67, 67);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .socialmediaWrapper h4 {
+        font-size: 15px;
+    }
+
+    .socialmediaWrapper p {
+        font-size: 12px;
+    }
+
+    .legalWrapper {
+        padding: 20px;
+        margin-top: 0px;
+    }
+
+    .legalWrapper h4 {
+        font-size: 15px;
+    }
+
+    .legalWrapper p {
+        font-size: 12px
+    }
+
+    .contactsContainer h2 {
+        font-size: 23px;
+    }
+
+    .subContainer {
+        display: flex;
+        justify-content: center;
+    }
 }

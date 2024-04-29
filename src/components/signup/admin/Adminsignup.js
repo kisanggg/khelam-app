@@ -173,12 +173,7 @@ const Adminsignup = () => {
                   <Form.Group>
                     <Form.Control
                       type="text"
-                      placeholder="First Name"
-                      style={{
-                        width: "310px",
-                        border: "1px solid black",
-                      }}
-                      className={styles.formControl}
+                      className={styles.firstName}
                       name="firstName"
                       required
                       onChange={handleChange}
@@ -193,13 +188,7 @@ const Adminsignup = () => {
                   <Form.Group>
                     <Form.Control
                       type="text"
-                      placeholder="Last Name"
-                      style={{
-                        width: "310px",
-                        marginLeft: "20px",
-                        border: "1px solid black",
-                      }}
-                      className={styles.formControl}
+                      className={styles.lastName}
                       name="lastName"
                       required
                       onChange={handleChange}
@@ -214,7 +203,7 @@ const Adminsignup = () => {
                   </Form.Group>
                 </Form>
               </div>
-              <div style={{ display: "flex" }}>
+              <div className={styles.passwordWrapper}>
                 <div>
                   <Form>
                     <Form.Group>
@@ -226,14 +215,10 @@ const Adminsignup = () => {
                       </Form.Label>
                       <Form.Control
                         type="password"
-                        placeholder="Password"
-                        style={{
-                          border: "1px solid black",
-                          width: "310px",
-                        }}
-                        className={styles.formControl}
+                        className={styles.passwordControl}
                         required
                         name="password"
+                        placeholder="Password"
                         onChange={handleChange}
                         isInvalid={error.password}
                       />
@@ -252,18 +237,14 @@ const Adminsignup = () => {
                       <Form.Label
                         htmlFor="Confirmpassword"
                         style={{ marginTop: "15px", marginLeft: "20px" }}
+                        className={styles.confirmLabel}
                       >
                         Confirm Password
                       </Form.Label>
                       <Form.Control
                         type="password"
                         placeholder="Confirm Password"
-                        style={{
-                          width: "410px",
-                          marginLeft: "20px",
-                          border: "1px solid black",
-                        }}
-                        className={styles.formControl}
+                        className={styles.confirmControl}
                         required
                         name="confirmPassword"
                         onChange={handleChange}
@@ -282,8 +263,8 @@ const Adminsignup = () => {
               <Form.Label htmlFor="address" style={{ marginTop: "15px" }}>
                 Address
               </Form.Label>
-              <div style={{ display: "flex" }}>
-                <InputGroup style={{ width: "310px" }} >
+              <div className={styles.addressWrapper}>
+                <InputGroup style={{ width: "310px" }} className={styles.pradeshWrapper}>
                   <Form.Control
                     type="text"
                     placeholder="Pradesh"
@@ -303,11 +284,12 @@ const Adminsignup = () => {
                     ))}
                   </DropdownButton>
                 </InputGroup>
-                <InputGroup style={{ width: "330px" }}>
+                <InputGroup style={{ width: "330px" }} className={styles.districtWrapper}>
                   <Form.Control
                     type="text"
                     placeholder="District"
                     style={{ marginLeft: "20px", border: "1px solid black" }}
+                    className={styles.districtControl}
                     value={selectedDistrict}
                     required
                     readOnly
@@ -324,7 +306,7 @@ const Adminsignup = () => {
                   </DropdownButton>
                 </InputGroup>
               </div>
-              <div style={{ display: "flex" }}>
+              <div className={styles.sportsnumberWrapper}>
                 <div>
                   <Form.Label
                     htmlFor="sports type"
@@ -332,7 +314,11 @@ const Adminsignup = () => {
                   >
                     Sports Type
                   </Form.Label>
-                  <InputGroup style={{ width: "310px" }} className={styles.sportstypeWrapper}  required>
+                  <InputGroup
+                    style={{ width: "310px" }}
+                    className={styles.sportstypeWrapper}
+                    required
+                  >
                     <Form.Control
                       type="text"
                       placeholder="Select the Sport"
@@ -342,7 +328,6 @@ const Adminsignup = () => {
                       }}
                       className={styles.sportscontrolWrapper}
                       value={selectedSports}
-                     
                       readOnly
                     />
                     <DropdownButton>
@@ -385,6 +370,7 @@ const Adminsignup = () => {
                       <Form.Label
                         htmlFor="phoneNo"
                         style={{ marginTop: "15px", marginLeft: "20px" }}
+                        className={styles.phoneLabel}
                       >
                         Phone No
                       </Form.Label>
@@ -392,12 +378,7 @@ const Adminsignup = () => {
                         type="tel"
                         pattern="[0-9]*"
                         placeholder="Phone No"
-                        style={{
-                          width: "310px",
-                          marginLeft: "20px",
-                          border: "1px solid black",
-                        }}
-                        className={styles.formControl}
+                        className={styles.phoneControl}
                         required
                         name="phoneNo"
                         onChange={handleChange}
@@ -422,13 +403,13 @@ const Adminsignup = () => {
                   <Form.Label htmlFor="mobileno" style={{ marginTop: "15px" }}>
                     Mobile No
                   </Form.Label>
-                  <div style={{ display: "flex" }}>
+                  <div className={styles.mobileWrapper}>
                     <div>
                       <Form.Control
                         type="tel"
                         placeholder="Mobile No"
                         style={{ width: "310px", border: "1px solid black" }}
-                        className={styles.formControl}
+                        className={styles.mobile1Control}
                         required
                         name="mobileNo1"
                         onChange={handleChange}
@@ -451,7 +432,7 @@ const Adminsignup = () => {
                           marginLeft: "20px",
                           border: "1px solid black",
                         }}
-                        className={styles.formControl}
+                        className={styles.mobile2Control}
                         required
                         name="mobileNo2"
                         onChange={handleChange}
