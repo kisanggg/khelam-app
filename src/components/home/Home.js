@@ -1,146 +1,235 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import img1 from "../../images/img1.png";
 import img2 from "../../images/img2.png";
 import img3 from "../../images/img3.png";
 import img4 from "../../images/img4.png";
 import img5 from "../../images/img5.png";
 import img6 from "../../images/img6.png";
-import { Lock, Person, ArrowLeftCircleFill, ArrowRightCircleFill } from "react-bootstrap-icons";
-import { InputGroup, Form, Card, Button } from "react-bootstrap";
+import {
+  Lock,
+  Person,
+  ArrowLeftCircleFill,
+  ArrowRightCircleFill,
+} from "react-bootstrap-icons";
+import { InputGroup, Form, Card, Button, FormControl } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css"
-import styles from './home.module.css';
+import styles from "./home.module.css";
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../DataContext";
 const Home = () => {
-  const settings=
-    {
-      dots:false,
-      infinite:true,
-      speed:500,
-      slidesToShow:4,
-      slidesToScroll:4,
-      initialSlide:0,
-      prevArrow: <ArrowLeftCircleFill  size={80} />, 
-      nextArrow: <ArrowRightCircleFill  size={80} />,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            infinite: true,
-            dots:false
-          }
+  const { setIsLoggedIn } = useContext(DataContext);
+  const navigate = useNavigate();
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    prevArrow: <ArrowLeftCircleFill size={80} />,
+    nextArrow: <ArrowRightCircleFill size={80} />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            initialSlide: 2
-          }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 3,
         },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4
-          }
-        }
-      ] 
-    };
-    const handleSubmit=()=>{
-      
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide:2,
+        },
+      },
+    ],
+  };
+  const [signinErrors, setSigninErrors] = useState({});
+  const [signinData, setSigninData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const validateForm = () => {
+    const errors = {};
+    const usernameRegex = /^[a-zA-Z0-9]{3,20}$/;
+    const passwordRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+    if (!signinData.username.trim()) {
+      errors.username = "Username is required";
+    } else if (!usernameRegex.test(signinData.username)) {
+      errors.username = "Enter valid username ";
     }
+    if (!signinData.password.trim()) {
+      errors.password = "Password is required";
+    } else if (!passwordRegex.test(signinData.password)) {
+      errors.password =
+        "Your password must be 8-16 characters long and contain at least one special character and one number.";
+    }
+    setSigninErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateForm();
+    console.log("isvalid", isValid);
+    if (isValid) {
+      navigate("/sports/123");
+      console.log("navigate", navigate);
+      setIsLoggedIn(true);
+    }
+  };
 
   return (
     <>
-      <div className={styles.home} style={{ display: "flex" }}>
-        <img src={img1} alt="err" width={1400} height={500}></img>
-        <div className={styles.textWrapper}>
+      <div className={styles.home}>
+        <img
+          src={img1}
+          alt="err"
+          style={{ width: "100%", maxWidth: "100%", height: "auto" }}
+        ></img>
+        <div
+          className={styles.textWrapper}
+          style={{ width: "100%", maxWidth: "540px" }}
+        >
           <p>Book YOUR Time</p>
         </div>
       </div>
       <div className={styles.subWrapper}>
         <div className={styles.form}>
           <h1>JOIN US</h1>
-          <Form onSubmit={handleSubmit()}>
-          <InputGroup
-            className={styles.username}
-            style={{ height: "40px", width: "270px", marginLeft: "60px" }}
-          >
-            <InputGroup.Text id="basic-addon1">
-              <Person size={22} />
-            </InputGroup.Text>
-            <Form.Control
-              placeholder="Username"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              required
-            />
-          </InputGroup>
-          <br />
-          <InputGroup
-            className={styles.password}
-            style={{ height: "40px", width: "270px", marginLeft: "60px" }}
-          >
-            <InputGroup.Text id="basic-addon1" style={{}}>
-              <Lock size={22} />
-            </InputGroup.Text>
-            <Form.Control
-              placeholder="Password"
-              type="password"
-              aria-label="password"
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup>
-          <a href="/forgot" className={styles.forgotDetails}>
-            forgot details?
-          </a>
-          <br />
-          <Button>LOGIN</Button>
+          <Form onSubmit={handleSubmit}>
+            <Form>
+              <InputGroup
+                className={styles.usernameWrapper}
+                style={{ width: "270px ", height: "40px", marginLeft: "60px" }}
+              >
+                <InputGroup.Text id="basic-addon1">
+                  <Person size={22} />
+                </InputGroup.Text>
+                <Form.Control
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  className={styles.formControl}
+                  value={signinData.username}
+                  onChange={(e) =>
+                    setSigninData((prevData) => ({
+                      ...prevData,
+                      username: e.target.value,
+                    }))
+                  }
+                  isInvalid={!!signinErrors.username}
+                />
+                <FormControl.Feedback type="invalid">
+                  {signinErrors.username}
+                </FormControl.Feedback>
+              </InputGroup>
+            </Form>
+            <br />
+            <Form>
+              <InputGroup
+                className={styles.passwordWrapper}
+                style={{ height: "40px", width: "270px", marginLeft: "60px" }}
+              >
+                <InputGroup.Text id="basic-addon1" style={{}}>
+                  <Lock size={22} />
+                </InputGroup.Text>
+                <Form.Control
+                  placeholder="Password"
+                  type="password"
+                  aria-label="password"
+                  aria-describedby="basic-addon1"
+                  className={styles.formControl}
+                  value={signinData.password}
+                  onChange={(e) =>
+                    setSigninData((prevData) => ({
+                      ...prevData,
+                      password: e.target.value,
+                    }))
+                  }
+                  isInvalid={!!signinErrors.password}
+                />
+                <FormControl.Feedback
+                  type="invalid"
+                  style={{ marginBottom: "10px" }}
+                >
+                  {signinErrors.password}
+                </FormControl.Feedback>
+              </InputGroup>
+            </Form>
+            <div
+              style={{ marginTop: "15px" }}
+              className={styles.forgotDetailsWrapper}
+            >
+              <a
+                href="/forgot"
+                className={styles.forgotDetails}
+                style={{ marginTop: "20px" }}
+              >
+                forgot details?
+              </a>
+            </div>
+            <Button type="submit" className={styles.loginButton}>
+              LOGIN
+            </Button>
           </Form>
         </div>
         <div className={styles.imageWrapper}>
-          <img src={img2} alt="err" width={840} height={350}></img>
+          <img src={img2} alt="err"></img>
         </div>
       </div>
       <div className={styles.cardWrapper}>
         <h1>CHOOSE YOUR GAME</h1>
-        <div className={styles.cards} >
+        <div className={styles.cards}>
           <Slider className={styles.innerSlider} useCSS={true} {...settings}>
-          <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"20px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
-              <Card.Img src={img3} className={styles.homeCardImg}/>
-            <Card.Body className={styles.homeCardBody}>
-              <Card.Title>Futsal</Card.Title>
-            </Card.Body>
-          </Card>
-          </div>
-          <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
-              <Card.Img src={img4} className={styles.homeCardImg}/>
-            <Card.Body className={styles.homeCardBody}>
-              <Card.Title>Basketball</Card.Title>
-            </Card.Body>
-          </Card>
-          </div>
-          <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
-              <Card.Img src={img5} className={styles.homeCardImg}/>
-            <Card.Body className={styles.homeCardBody}>
-              <Card.Title>Cricket</Card.Title>
-            </Card.Body>
-          </Card>
-          </div>
-          <div className={styles.cardDiv}>
-          <Card style={{width:"15rem",marginLeft:"25px",boxShadow:"4px 4px 5px #e5e4e4",textAlign:"center"}}>
-              <Card.Img src={img6} className={styles.homeCardImg}/>
-            <Card.Body className={styles.homeCardBody}>
-              <Card.Title>Badminton</Card.Title>
-            </Card.Body>
-          </Card>
-          </div>
+            <div>
+              <Card
+                style={{ width: "16rem !important" }}
+                className={styles.cardsContainer}
+              >
+                <Card.Img src={img3} />
+                <Card.Body className={styles.homeCardBody}>
+                  <Card.Title>Futsal</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardsContainer}>
+                <Card.Img src={img4} />
+                <Card.Body className={styles.homeCardBody}>
+                  <Card.Title>Basketball</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardsContainer}>
+                <Card.Img src={img5} />
+                <Card.Body className={styles.homeCardBody}>
+                  <Card.Title>Cricket</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card className={styles.cardsContainer}>
+                <Card.Img src={img6} />
+                <Card.Body className={styles.homeCardBody}>
+                  <Card.Title>Badminton</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
           </Slider>
         </div>
       </div>

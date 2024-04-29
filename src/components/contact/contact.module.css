@@ -1,0 +1,47 @@
+.nameWrapper{
+    border: 1px solid black !important;
+    width: 500px !important;
+    border-radius: 0px !important;
+    margin-bottom: 20px;
+}
+.emailWrapper{
+    border: 1px solid black !important;
+    width: 500px !important;
+    border-radius: 0px !important;
+    margin-bottom: 20px;
+}
+.phoneWrapper{
+    border: 1px solid black !important;
+    width: 500px !important;
+    border-radius: 0px !important;
+    margin-bottom: 20px;
+}
+.messageWrapper{
+    border: 1px solid black !important;
+    width: 500px !important;
+    border-radius: 0px !important;
+}
+.contactsContainer{
+    padding: 30px;
+}
+.locationWrapper{
+    display: flex;
+}
+.socialmediaWrapper{
+    display: flex;
+    margin-bottom: 10px;
+}
+.socialmediaWrapper p{
+    margin-bottom: 0px;
+}
+.legalWrapper{
+    display: flex;
+}
+.submitButton{
+    width: 500px;
+    height: 40px;
+    margin-top: 30px;
+}
+.contactsContainer span{
+    color: red;
+}

@@ -1,9 +1,20 @@
+.mainContainer{
+    width: 100%;
+    height: auto;
+}
 .signInWrapper {
     text-align: center;
     padding-top: 0px;
-    height: 500px;
+    height: auto;
     background-color: rgb(252, 248, 248);
     color: rgb(0, 0, 0);
+    border: 1px solid rgb(192, 188, 188);
+    box-shadow: 0px 0px 10px grey;
+    width: 400px;
+    height: auto;
+    margin-left: 440px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .signInWrapper h3 {
@@ -18,21 +29,12 @@
     align-items: center;
     width: 400px;
     border: 1px solid black;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     background-color: #0c1639;
     color: white;
-    margin-left: 440px;
-}
-.formWrapper{
-    width: 400px;
-    height: 350px;
-    border:1px solid black;
-    margin-left: 440px;
-    text-align: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /* margin-left: 440px; */
 }
 
 .wrapper {
@@ -65,8 +67,6 @@
 }
 
 .seconda {
-    position: absolute;
-    margin-left: -10px;
     font-size: 13px;
     color: rgb(0, 0, 0);
 }
@@ -76,15 +76,16 @@ a:hover {
 }
 
 .signinButton {
-    background-color: red;
-    border: 1px solid rgb(252, 252, 252);
+    background-color: red !important;
+    border: 1px solid red !important;
     height: 40px;
     border-radius: 8px;
     color: aliceblue;
 }
 
 .signinButton:hover {
-    background-color: rgb(200, 9, 9);
+    background-color: rgb(200, 9, 9) !important;
+    border-color: rgb(200, 9, 9) !important;
 }
 .backArrow{
     color: rgb(133, 132, 132);
@@ -93,4 +94,12 @@ a:hover {
 }
 .backArrow:hover{
     color: #b4b4b6;
+}
+@media(max-width:768px){
+    .signInWrapper{
+        margin-left: 180px !important;
+    }
+    .signInWrapper h3{
+        margin-top: 20px !important;
+    }
 }

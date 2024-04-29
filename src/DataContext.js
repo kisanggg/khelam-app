@@ -4,15 +4,15 @@ import React, { useState, useEffect } from "react";
 export const DataContext = React.createContext();
 export const DataProvider = ({ children }) => {
   const [days, setDays] = useState([
-     moment().format("YYYY-MM-DD"),
-     moment().add(1, "days").format("YYYY-MM-DD"),
-     moment().add(2, "days").format("YYYY-MM-DD"),
-     moment().add(3, "days").format("YYYY-MM-DD"),
-     moment().add(4, "days").format("YYYY-MM-DD"),
-     moment().add(5, "days").format("YYYY-MM-DD"),
-     moment().add(6, "days").format("YYYY-MM-DD"),
+    moment().format("YYYY-MM-DD"),
+    moment().add(1, "days").format("YYYY-MM-DD"),
+    moment().add(2, "days").format("YYYY-MM-DD"),
+    moment().add(3, "days").format("YYYY-MM-DD"),
+    moment().add(4, "days").format("YYYY-MM-DD"),
+    moment().add(5, "days").format("YYYY-MM-DD"),
+    moment().add(6, "days").format("YYYY-MM-DD"),
   ]);
-  console.log("days:",days);
+  console.log("days:", days);
   const times = [
     "06 AM",
     "07 AM",
@@ -23,17 +23,18 @@ export const DataProvider = ({ children }) => {
     "12 PM",
     "01 PM",
     "02 PM",
-    "03 PM",
-    "04 PM",
-    "05 PM",
-    "06 PM",
-    "07 PM",
+    // "03 PM",
+    // "04 PM",
+    // "05 PM",
+    // "06 PM",
+    // "07 PM",
   ].map((time) => moment(time, "hh A").toDate());
 
   const [bookedTime, setBookedTime] = useState({});
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
   const [formDataList, setFormDataList] = useState([]);
   const [displayModal, setDisplayModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const addFormData = (formData) => {
     setFormDataList((prevFormDataList) => [...prevFormDataList, formData]);
   };
@@ -48,11 +49,13 @@ export const DataProvider = ({ children }) => {
     times,
     setDays,
     bookedTime,
+    isLoggedIn,
     addFormData,
     displayModal,
     formDataList,
-    setFormDataList,
+    setIsLoggedIn,
     setBookedTime,
+    setFormDataList,
     setDisplayModal,
     disabledTimeSlots,
     setDisabledTimeSlots,

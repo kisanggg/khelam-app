@@ -1,15 +1,25 @@
+.mainContainer {
+    width: 100%;
+    height: auto;
+}
+
+.mainContainer img {
+    width: 100%;
+    height: auto;
+}
+
 .sportsContainer {
     display: flex;
     background-color: rgba(41, 39, 39, 0.5);
     backdrop-filter: blur(0.5px);
-    height: 200px;
-    width: 1255px;
-    padding-top:15px ;
+    height: 30%;
+    width: 100%;
     position: absolute;
-    transform: translate(0%,-100%);
+    transform: translate(0%, -100%);
 }
 
-.firstContainer, .secondContainer{
+.firstContainer,
+.secondContainer {
     width: 100%;
     margin-bottom: 20px;
     max-width: 300px;
@@ -18,13 +28,11 @@
 .firstContainer p {
     margin-left: 65px;
     color: aliceblue;
-    margin-top: 10px;
 }
 
 .secondContainer p {
     margin-left: 65px;
     color: aliceblue;
-    margin-top: 10px;
 }
 
 #dropdownbutton1 {
@@ -32,3 +40,17 @@
     color: black;
 }
 
+@media (max-width: 768px) {
+    .secondContainer p {
+        margin-left: 10px !important;
+    }
+
+    .venueWrapper {
+        width: 200px !important;
+        margin-left: 10px !important;
+    }
+
+    .sportsWrapper {
+        width: 200px !important;
+    }
+}

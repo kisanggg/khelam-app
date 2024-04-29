@@ -1,5 +1,5 @@
 .clubdataWrapper {
-    width: 1263px;
+    width: 100%;
 }
 
 .headingWrapper {
@@ -18,7 +18,7 @@
     color: white;
     padding: 10px;
     height: 150px;
-    width: 1263px;
+    width: 100%;
 }
 
 @media(max-width:768px) {
@@ -45,7 +45,7 @@
 }
 
 .clubdataWrapper table {
-    width: 100vw;
+    width: 100%;
     border-collapse: collapse;
 }
 

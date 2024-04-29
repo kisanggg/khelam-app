@@ -23,6 +23,7 @@ const Clubbookingdata = () => {
     setDisabledTimeSlots,
   } = useContext(DataContext);
 
+  console.log("days:",days)
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -245,14 +246,14 @@ const Clubbookingdata = () => {
             </tr>
           </thead>
           <tbody>
-            {days.map(({ date, day }) => {
+            {days.map((date,index ) => {
               const dateString = moment(date).format("YYYY-MM-DD");
+              const day=moment(date).format("dddd");
               return (
-                <tr key={dateString}>
-                  <td className={styles.daydateCell}>
-                    <div className={styles.daybodyWrapper}>
-                      {moment(date).format("dddd")}
-                      <br />({moment(date).format("MMMM D, YYYY")})
+                <tr key={index} >
+                  <td className={styles.daydateCell} key={index}>
+                    <div className={styles.daybodyWrapper} >
+                      {day}<br/>{dateString}
                     </div>
                   </td>
                   <td colSpan={3}>

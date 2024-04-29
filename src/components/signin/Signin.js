@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./signin.module.css";
-import { Form } from "react-bootstrap";
+import { Button, Form, FormControl, FormLabel } from "react-bootstrap";
 import {
   EyeFill,
   EyeSlashFill,
@@ -10,36 +10,47 @@ import {
   ArrowLeftCircleFill,
 } from "react-bootstrap-icons";
 import Home from "../home/Home";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { DataContext } from "../../DataContext";
 const Signin = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const [formErrors, setFormErrors] = useState({});
   const [displayPassword, setDisplayPassword] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert("please enter valid email address");
-      return;
-    }
-    const passwordRegex =
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-    if (passwordRegex.test(password)) {
+    const isValid = validateForm();
+    if (isValid) {
       setIsLoggedIn(true);
-    } else {
-      alert(
-        "Your password must be 8-16 characters long and contain at least one special character and one number."
-      );
+      navigate("/home");
     }
   };
-  if (isLoggedIn) {
-    return <Home />;
-  }
+  const validateForm = () => {
+    const errors = {};
+    const emailRegex = /^[a-zA-Z0-9]{3,20}$/;
+    const passwordRegex =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+    if (!data.email.trim()) {
+      errors.email = "Enter the username";
+    } else if (!emailRegex.test(data.email)) {
+      errors.email = "Please enter the valid username";
+    }
+    if (!data.password.trim()) {
+      errors.password = "Enter the password.";
+    } else if (!passwordRegex.test(data.password)) {
+      errors.password = "Please enter the valid password.";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <Link to="/usersignup">
-        <ArrowLeftCircleFill size={30} className={styles.backArrow}/>
+        <ArrowLeftCircleFill size={30} className={styles.backArrow} />
       </Link>
       <div className={styles.signInWrapper}>
         <div className={styles.signIn}>
@@ -64,31 +75,16 @@ const Signin = () => {
           </div>
         </div>
         <div className={styles.formWrapper}>
-        <h3>
-          Sign In
-          <FileLockFill size={25} />
-        </h3>
-        <Form className={styles.signInForm} onSubmit={handleSubmit}>
-          <Form.Group controlId="username">
-            <Form.Control
-              type="text"
-              placeholder="Email Address"
-              style={{
-                width: "320px",
-                margin: "10px",
-                marginLeft: "40px",
-                height: "40px",
-                border: "1px solid black",
-              }}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <div style={{ display: "flex" }}>
+          <h3>
+            Sign In
+            <FileLockFill size={25} />
+          </h3>
+          <Form className={styles.signInForm} onSubmit={handleSubmit}>
+            <Form.Group controlId="username">
               <Form.Control
-                type={displayPassword ? "text" : "password"}
-                placeholder="Password"
+                type="text"
+                placeholder="Username"
+                value={data.email}
                 style={{
                   width: "320px",
                   margin: "10px",
@@ -96,60 +92,95 @@ const Signin = () => {
                   height: "40px",
                   border: "1px solid black",
                 }}
-                required
-                onChange={(e) => setPassword(e.target.value)}
+                isInvalid={!!formErrors.email}
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    email: e.target.value,
+                  })
+                }
               />
-              {displayPassword ? (
-                <EyeSlashFill
-                  onClick={() => setDisplayPassword(!displayPassword)}
-                  style={{
-                    position: "absolute",
-                    marginLeft: "330px",
-                    marginTop: "22px",
-                  }}
-                />
-              ) : (
-                <EyeFill
-                  onClick={() => setDisplayPassword(!displayPassword)}
-                  style={{
-                    position: "absolute",
-                    marginLeft: "330px",
-                    marginTop: "22px",
-                  }}
-                />
-              )}
+              <FormControl.Feedback
+                type="invalid"
+                style={{ textAlign: "left", marginLeft: "40px" }}
+              >
+                {formErrors.email}
+              </FormControl.Feedback>
+            </Form.Group>
+            <Form.Group controlId="password">
+              <div style={{ display: "flex" }}>
+                <div>
+                  <Form.Control
+                    type={displayPassword ? "text" : "password"}
+                    placeholder="Password"
+                    value={data.password}
+                    style={{
+                      width: "320px",
+                      margin: "10px",
+                      marginLeft: "40px",
+                      height: "40px",
+                      border: "1px solid black",
+                    }}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        password: e.target.value,
+                      })
+                    }
+                    isInvalid={!!formErrors.password}
+                  />
+                  <FormControl.Feedback
+                    type="invalid"
+                    style={{ textAlign: "left", marginLeft: "40px" }}
+                  >
+                    {formErrors.password}
+                  </FormControl.Feedback>
+                </div>
+                {displayPassword ? (
+                  <EyeSlashFill
+                    onClick={() => setDisplayPassword(!displayPassword)}
+                    style={{
+                      position: "absolute",
+                      marginLeft: "310px",
+                      marginTop: "22px",
+                    }}
+                  />
+                ) : (
+                  <EyeFill
+                    onClick={() => setDisplayPassword(!displayPassword)}
+                    style={{
+                      position: "absolute",
+                      marginLeft: "310px",
+                      marginTop: "22px",
+                    }}
+                  />
+                )}
+              </div>
+            </Form.Group>
+            <div className={styles.checkbox}>
+              <input type="checkbox" style={{ marginLeft: "0px" }} />
+              <label htmlFor="remember" style={{ marginLeft: "5px" }}>
+                Remember me
+              </label>
             </div>
-          </Form.Group>
-          <div className={styles.checkbox}>
-            <input type="checkbox" style={{ marginLeft: "0px" }} />
-            <label htmlFor="remember" style={{ marginLeft: "5px" }}>
-              Remember me
-            </label>
-          </div>
-          <button
-            className={styles.signinButton}
-            type="submit"
-            style={{ width: "150px", marginTop: "25px", marginLeft: "10px" }}
-          >
-            Sign In
-          </button>
-        </Form>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            marginTop: "25px",
-            marginLeft: "20px",
-          }}
-        >
-          {/* <a href="/forgot" className={styles.firsta}>
-            Forgot Password?
-          </a> */}
-
-          <a href="/signup" className={styles.seconda}>
-            Don't have an account? Sign Up
-          </a>
-        </div>
+            <Button
+              className={styles.signinButton}
+              type="submit"
+              style={{ width: "150px", marginTop: "25px", marginLeft: "10px" }}
+            >
+              Sign In
+            </Button>
+            <div
+              style={{
+                marginTop: "10px",
+                marginLeft: "20px",
+              }}
+            >
+              <a href="/signup" className={styles.seconda}>
+                Don't have an account? Sign Up
+              </a>
+            </div>
+          </Form>
         </div>
       </div>
     </div>

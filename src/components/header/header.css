@@ -1,30 +1,306 @@
 .header {
   display: flex;
-  width: 1263px;
+  width: 100%;
+}
+
+.signupLink {
+  background-color: black;
+  height: 100px;
+}
+
+.drawer-toggle {
+  color: white;
+  background-color: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+}
+
+.show-drawer {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+@media (max-width:768px) {
+  .header {
+    width: 100%;
+    height: 80px;
+  }
+
+  .header-wrapper {
+    width: 100% !important;
+    height: 80px;
+  }
+
+  .header-wrapper img {
+    width: 70px !important;
+    height: 60px !important;
+  }
+
+  .wrapper {
+    margin-left: 5px !important;
+  }
+
+  .wrapper h1 {
+    font-size: 40px !important;
+    margin-top: 5px;
+  }
+
+  .wrapper p {
+    font-size: 13px !important;
+    margin-left: 20px !important;
+    margin-top: 45px !important;
+  }
+
+  .div-wrapper {
+    display: none;
+  }
+
+  .div1-wrapper {
+    display: none;
+  }
+
+  .drawer-toggle {
+    display: block;
+    background-color: red;
+    margin-left: 420px;
+  }
+
+  .sub-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    display: none;
+  }
+
+  .show-drawer {
+    display: flex;
+  }
+
+  .navWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255) !important;
+    color: black;
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .signupLink {
+    background-color: red;
+    color: rgb(255, 255, 255) !important;
+    margin-left: 0px;
+    font-size: 20px !important;
+    text-decoration: none !important;
+  }
+
+  .signupLink:hover {
+    background-color: rgb(190, 16, 16) !important;
+    color: white;
+  }
+
+  .logoutButton {
+    position: absolute;
+    background-color: red !important;
+    border: 1px solid red !important;
+    margin-top: 280px;
+    width: 160px;
+    height: 45px;
+    margin-left: 30px;
+  }
+
+  .logoutButton:hover {
+    background-color: rgb(190, 16, 16) !important;
+  }
+
+  .logoutLink {
+    color: rgb(255, 255, 255);
+    background-color: red;
+    font-size: 20px !important;
+    text-decoration: none !important;
+  }
+
+  .navLink {
+    color: black;
+    text-decoration: none !important;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .offCanvas {
+    width: 300px !important;
+  }
+
+  .signupButton {
+    position: absolute;
+    background-color: red !important;
+    margin-top: 280px;
+    border: 1px solid red !important;
+    width: 160px;
+    height: 45px;
+    margin-left: 30px;
+  }
+
+  .signupButton:hover {
+    background-color: rgb(190, 16, 16) !important;
+  }
+}
+
+@media (max-width:576px) {
+  .header {
+    width: 100% !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-wrapper {
+    width: 100% !important;
+    height: 80px;
+  }
+
+  .header-wrapper img {
+    width: 70px !important;
+    height: 60px !important;
+  }
+
+  .offCanvas {
+    width: 300px !important;
+  }
+
+  .wrapper {
+    margin-left: 5px !important;
+  }
+
+  .wrapper h1 {
+    font-size: 40px !important;
+    margin-top: 5px;
+  }
+
+  .wrapper p {
+    font-size: 13px !important;
+    margin-left: 20px !important;
+    margin-top: 45px !important;
+  }
+
+  .div-wrapper {
+    display: none;
+  }
+
+  .div1-wrapper {
+    display: none;
+  }
+
+  .drawer-toggle {
+    display: block;
+    background-color: red;
+    margin-left: 240px;
+  }
+
+  .sub-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    display: none;
+  }
+
+  .show-drawer {
+    display: flex;
+  }
+
+  .navWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255) !important;
+    color: black;
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .signupLink {
+    background-color: red;
+    color: rgb(255, 255, 255) !important;
+    margin-left: 0px;
+    font-size: 20px !important;
+    text-decoration: none !important;
+  }
+
+  .signupLink:hover {
+    background-color: rgb(190, 16, 16) !important;
+    color: white;
+  }
+
+  .logoutButton {
+    position: absolute;
+    background-color: red !important;
+    margin-top: 200px;
+    border: 1px solid red !important;
+    width: 160px;
+    height: 40px;
+    margin-left: 30px;
+  }
+
+  .logoutButton:hover {
+    background-color: rgb(190, 16, 16) !important;
+  }
+
+  .logoutLink {
+    color: rgb(255, 255, 255);
+    background-color: red;
+    font-size: 20px !important;
+    text-decoration: none !important;
+  }
+
+  .navLink {
+    color: black;
+    text-decoration: none !important;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .signupButton {
+    position: absolute;
+    background-color: red !important;
+    margin-top: 270px;
+    border: 1px solid red !important;
+    width: 160px;
+    height: 40px;
+    margin-left: 30px;
+  }
+
+  .signupButton:hover {
+    background-color: rgb(190, 16, 16) !important;
+  }
+
 }
 
 .header-wrapper {
   background-color: red;
   display: flex;
   position: absolute;
-  width: 400px;
+  width: 30%;
 }
-.div-wrapper{
+
+.div-wrapper {
   width: 650px;
   height: 0px;
   border-top: 52px solid red;
-  border-right:40px solid black;
+  border-right: 40px solid black;
 }
-.div1-wrapper{
+
+.div1-wrapper {
   width: 610px;
   height: 1px;
-  border-top: 51px solid red; 
+  border-top: 51px solid red;
   border-right: 40px solid #454242;
-}      
-.div{
-  position: absolute;
- height: 103px;
 }
+
+.div {
+  position: absolute;
+  height: 103px;
+}
+
 .header-wrapper img {
   margin: 8px;
   margin-left: 40px;
@@ -32,10 +308,12 @@
   width: 80px;
   height: 80px;
 }
+
 .wrapper {
   margin-left: 40px;
   display: flex;
 }
+
 .wrapper p {
   color: rgb(255, 255, 255);
   font-size: 14px;
@@ -43,32 +321,37 @@
   margin-left: 25px;
   position: absolute;
 }
+
 .wrapper h1 {
   font-size: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .sub-header {
   width: 700px;
 }
+
 .signUp {
   background-color: black;
-  display: flex;
   width: 600;
 }
 
 .signUp a:hover {
   color: rgb(29, 120, 247) !important;
 }
+
 .navBar {
   height: 51px;
-  background-color:rgb(67, 67, 67) ;
-  
+  background-color: rgb(67, 67, 67);
+
 }
+
 .nav {
   background-color: rgb(67, 67, 67);
   height: 40px;
   margin-left: 49px;
 }
+
 .nav-link {
   margin-left: 20px;
   font-size: 13px;
@@ -76,149 +359,100 @@
   height: 50px;
   color: aliceblue;
 }
-.nava-link{
+
+.nava-link {
   text-decoration: none;
+  text-align: end;
+  margin-top: 10px;
+  color: white;
+  font-size: 15px;
 }
+
 .nav-link:hover {
   color: rgb(78, 151, 255) !important;
 }
-.nav-link:focus{
+
+.nav-link:focus {
   background-color: rgb(228, 44, 44);
-  color:rgba(20, 20, 20, 0.812)!important;
+  color: rgba(20, 20, 20, 0.812) !important;
   font-weight: 600;
 }
+
 .nav button {
   background-color: rgb(222, 24, 24);
   border: 1px solid rgb(67, 67, 67);
 
 }
+
 .nav button:hover {
   background-color: rgb(177, 8, 8);
 }
-.searchButton{
+
+.searchButton {
   background-color: red;
   width: 50px;
   height: 50px;
 }
 
-/* .header {
-  display: flex;
-  max-width: 100%;
+.logoutWrapper {
+  padding-top: 10px;
 }
 
-.header-wrapper {
-  background-color: red;
-  display: flex;
-  align-items: center;
-  width: 40%;
-  padding: 10px; 
-  height: 100px;
-  margin-right: 100px;
-  position: absolute;
-}
-
-.divv{
-width: 50%;
-}
-
-.div-wrapper {
-  width: 100%;
-  height: 0;
-  border-top: 52px solid red;
-  border-right: 40px solid black;
-}
-
-.div1-wrapper {
-  width: 93.7%;
-  height: 0;
-  border-top: 51px solid red;
-  border-right: 40px solid #454242;
-}
-
-.header-wrapper img {
-  margin: 8px;
-  width: 80px;
-  height: 80px;
-}
-
-.wrapper {
-  margin-top: 10px; 
-  text-align: center; 
-}
-
-.wrapper h1 {
-  font-size: 40px; 
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.wrapper p {
-  font-size: 12px; 
+.logoutLink {
   color: white;
-}
-
-.signUp {
-  background-color: black;
-  color: white;
-  margin-left: 0px;
-  width: 100%;
-}
-
-.navBar {
-  background-color: rgb(67, 67, 67);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  width: 100%; 
-  height: 50.5px;
-  margin-left: 0px;
-}
-
-.nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-link {
-  color: white;
-  font-size: 14px;
-  padding: 10px 15px; 
+  margin-left: 530px;
   text-decoration: none;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: rgb(78, 151, 255); 
+.logoutLink:hover {
+  color: red !important;
 }
 
-.nav button {
-  background-color: rgb(222, 24, 24);
-  border: 1px solid rgb(67, 67, 67);
+.feedbackButton {
+  z-index: 1000;
+  border: 1px solid rgb(255, 0, 0) !important;
+  border-radius: 100% !important;
+  width: 60px;
+  padding: 15px;
+  height: 60px;
+  position: absolute;
+  transform: translate(1950%, 750%);
+  position: fixed;
+  background-color: rgba(255, 12, 12) !important;
+  backdrop-filter: blur(0.5) !important;
+  color: rgb(255, 255, 255) !important;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.feedbackButton:hover {
+  border-color: rgb(155, 18, 18) !important;
+  background-color: rgb(155, 18, 18) !important;
+}
+.email{
+  width: 400px;
+  height: 40px;
+}
+.contacts{
+  width: 400px;
+  height: 40px;
+}
+.feedbacks{
+  width: 400px;
+  height: 100px;
+  padding: 20px;
+}
+.submitBtn{
+  border: 1px solid rgb(255, 0, 0);
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  margin-left: 125px;
+  margin-top: 20px;
+  background-color: red;
   color: white;
-  font-size: 14px;
-  padding: 10px 20px;
-  margin-left: 10px; 
+  font-size: 19px;
 }
-
-.nav button:hover {
-  background-color: rgb(177, 8, 8);
+.submitBtn:hover{
+  background-color: rgb(214, 10, 10);
 }
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column; 
-    align-items: center;
-  }
-  .divv{
-    display: none;
-  }
-
-  .header-wrapper {
-    width: 100%; 
-  }
-
-  .nav {
-    flex-direction: column; 
-  }
-} */

@@ -4,22 +4,27 @@
     box-sizing: border-box;
   }
 
+  .days{
+    width: 100%;
+  }
   .calendarContainer {
-    width: 1263px;
+    width: 100%;
     margin-left: 0px;
+    background-color: black;
+    height: auto;
   }
 
   .dayContainer {
     height: 140px;
-    width: 1150px;
-    margin-left: 10px;
+    width: 100%;
+    margin-left: 0px;
   }
 
   .timeSlider {
     display: flex;
     background-color: #f00c0c;
     height: 130px;
-    width: 1112px;
+    width: 100%;
   }
 
   .timeContainer {
@@ -151,4 +156,12 @@
 
   .notAvailableText {
     color: white;
+  }
+  @media(max-width:768px){
+    .dateWrapper{
+      width: 140px !important;
+    }
+    .timeContainer{
+      margin-left: 140px !important;
+    }
   }

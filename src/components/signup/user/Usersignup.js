@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./usersignup.module.css";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import {
   EyeFill,
   EyeSlashFill,
@@ -92,8 +92,9 @@ export default function Usersignup() {
                 margin: "10px",
                 marginBottom: "5px",
                 border: "1px solid black",
-                marginLeft: "65px",
+                marginLeft: "70px",
               }}
+              className={styles.fnameInputWrapper}
               required
             />
             <Form.Control
@@ -106,6 +107,7 @@ export default function Usersignup() {
                 marginLeft: "0px",
                 border: "1px solid black",
               }}
+              className={styles.lnameInputWrapper}
               required
             />
           </Form.Group>
@@ -115,10 +117,11 @@ export default function Usersignup() {
               placeholder="Address"
               style={{
                 width: "311px",
-                marginLeft: "65px",
+                marginLeft: "70px",
                 marginTop: "8px",
                 border: "1px solid black",
               }}
+              className={styles.addressWrapper}
               required
             />
           </Form.Group>
@@ -130,9 +133,10 @@ export default function Usersignup() {
                 width: "311px",
                 margin: "10px",
                 border: "1px solid black",
-                marginLeft: "65px",
+                marginLeft: "70px",
                 marginTop: "13px",
               }}
+              className={styles.emailWrapper}
               required
               onChange={(e) => setEmailData(e.target.value)}
             />
@@ -141,14 +145,15 @@ export default function Usersignup() {
             <div style={{ display: "flex" }}>
               <Form.Control
                 type={showPassword ? "text" : "password"}
-                placeholder="password"
+                placeholder="Password"
                 style={{
                   width: "311px",
                   border: "1px solid black",
                   margin: "10px",
-                  marginLeft: "65px",
+                  marginLeft: "70px",
                   marginTop: "5px",
                 }}
+                className={styles.passwordWrapper}
                 required
                 onChange={handleChange}
               />
@@ -181,14 +186,15 @@ export default function Usersignup() {
             <div style={{ display: "flex" }}>
               <Form.Control
                 type={showConPassword ? "text" : "password"}
-                placeholder="confirm password"
+                placeholder="Confirm password"
                 style={{
                   width: "311px",
                   margin: "10px",
                   border: "1px solid black",
-                  marginLeft: "65px",
+                  marginLeft: "70px",
                   marginTop: "5px",
                 }}
+                className={styles.confirmWrapper}
                 required
                 onChange={handleChange}
               />
@@ -218,9 +224,9 @@ export default function Usersignup() {
             </div>
           </Form.Group>
           <br />
-          <button className={styles.signupButton} type="submit">
+          <Button className={styles.signupButton} type="submit">
             Sign Up
-          </button>
+          </Button>
         </Form>
         <a
           href="/login"

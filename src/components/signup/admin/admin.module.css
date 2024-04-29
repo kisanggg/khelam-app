@@ -1,49 +1,64 @@
-.adminWrapper{
+
+.adminWrapper {
     background-color: rgb(255, 255, 255);
     color: white;
     height: 1000px;
+    width: 100%;
 }
-.adminWrapper h1{
+
+.adminWrapper h1 {
     text-align: center;
 }
-.bodyWrapper{
-    margin-left: 181px;
+
+.bodyWrapper {
+    margin-left: 290px;
     margin-right: 181px;
-    width: 900px;
+    width: 700px;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(16, 16, 16);
-    border-radius: 10px;
-    height: 870px;
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 0px;
+    height: auto;
+    box-shadow: 0px 0px 10px rgb(141, 141, 141);
+    margin-top: 00px;
 }
-.formWrapper{
-    padding:30px;
+
+.formWrapper {
+    padding: 30px;
     /* margin-left: 100px;
     margin-right: 100px; */
-    width: 900px;
+    width: 100%;
     /* border: 2px solid rgb(184, 182, 182); */
     border-radius: 10px;
     /* display: flex; */
-}   
-.formControl{
-    width: 410px!important;
-    border:1px solid black;
 }
-.nameWrapper{
+
+.formWrapper h1{
+    width: 200px;
+}
+
+.formControl {
+    width: 310px !important;
+    border: 1px solid black;
+}
+
+.nameWrapper {
     display: flex;
 }
 
-.submitBtn{
+.submitBtn {
     margin-top: 30px;
     background-color: red !important;
-    width: 150px;
-    height: 40px;
-    margin-left: 350px;
+    width: 160px;
+    height: 45px;
+    margin-left: 240px;
 }
-.submitBtn:hover{
+
+.submitBtn:hover {
     background-color: rgb(176, 8, 8) !important;
 }
-.uploadButton{
+
+.uploadButton {
     height: 37px;
     width: 120px;
     margin-top: 47px;
@@ -52,39 +67,62 @@
     font-size: 15px !important;
     margin-left: 17px;
 }
-.arrowLeft{
+
+.arrowLeft {
     margin-left: 20px;
     color: rgb(69, 67, 67);
     margin-top: 20px;
 }
-.arrowLeft:hover{
+
+.arrowLeft:hover {
     color: grey;
 }
-.adminSignup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.headerWrapper{
+
+.headerWrapper {
     margin-left: 10px;
 }
-.phoneWrapper{
+
+.phoneWrapper {
     display: flex;
 }
-.flexSecondwrapper{
+
+.flexSecondwrapper {
     margin-left: 10px;
     margin-top: 0px;
 }
-.signUp{
+
+.signUp {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 900px;
-    border: 1px solid white;
-    border-radius: 10px;
-    border-bottom-left-radius: 0px ;
+    width: 700px;
+    border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
     background-color: rgb(17, 15, 32);
-    margin-left: 0px;
     color: white;
+}
+@media(max-width:768px){
+    .adminWrapper h1{
+        margin-left: 120px;
+        margin-bottom: 20px !important;
+    }
+    .bodyWrapper{
+        width: 500px !important;
+        margin-left: 140px !important;
+    }
+    .signUp{
+        width: 500px !important;
+    }
+    .formControl{
+        width: 210px !important;
+    }
+    .sportstypeWrapper{
+        width: 210px !important;
+    }
+    .sportscontrolWrapper{
+        width: 150px !important;
+    }
+    .submitBtn{
+        margin-left: 140px !important;
+    }
 }

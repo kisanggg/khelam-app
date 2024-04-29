@@ -40,6 +40,32 @@ const BigCalendar = () => {
       </div>
     ),
     prevArrow: <></>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 7,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          initialSlide: 4,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
   };
 
   const [showModal, setShowModal] = useState(false);
@@ -122,162 +148,158 @@ const BigCalendar = () => {
   };
 
   return (
-    <div style={{ height: "1080px" }}>
-      <div className={styles.days}>
-        <div className={styles.sundayWrapper}>
-          <div className={styles.calendarContainer}>
-            {days.map((date, index) => {
-              console.log("date:", date);
-              const modifiedDay = moment(date).format("dddd").toUpperCase();
-              const modifiedDate = moment(date).format("MMMM D, YYYY");
+    <>
+      <div className={styles.calendarContainer}>
+        {days.map((date, index) => {
+          console.log("date:", date);
+          const modifiedDay = moment(date).format("dddd").toUpperCase();
+          const modifiedDate = moment(date).format("MMMM D, YYYY");
 
-              return (
-                <div key={index} className={styles.dayContainer}>
-                  <div className={styles.dateWrapper}>
-                    <h6
-                      style={{
-                        borderBottom: "1px solid red",
-                        height: "40px",
-                        paddingTop: "10px",
-                        color: "white",
-                        backgroundColor: "red",
-                      }}
-                    >
-                      {modifiedDay}
-                    </h6>
-                    <h6 style={{ paddingTop: "20px", fontWeight: "700" }}>
-                      {modifiedDate}
-                    </h6>
-                  </div>
-                  <div className={styles.timeContainer}>
-                    <Slider {...slideSettings} className={styles.timeSlider}>
-                      {times.map((time) => {
-                        const bookingKey = `${moment(date).format(
-                          "YYYY-MM-DD"
-                        )} ${moment(time).format("hh A")}`;
-                        const isBooked = !!bookedTime[bookingKey];
-                        const currentTime = new Date();
-                        if (moment(date).day() === currentTime.getDay()) {
-                          const futureTime = moment(time).isAfter(currentTime);
-                          if (futureTime) {
-                            return (
-                              <div
-                                key={time}
-                                className={`${styles.timeSlot} ${
-                                  isBooked ? styles.booked : ""
-                                } ${
-                                  disabledTimeSlots.some((slot) => {
-                                    return (
-                                      slot.date.getTime() === date.getTime() &&
-                                      slot.time.getTime() === time.getTime()
-                                    );
-                                  })
-                                    ? styles.disabled
-                                    : ""
-                                }`}
-                              >
-                                {moment(time).format("hh A")}
-                                <br />
-                                {disabledTimeSlots.some(
-                                  (slot) =>
-                                    slot.date.getTime() === date.getTime() &&
-                                    slot.time.getTime() === time.getTime()
-                                ) ? (
-                                  <span className={styles.notAvailableText}>
-                                    Not Available
-                                  </span>
-                                ) : (
-                                  <>
-                                    {isBooked ? (
-                                      <span className={styles.bookedText}>
-                                        Booked
-                                      </span>
-                                    ) : (
-                                      <button
-                                        onClick={() => {
-                                          setSelectedDate(
-                                            moment(date).format("YYYY-MM-DD")
-                                          );
-                                          setSelectedTime(
-                                            moment(time, "hh A").format("hh A")
-                                          );
-                                          setShowModal(true);
-                                        }}
-                                        disabled={isBooked}
-                                        className={styles.bookButton}
-                                      >
-                                        Book Now
-                                      </button>
-                                    )}
-                                  </>
-                                )}
-                              </div>
-                            );
-                          } else {
-                            return null;
-                          }
-                        } else {
-                          return (
-                            <div
-                              key={time}
-                              className={`${styles.timeSlot} ${
-                                isBooked ? styles.booked : ""
-                              } ${
-                                disabledTimeSlots.some(
-                                  (slot) =>
-                                    slot.date.getTime() === date.getTime() &&
-                                    slot.time.getTime() === time.getTime()
-                                )
-                                  ? styles.disabled
-                                  : ""
-                              }`}
-                            >
-                              {moment(time).format("hh A")}
-                              <br />
-                              {disabledTimeSlots.some(
-                                (slot) =>
+          return (
+            <div key={index} className={styles.dayContainer}>
+              <div className={styles.dateWrapper}>
+                <h6
+                  style={{
+                    borderBottom: "1px solid red",
+                    height: "40px",
+                    paddingTop: "10px",
+                    color: "white",
+                    backgroundColor: "red",
+                  }}
+                >
+                  {modifiedDay}
+                </h6>
+                <h6 style={{ paddingTop: "20px", fontWeight: "700" }}>
+                  {modifiedDate}
+                </h6>
+              </div>
+              <div className={styles.timeContainer}>
+                <Slider {...slideSettings} className={styles.timeSlider}>
+                  {times.map((time) => {
+                    const bookingKey = `${moment(date).format(
+                      "YYYY-MM-DD"
+                    )} ${moment(time).format("hh A")}`;
+                    const isBooked = !!bookedTime[bookingKey];
+                    const currentTime = new Date();
+                    if (moment(date).day() === currentTime.getDay()) {
+                      const futureTime = moment(time).isAfter(currentTime);
+                      if (futureTime) {
+                        return (
+                          <div
+                            key={time}
+                            className={`${styles.timeSlot} ${
+                              isBooked ? styles.booked : ""
+                            } ${
+                              disabledTimeSlots.some((slot) => {
+                                return (
                                   slot.date.getTime() === date.getTime() &&
                                   slot.time.getTime() === time.getTime()
-                              ) ? (
-                                <span className={styles.notAvailableText}>
-                                  Not Available
+                                );
+                              })
+                                ? styles.disabled
+                                : ""
+                            }`}
+                          >
+                            {moment(time).format("hh A")}
+                            <br />
+                            {disabledTimeSlots.some(
+                              (slot) =>
+                                slot.date.getTime() === date.getTime() &&
+                                slot.time.getTime() === time.getTime()
+                            ) ? (
+                              <span className={styles.notAvailableText}>
+                                Not Available
+                              </span>
+                            ) : (
+                              <>
+                                {isBooked ? (
+                                  <span className={styles.bookedText}>
+                                    Booked
+                                  </span>
+                                ) : (
+                                  <button
+                                    onClick={() => {
+                                      setSelectedDate(
+                                        moment(date).format("YYYY-MM-DD")
+                                      );
+                                      setSelectedTime(
+                                        moment(time, "hh A").format("hh A")
+                                      );
+                                      setShowModal(true);
+                                    }}
+                                    disabled={isBooked}
+                                    className={styles.bookButton}
+                                  >
+                                    Book Now
+                                  </button>
+                                )}
+                              </>
+                            )}
+                          </div>
+                        );
+                      } else {
+                        return null;
+                      }
+                    } else {
+                      return (
+                        <div
+                          key={time}
+                          className={`${styles.timeSlot} ${
+                            isBooked ? styles.booked : ""
+                          } ${
+                            disabledTimeSlots.some(
+                              (slot) =>
+                                slot.date.getTime() === date.getTime() &&
+                                slot.time.getTime() === time.getTime()
+                            )
+                              ? styles.disabled
+                              : ""
+                          }`}
+                        >
+                          {moment(time).format("hh A")}
+                          <br />
+                          {disabledTimeSlots.some(
+                            (slot) =>
+                              slot.date.getTime() === date.getTime() &&
+                              slot.time.getTime() === time.getTime()
+                          ) ? (
+                            <span className={styles.notAvailableText}>
+                              Not Available
+                            </span>
+                          ) : (
+                            <>
+                              {isBooked ? (
+                                <span className={styles.bookedText}>
+                                  Booked
                                 </span>
                               ) : (
-                                <>
-                                  {isBooked ? (
-                                    <span className={styles.bookedText}>
-                                      Booked
-                                    </span>
-                                  ) : (
-                                    <button
-                                      onClick={() => {
-                                        setSelectedDate(
-                                          moment(date).format("YYYY-MM-DD")
-                                        );
-                                        setSelectedTime(
-                                          moment(time, "hh A").format("hh A")
-                                        );
-                                        setShowModal(true);
-                                      }}
-                                      disabled={isBooked}
-                                      className={styles.bookButton}
-                                    >
-                                      Book Now
-                                    </button>
-                                  )}
-                                </>
+                                <button
+                                  onClick={() => {
+                                    setSelectedDate(
+                                      moment(date).format("YYYY-MM-DD")
+                                    );
+                                    setSelectedTime(
+                                      moment(time, "hh A").format("hh A")
+                                    );
+                                    setShowModal(true);
+                                  }}
+                                  disabled={isBooked}
+                                  className={styles.bookButton}
+                                >
+                                  Book Now
+                                </button>
                               )}
-                            </div>
-                          );
-                        }
-                      })}
-                    </Slider>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                            </>
+                          )}
+                        </div>
+                      );
+                    }
+                  })}
+                </Slider>
+              </div>
+            </div>
+          );
+        })}
       </div>
       <div>
         <Modal
@@ -300,7 +322,7 @@ const BigCalendar = () => {
           </Modal.Body>
         </Modal>
       </div>
-    </div>
+    </>
   );
 };
 export default BigCalendar;

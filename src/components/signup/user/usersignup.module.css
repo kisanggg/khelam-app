@@ -1,15 +1,17 @@
-.mainWrapper{
+.mainWrapper {
     background-color: rgb(255, 255, 255);
-    width: 1263px;
-    height:700px ;
+    width: 100%;
+    height: auto;
 }
+
 .formWrapper {
     background-color: rgb(255, 255, 255);
     text-align: center;
     height: 630px;
     color: white;
     width: 520px;
-    border: 2px solid rgb(126, 123, 123);
+    border: 1px solid rgb(171, 169, 169);
+    box-shadow: 0px 0px 10px grey;
     border-radius: 10px;
     margin-left: 371px;
     margin-right: 371px;
@@ -23,7 +25,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-    width: 516px;
+    width: 518.9px;
     border: 1px solid black;
     border-radius: 8px;
     border-bottom-left-radius: 0px;
@@ -82,23 +84,118 @@ a:hover {
 .signupButton {
     width: 150px;
     height: 40px;
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid rgb(255, 0, 0) !important;
     border-radius: 8px;
-    background-color: red;
+    background-color: red !important;
     color: rgb(254, 255, 255);
     margin-top: 0px;
 }
 
 .signupButton:hover {
     background-color: rgb(209, 3, 3);
+    border: 1px solid rgb(209, 3, 3);
 }
-.backArrow{
+
+.backArrow {
     text-align: left !important;
     margin-left: 0px;
     color: rgb(141, 139, 139);
     margin: 20px;
     margin-bottom: 0px;
 }
-.backArrow:hover{
+
+.backArrow:hover {
     color: rgb(179, 178, 178);
+}
+
+@media(max-width:768px) {
+    .formWrapper {
+        margin-left: 140px !important;
+        width: 500px !important;
+        height: auto;
+        padding-bottom: 10px !important;
+    }
+
+    .formWrapper h4 {
+        margin-top: 20px !important;
+    }
+
+    .signUp {
+        width: 500px !important;
+    }
+
+    .formWrapper a {
+        margin-bottom: 20px !important;
+        margin-left: 10px !important;
+    }
+}
+
+@media(max-width:576px) {
+    .formWrapper {
+        width: 420px !important;
+        margin-left: 85px !important;
+    }
+
+    .formWrapper h4 {
+        margin-left: 60px !important;
+    }
+
+    .signUp {
+        width: 418.7px !important;
+    }
+
+    .signUpForm {
+        margin-left: 0px !important;
+    }
+
+    .fnameInputWrapper {
+        width: 150px !important;
+        height: 34px !important;
+        border-radius: 0px !important;
+        margin-left: 55px !important;
+    }
+
+    .lnameInputWrapper {
+        width: 150px !important;
+        height: 34px !important;
+        border-radius: 0px !important;
+    }
+
+    .addressWrapper {
+        width: 310px !important;
+        border-radius: 0px !important;
+        margin-left: 55px !important;
+    }
+
+    .emailWrapper {
+        width: 310px !important;
+        border-radius: 0px !important;
+        margin-left: 55px !important;
+    }
+
+    .passwordWrapper {
+        width: 310px !important;
+        border-radius: 0px !important;
+        margin-left: 55px !important;
+    }
+
+    .confirmWrapper {
+        width: 310px !important;
+        border-radius: 0px !important;
+        margin-left: 55px !important;
+    }
+
+    .signupButton {
+        margin-left: 40px !important;
+        background-color: red !important;
+        border: 1px solid red !important;
+    }
+
+    .signupButton:hover {
+        background-color: rgb(211, 16, 16);
+    }
+
+    .formWrapper a {
+        margin-left: 20px !important;
+    }
 }

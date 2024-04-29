@@ -41,18 +41,18 @@ const Times = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 3,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 576,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
@@ -85,57 +85,69 @@ const Times = () => {
           <h1>CHOOSE YOUR GAME</h1>
           <div className={styles.cardsWrap}>
             <Slider className={styles.timeSlider} {...timeSettings}>
-              <div className={styles.timescardDiv}>
+              <div >
                 <Card
                   style={{
+                    padding:"20px",
                     width: "15rem",
                     marginLeft: "20px",
+                    paddingBottom:"0px",
                     boxShadow: "4px 4px 5px #e5e4e4",
                   }}
+                  className={styles.timesCardWrapper}
                 >
-                  <Card.Img className={styles.cardImg} src={img3} />
+                  <Card.Img src={img3} />
                   <Card.Body className={styles.timesCardBody}>
                     <Card.Title>Futsal</Card.Title>
                   </Card.Body>
                 </Card>
               </div>
-              <div className="timescardDiv">
+              <div >
                 <Card
                   style={{
+                    padding:"20px",
                     width: "15rem",
-                    marginLeft: "25px",
+                    marginLeft: "20px",
+                    paddingBottom:"0px",
                     boxShadow: "4px 4px 5px #e5e4e4",
                   }}
+                  className={styles.timesCardWrapper}
                 >
-                  <Card.Img className={styles.cardImg} src={img4} />
+                  <Card.Img src={img4} />
                   <Card.Body className={styles.timesCardBody}>
                     <Card.Title>Basketball</Card.Title>
                   </Card.Body>
                 </Card>
               </div>
-              <div className="timescardDiv">
+              <div >
                 <Card
                   style={{
+                    padding:"20px",
                     width: "15rem",
-                    marginLeft: "25px",
+                    marginLeft: "20px",
+                    paddingBottom:"0px",
                     boxShadow: "4px 4px 5px #e5e4e4",
                   }}
+                  className={styles.timesCardWrapper}
                 >
-                  <Card.Img className={styles.cardImg} src={img5} />
+                  <Card.Img src={img5} />
                   <Card.Body className={styles.timesCardBody}>
                     <Card.Title>Cricket</Card.Title>
                   </Card.Body>
                 </Card>
               </div>
-              <div className="timescardDiv">
+              <div >
                 <Card
                   style={{
+                    padding:"20px",
                     width: "15rem",
-                    marginLeft: "25px",
+                    marginLeft: "20px",
+                    paddingBottom:"0px",
                     boxShadow: "4px 4px 5px #e5e4e4",
                   }}
+                  className={styles.timesCardWrapper}
                 >
-                  <Card.Img src={img6} className={styles.cardImg} />
+                  <Card.Img src={img6} />
                   <Card.Body className={styles.timesCardBody}>
                     <Card.Title>Badminton</Card.Title>
                   </Card.Body>

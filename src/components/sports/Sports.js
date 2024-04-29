@@ -48,14 +48,13 @@ const Sports = () => {
         <img
           src="https://flex.f6s.com/content-resource/media/938025.jpg"
           alt="err"
-          width={1263}
-          height={620}
         />
         <div className={styles.sportsContainer}>
           <div className={styles.firstContainer}>
             <p>Sports</p>
             <InputGroup
               style={{ height: "25px", width: "200px", marginLeft: "60px" }}
+              className={styles.sportsWrapper}
             >
               <Form.Control
                 placeholder="select sports type"
@@ -90,6 +89,7 @@ const Sports = () => {
             <p>Venue</p>
             <InputGroup
               style={{ height: "25px", width: "300px", marginLeft: "60px" }}
+              className={styles.venueWrapper}
             >
               <Form.Control
                 placeholder="select your venue"
