@@ -61,14 +61,14 @@
 }
 
 .bookedSlot {
-    background-color: rgb(255 173 173) !important;
+    background-color: rgb(231, 132, 132) !important;
 }
 
 .disabledSlot {
     background-color: rgb(109, 109, 109) !important;
     color: white !important;
     margin-top: 15px;
-}   
+}
 
 .disabledSlot p {
     font-size: 20px;
@@ -153,7 +153,7 @@
 }
 
 .detailsButton {
-    border: 1px solid rgb(255, 135, 135);
+    border: 1px solid #df1515;
     background-color: #df1515;
     color: white;
     border-radius: 10px;

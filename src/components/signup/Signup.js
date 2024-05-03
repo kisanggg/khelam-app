@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardImg, CardTitle } from "react-bootstrap";
+import { Button, Card, CardBody, CardTitle } from "react-bootstrap";
 import React from "react";
 import styles from "./signup.module.css";
 import { Link } from "react-router-dom";
@@ -67,7 +67,7 @@ const Signup = () => {
                     with like-minded enthusiasts. Don't miss out—your next
                     thrilling match awaits!"
                   </CardBody>
-                  <Link to="/usersignup">
+                  <Link to="/login">
                     <Button className={styles.signupButton}>
                       Sign up as Player
                     </Button>
@@ -105,7 +105,7 @@ const Signup = () => {
                     athletes. Sign up today and let your club's excellence
                     shine!"
                   </CardBody>
-                  <Link to="/adminsignup">
+                  <Link to="/adminsignin">
                     <Button
                       className={styles.signupButton}
                       style={{ marginLeft: "10px" }}

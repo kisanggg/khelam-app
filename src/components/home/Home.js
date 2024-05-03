@@ -10,10 +10,6 @@ import {
   Person,
   ArrowLeftCircleFill,
   ArrowRightCircleFill,
-  Facebook,
-  Whatsapp,
-  Linkedin,
-  Github,
 } from "react-bootstrap-icons";
 import { InputGroup, Form, Card, Button, FormControl } from "react-bootstrap";
 import Slider from "react-slick";

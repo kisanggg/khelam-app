@@ -23,7 +23,7 @@ const Clubbookingdata = () => {
     setDisabledTimeSlots,
   } = useContext(DataContext);
 
-  console.log("days:",days)
+  console.log("days:", days);
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -122,15 +122,15 @@ const Clubbookingdata = () => {
   };
 
   const handleDisableSlot = (date, time) => {
-    const dateString = new Date(date);
-    const timeString = moment(time, "hh A").toDate();
-    const slotToDisable = { date: dateString, time: timeString };
+    const slotToDisable = { date: new Date(date), time: new Date(time) };
+    console.log("slottodisable:", slotToDisable);
     setDisabledTimeSlots((prevDisabledSlots) => [
       ...prevDisabledSlots,
       slotToDisable,
     ]);
-    console.log("disable slot", disabledTimeSlots);
   };
+
+  console.log("disabled Time slots:", disabledTimeSlots);
 
   const renderSlotContent = (date, time, isBooked, isDisabled) => {
     const dateString = moment(date).format("YYYY-MM-DD");
@@ -246,14 +246,16 @@ const Clubbookingdata = () => {
             </tr>
           </thead>
           <tbody>
-            {days.map((date,index ) => {
+            {days.map((date, index) => {
               const dateString = moment(date).format("YYYY-MM-DD");
-              const day=moment(date).format("dddd");
+              const day = moment(date).format("dddd");
               return (
-                <tr key={index} >
+                <tr key={index}>
                   <td className={styles.daydateCell} key={index}>
-                    <div className={styles.daybodyWrapper} >
-                      {day}<br/>{dateString}
+                    <div className={styles.daybodyWrapper}>
+                      {day}
+                      <br />
+                      {dateString}
                     </div>
                   </td>
                   <td colSpan={3}>

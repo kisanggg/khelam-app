@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import styles from "./signin.module.css";
-import { Button, Form, FormControl, FormLabel } from "react-bootstrap";
+import { Button, Form, FormControl } from "react-bootstrap";
 import {
   EyeFill,
   EyeSlashFill,
@@ -9,12 +9,11 @@ import {
   Phone,
   ArrowLeftCircleFill,
 } from "react-bootstrap-icons";
-import Home from "../home/Home";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataContext";
 const Signin = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+  const { setIsLoggedIn } = useContext(DataContext);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -176,7 +175,7 @@ const Signin = () => {
                 marginLeft: "20px",
               }}
             >
-              <a href="/signup" className={styles.seconda}>
+              <a href="/usersignup" className={styles.seconda}>
                 Don't have an account? Sign Up
               </a>
             </div>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Form, FormControl, FormLabel } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   TelephoneFill,
   Phone,
@@ -11,7 +11,7 @@ import {
 import styles from "./adminsignin.module.css";
 import { DataContext } from "../../../DataContext";
 const Adminsignin = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+  const {  setIsLoggedIn } = useContext(DataContext);
   const [showPassword, setShowPassword] = useState(false);
   const [signinErrors, setSigninErrors] = useState({});
   const [signinData, setSigninData] = useState({
@@ -142,6 +142,8 @@ const Adminsignin = () => {
             <Button type="submit" className={styles.signinButton}>
               Sign in
             </Button>
+            <br/> 
+            <Link to='/adminsignup' className={styles.link}> Don't have an account?</Link>
           </Form>
         </div>
       </div>

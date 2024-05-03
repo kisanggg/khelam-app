@@ -40,6 +40,12 @@
     color: black;
 }
 
+.sportsModal {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
     .secondContainer p {
         margin-left: 10px !important;

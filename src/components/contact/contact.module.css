@@ -9,21 +9,21 @@
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .emailWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .phoneWrapper {
     border: 1px solid black !important;
     width: 500px !important;
     border-radius: 0px !important;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .messageWrapper {
@@ -90,6 +90,13 @@
     width: 500px;
     height: 40px;
     margin-top: 30px;
+    background-color: red !important;
+    border: 1px solid red !important;
+}
+
+.submitButton:hover {
+    background-color: rgb(199, 2, 2) !important;
+    border: 1px solid rgb(199, 2, 2) !important;
 }
 
 .contactsContainer span {
@@ -157,4 +164,35 @@
         display: flex;
         justify-content: center;
     }
+}
+
+.contactModal {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.modalBody {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.closeButton {
+    margin-left: 220px;
+    width: 20px;
+}
+
+.footer {
+    width: 100%;
+    height: 170px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    padding-top: 140px;
+    margin-top: 100px;
+}
+
+.modalHeader {
+    height: 40px;
 }

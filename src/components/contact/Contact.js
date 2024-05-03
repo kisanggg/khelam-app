@@ -1,10 +1,45 @@
-import React from "react";
-import { Button, Form, FormControl, FormLabel } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
 import styles from "./contact.module.css";
-import { Bank, GeoAlt, Whatsapp } from "react-bootstrap-icons";
+import { Bank, GeoAlt, Whatsapp, XLg } from "react-bootstrap-icons";
 const Contact = () => {
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    phonenumber: "",
+    message: "",
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isValid = validateForm();
+    if (isValid) {
+      setShowModal(true);
+      setContactData({
+        name: "",
+        email: "",
+        phonenumber: "",
+        message: "",
+      });
+    }
+  };
+  const validateForm = () => {
+    const errors = {};
+    if (!contactData.name.trim()) {
+      errors.name = "Please enter the name.";
+    }
+    if (!contactData.email.trim()) {
+      errors.email = "Please enter the email.";
+    }
+    if (!contactData.phonenumber.trim()) {
+      errors.phonenumber = "Please enter your contact number.";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
   return (
     <div>
@@ -17,19 +52,61 @@ const Contact = () => {
               <FormLabel>
                 <span>*</span>Your name
               </FormLabel>
-              <FormControl type="text" className={styles.nameWrapper} />
+              <FormControl
+                type="text"
+                className={styles.nameWrapper}
+                value={contactData.name}
+                onChange={(e) =>
+                  setContactData({
+                    ...contactData,
+                    name: e.target.value,
+                  })
+                }
+                isInvalid={formErrors.name}
+              />
+              <FormControl.Feedback type="invalid">
+                {formErrors.name}
+              </FormControl.Feedback>
             </Form>
             <Form>
               <FormLabel>
                 <span>*</span>Email
               </FormLabel>
-              <FormControl type="text" className={styles.emailWrapper} />
+              <FormControl
+                type="text"
+                className={styles.emailWrapper}
+                value={contactData.email}
+                onChange={(e) =>
+                  setContactData({
+                    ...contactData,
+                    email: e.target.value,
+                  })
+                }
+                isInvalid={formErrors.email}
+              />
+              <FormControl.Feedback type="invalid">
+                {formErrors.email}
+              </FormControl.Feedback>
             </Form>
             <Form>
               <FormLabel>
                 <span>*</span>PhoneNumber
               </FormLabel>
-              <FormControl type="tel" className={styles.phoneWrapper} />
+              <FormControl
+                type="tel"
+                className={styles.phoneWrapper}
+                value={contactData.phonenumber}
+                onChange={(e) =>
+                  setContactData({
+                    ...contactData,
+                    phonenumber: e.target.value,
+                  })
+                }
+                isInvalid={formErrors.phonenumber}
+              />
+              <FormControl.Feedback type="invalid">
+                {formErrors.phonenumber}
+              </FormControl.Feedback>
             </Form>
             <Form>
               <FormLabel>
@@ -39,11 +116,18 @@ const Contact = () => {
                 as="textarea"
                 rows={4}
                 className={styles.messageWrapper}
+                value={contactData.message}
+                onChange={(e) =>
+                  setContactData({
+                    ...contactData,
+                    message: e.target.value,
+                  })
+                }
               />
             </Form>
             <Button type="submit" className={styles.submitButton}>
               Submit
-            </Button>
+            </Button> 
           </Form>
         </div>
         <div className={styles.subContainer}>
@@ -80,6 +164,25 @@ const Contact = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.footer}>
+        <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
+      </div>
+      <div>
+        <Modal
+          show={showModal}
+          onHide={handleCloseModal}
+          className={styles.contactModal}
+        >
+          <Modal.Header className={styles.modalHeader}>
+            <Modal.Title>
+              <XLg onClick={handleCloseModal} className={styles.closeButton} />
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className={styles.modalBody}>
+            Thankyou for contacting us.
+          </Modal.Body>
+        </Modal>
       </div>
     </div>
   );

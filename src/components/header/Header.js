@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./header.css";
 import logo from "../../images/logo.png";
-import signup from "../../images/signup.png";
 import {
   BoxArrowRight,
-  ChatLeftText,
   List,
   PersonCircle,
   Search,
+  XLg,
 } from "react-bootstrap-icons";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataContext";
 import { Modal, Button, Offcanvas, ModalTitle } from "react-bootstrap";
 const Header = () => {
@@ -18,6 +17,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [feedbackModal, setFeedbackModal] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const handleLogout = () => {
     setShowModal(true);
   };
@@ -34,20 +34,22 @@ const Header = () => {
   const toggleDrawer = () => {
     setShowDrawer(true);
   };
-  const handleClick = () => {
-    setFeedbackModal(true);
-  };
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("Feedback received");
     setFeedbackModal(false);
   };
+
+  const handleSearch = () => {
+    setShowSearch(true);
+  };
+
+  const closeSearch = () => {
+    setShowSearch(false);
+  };
   return (
     <>
       <div className="header">
-        {/* <Button className="feedbackButton" onClick={handleClick}>
-          <ChatLeftText size={25} />
-        </Button> */}
         <div
           className="divv"
           style={{ height: "103px", backgroundColor: "#454242" }}
@@ -183,25 +185,22 @@ const Header = () => {
                 >
                   CONTACT
                 </Link>
-                <button
-                  style={{
-                    marginLeft: "58px",
-                    width: "45px",
-                    height: "51px",
-                    border: "1px solid red",
-                  }}
-                >
+                <Button onClick={handleSearch}>
                   <Search
-                    size={30}
-                    style={{ color: "white", marginTop: "0px" }}
+                    size={28}
+                    style={{
+                      color: "white",
+                      marginTop: "0px",
+                      marginLeft: "0px",
+                    }}
                   />
-                </button>
+                </Button>
               </nav>
             </div>
           </div>
         )}
       </div>
-      <Modal show={showModal} onHide={closeModal}>
+      <Modal show={showModal} onHide={closeModal} className="logoutModal">
         <Modal.Header closeButton>
           <Modal.Title>Logout Confirmation</Modal.Title>
         </Modal.Header>
@@ -221,52 +220,40 @@ const Header = () => {
           <Button
             variant="secondary"
             onClick={closeModal}
-            style={{ width: "150px", marginRight: "70px" }}
+            style={{ width: "120px", marginRight: "30px",marginLeft:"50px" }}
           >
             Cancel
           </Button>
           <Button
             variant="primary"
             onClick={confirmLogout}
-            style={{ width: "150px" }}
+            style={{ width: "120px",marginRight:"50px" }}
           >
             Yes, Logout
           </Button>
         </div>
       </Modal>
       <div>
-        <Modal show={feedbackModal} onHide={closeModal}>
-          <Modal.Header closeButton>
-            <ModalTitle>Give Feedbacks</ModalTitle>
-          </Modal.Header>
-          <Modal.Body style={{ padding: "30px", paddingLeft: "50px" }}>
-            <form>
-              <label htmlFor="email">Email*</label>
-              <br />
-              <input type="text" className="email" />
-              <br />
-              <label htmlFor="contacts">Contacts*</label>
-              <br />
-              <input type="tel" className="contacts" />
-              <br />
-              <label htmlFor="Feedbacks">Feedbacks</label>
-              <br />
-              <textarea
-                type="text"
-                placeholder="Leave feedbacks"
-                className="feedbacks"
-              />
-              <br />
-              <button
-                type="submit"
-                className="submitBtn"
-                onClick={handleFormSubmit}
-              >
-                Submit
-              </button>
-            </form>
-          </Modal.Body>
-        </Modal>
+        {showSearch && (
+          <div className="search-overlay">
+            <Button onClick={closeSearch} className="closeButton">
+              <XLg size={25} className="closeIcon" />
+            </Button>
+            <div className="search-container">
+              <label htmlFor="search" className="search-for">
+                SEARCH FOR:
+              </label>
+              <div className="container">
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder="Search..."
+                ></input>
+                <Search size={30} className="searchIcon" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { Form, InputGroup, Dropdown, DropdownButton } from "react-bootstrap";
-import { useParams, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import {
+  Form,
+  InputGroup,
+  Dropdown,
+  DropdownButton,
+  Modal,
+  Button,
+} from "react-bootstrap";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styles from "./sports.module.css";
 import Times from "../venues/times/Times";
+import { DataContext } from "../../DataContext";
 
 const Sports = () => {
   const { id } = useParams();
   const location = useLocation();
+  const { isLoggedIn } = useContext(DataContext);
   const [selectedSports, setSelectedSports] = useState("");
   const [selectedVenue, setSelectedVenue] = useState("");
-
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("Sports component mounted");
     console.log("Id:", id);
@@ -33,7 +43,7 @@ const Sports = () => {
         switch (sport) {
           case "Basketball":
           case "Futsal":
-            return <Times />;
+            return isLoggedIn ? <Times /> : null;
           default:
             return null;
         }
@@ -41,6 +51,24 @@ const Sports = () => {
         return null;
     }
   };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleShowLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleLogin = () => {
+    navigate("/usersignup");
+  };
+
+  useEffect(() => {
+    if (selectedSports && selectedVenue && !isLoggedIn) {
+      handleShowLoginModal();
+    }
+  }, [selectedSports, selectedVenue, isLoggedIn]);
 
   return (
     <>
@@ -119,6 +147,27 @@ const Sports = () => {
         <div className={styles.selectedSection}>
           {renderSportSection(selectedVenue, selectedSports)}
         </div>
+      )}
+
+      {!isLoggedIn && (
+        <Modal
+          show={showLoginModal}
+          onHide={handleCloseLoginModal}
+          className={styles.sportsModal}
+        >
+          <Modal.Header>
+            <Modal.Title>Please login to access this feature.</Modal.Title>
+          </Modal.Header>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseLoginModal}>
+              Close
+            </Button>
+
+            <Button variant="primary" onClick={handleLogin}>
+              Login
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
     </>
   );

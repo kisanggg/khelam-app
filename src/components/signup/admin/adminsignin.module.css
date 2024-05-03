@@ -70,6 +70,12 @@
     font-size: 15px;
 }
 
+.link{
+    color: black !important;
+    font-size: 13px ;
+    margin-left: 87px;
+    margin-top: 10px;
+}
 @media(max-width:768px) {
     .container {
         margin-left: 180px !important;

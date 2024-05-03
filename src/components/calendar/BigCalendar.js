@@ -15,9 +15,9 @@ const BigCalendar = () => {
   console.log("Current location:", location.pathname);
   const {
     days,
+    times,
     bookedTime,
     setBookedTime,
-    times,
     disabledTimeSlots,
     setDisabledTimeSlots,
   } = useContext(DataContext);
@@ -72,12 +72,13 @@ const BigCalendar = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  useEffect(() => {
-    console.log("disabled slots", disabledTimeSlots);
-    disabledTimeSlots.forEach((slot) => {
-      handleDisableTimeSlots(slot.date, slot.time);
-    });
-  }, []);
+  const handleDisableTimeSlots = (date, time) => {
+    const disabledSlot = { date, time };
+    setDisabledTimeSlots((prevDisabledTimeSlots) => [
+      ...prevDisabledTimeSlots,
+      disabledSlot,
+    ]);
+  };
 
   useEffect(() => {
     console.log("Updated bookedTime:", bookedTime);
@@ -139,14 +140,6 @@ const BigCalendar = () => {
     setSelectedTime(formattedTime);
   };
 
-  const handleDisableTimeSlots = (date, time) => {
-    const disabledSlot = { date, time };
-    setDisabledTimeSlots((prevDisabledTimeSlots) => [
-      ...prevDisabledTimeSlots,
-      disabledSlot,
-    ]);
-  };
-
   return (
     <>
       <div className={styles.calendarContainer}>
@@ -154,10 +147,6 @@ const BigCalendar = () => {
           console.log("date:", date);
           const modifiedDay = moment(date).format("dddd").toUpperCase();
           const modifiedDate = moment(date).format("MMMM D, YYYY");
-          const futureTimes = times.filter((time) =>
-            moment(time).isAfter(new Date())
-          );
-          console.log("future times:", futureTimes);
 
           return (
             <div key={index} className={styles.dayContainer}>
@@ -185,6 +174,11 @@ const BigCalendar = () => {
                     )} ${moment(time).format("hh A")}`;
                     const isBooked = !!bookedTime[bookingKey];
                     const currentTime = new Date();
+                    const isDisabled = disabledTimeSlots.some(
+                      (slot) =>
+                        moment(slot.date).isSame(date, "day") &&
+                        moment(slot.time).isSame(time, "hour")
+                    );
                     if (moment(date).day() === currentTime.getDay()) {
                       const futureTime = moment(time).isAfter(currentTime);
                       if (futureTime) {
@@ -194,23 +188,14 @@ const BigCalendar = () => {
                             className={`${styles.timeSlot} ${
                               isBooked ? styles.booked : ""
                             } ${
-                              disabledTimeSlots.some((slot) => {
-                                return (
-                                  slot.date.getTime() === date.getTime() &&
-                                  slot.time.getTime() === time.getTime()
-                                );
-                              })
+                              isDisabled
                                 ? styles.disabled
                                 : ""
                             }`}
                           >
                             {moment(time).format("hh A")}
                             <br />
-                            {disabledTimeSlots.some(
-                              (slot) =>
-                                slot.date.getTime() === date.getTime() &&
-                                slot.time.getTime() === time.getTime()
-                            ) ? (
+                            {isDisabled ? (
                               <span className={styles.notAvailableText}>
                                 Not Available
                               </span>
@@ -251,22 +236,14 @@ const BigCalendar = () => {
                           className={`${styles.timeSlot} ${
                             isBooked ? styles.booked : ""
                           } ${
-                            disabledTimeSlots.some(
-                              (slot) =>
-                                slot.date.getTime() === date.getTime() &&
-                                slot.time.getTime() === time.getTime()
-                            )
+                            isDisabled
                               ? styles.disabled
                               : ""
                           }`}
                         >
                           {moment(time).format("hh A")}
                           <br />
-                          {disabledTimeSlots.some(
-                            (slot) =>
-                              slot.date.getTime() === date.getTime() &&
-                              slot.time.getTime() === time.getTime()
-                          ) ? (
+                          {isDisabled ? (
                             <span className={styles.notAvailableText}>
                               Not Available
                             </span>

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./about.module.css";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Facebook, Github, Linkedin, Whatsapp } from "react-bootstrap-icons";
+
 
 const About = () => {
   return (
@@ -10,7 +10,7 @@ const About = () => {
       <div className={styles.mainWrapper}>
         <img
           src="https://images.unsplash.com/photo-1559692048-79a3f837883d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJhc2tldGJhbGwlMjBjb3VydHxlbnwwfHwwfHx8MA%3D%3D"
-          alt="about us image"
+          alt="about us"
           width={300}
           height={400}
         />
