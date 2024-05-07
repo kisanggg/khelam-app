@@ -77,13 +77,13 @@ const Adminsignup = () => {
   };
   const filteredDistricts = districtByPradesh[selectedPradesh] || [];
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    console.log("upload Image", file);
-  };
-  const handleImageUpload = () => {
-    alert("image uploaded");
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   console.log("upload Image", file);
+  // };
+  // const handleImageUpload = () => {
+  //   alert("image uploaded");
+  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

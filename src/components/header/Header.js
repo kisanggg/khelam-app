@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataContext";
-import { Modal, Button, Offcanvas, ModalTitle } from "react-bootstrap";
+import { Modal, Button, Offcanvas} from "react-bootstrap";
 const Header = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
@@ -34,11 +34,11 @@ const Header = () => {
   const toggleDrawer = () => {
     setShowDrawer(true);
   };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log("Feedback received");
-    setFeedbackModal(false);
-  };
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Feedback received");
+  //   setFeedbackModal(false);
+  // };
 
   const handleSearch = () => {
     setShowSearch(true);

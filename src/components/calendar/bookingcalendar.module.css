@@ -141,7 +141,7 @@
   }
 
   .booked {
-    background-color: rgb(255, 135, 135);
+    background-color: rgb(241, 131, 123);
     pointer-events: none;
   }
 
@@ -157,6 +157,7 @@
   .notAvailableText {
     color: white;
   }
+
   @media(max-width:768px){
     .dateWrapper{
       width: 140px !important;

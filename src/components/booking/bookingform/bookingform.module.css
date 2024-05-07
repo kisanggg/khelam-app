@@ -15,14 +15,19 @@
   display: flex;
 }
 
-.formWrapper label {
-  margin-left: 20px;
-}
 .fName {
   margin-left: 22px;
+  width: 186px;
+  height: 30px;
+  padding-left: 10px;
 }
 .lName {
-  margin-left: 49px;
+  position: absolute;
+  width: 186px;
+  margin-left: 48px;
+  height: 30px; 
+  padding-left: 10px;
+
 }
 .header {
   display: flex;
@@ -44,6 +49,7 @@
 .bDate {
   width: 186px;
   height: 30px;
+  padding-left: 10px;
 }
 .bButton {
   background-color: red;
@@ -58,7 +64,25 @@
 .submittedFormWrapper {
   background-color: rgba(43, 40, 40, 0.5);
   backdrop-filter: blur(0.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .submittedFormBody {
   background-color: rgb(16, 15, 15);
+}
+.email{
+  width: 186px;
+  height: 30px;
+  padding-left: 10px;
+}
+.tel{
+  width: 186px;
+  height: 30px;
+  padding-left: 10px;
+}
+.bTime{
+  width: 186px;
+  height: 30px;
+  padding-left: 10px;
 }
