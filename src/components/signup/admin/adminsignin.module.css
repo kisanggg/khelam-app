@@ -1,12 +1,14 @@
 .mainBody {
     width: 100%;
     height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
     border: 1px solid rgb(205, 204, 204);
     width: 430px;
-    margin-left: 415px;
     height: auto;
     margin-top: 40px;
     border-radius: 0px;
@@ -76,9 +78,16 @@
     margin-left: 87px;
     margin-top: 10px;
 }
+.backArrow{
+    color: grey !important;
+    margin-top: 10px !important;
+    margin-left: 10px;
+}
+.backArrow:hover{
+    color: rgb(87, 86, 86) !important;
+}
 @media(max-width:768px) {
     .container {
-        margin-left: 180px !important;
         width: 400px !important;
     }
 
@@ -86,8 +95,4 @@
         margin-left: 50px !important;
     }
 }
-@media(max-width:576px){
-    .container{
-        margin-left: 90px !important;
-    }
-}
+

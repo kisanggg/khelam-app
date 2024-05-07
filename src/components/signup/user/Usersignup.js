@@ -51,197 +51,200 @@ export default function Usersignup() {
     return <Signin />;
   }
   return (
-    <div className={styles.mainWrapper}>
+    <>
       <Link to="/signup">
         <ArrowLeftCircleFill size={30} className={styles.backArrow} />
       </Link>
-      <div className={styles.formWrapper}>
-        <div className={styles.signUp}>
-          <img
-            src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
-            alt="err"
-            width={120}
-            height={100}
-          />
-          <div className={styles.wrapper}>
-            <h5>HiTech</h5>
-            <p>Imadol, Lalitpur</p>
-            <div className={styles.phoneWrapper}>
-              <p>
-                <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
-              </p>
-              <p>
-                <Phone style={{ color: "red", marginLeft: "7px" }} /> 9802542632
-              </p>
+      <div className={styles.mainWrapper}>
+        <div className={styles.formWrapper}>
+          <div className={styles.signUp}>
+            <img
+              src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
+              alt="err"
+              width={120}
+              height={100}
+            />
+            <div className={styles.wrapper}>
+              <h5>HiTech</h5>
+              <p>Imadol, Lalitpur</p>
+              <div className={styles.phoneWrapper}>
+                <p>
+                  <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
+                </p>
+                <p>
+                  <Phone style={{ color: "red", marginLeft: "7px" }} />{" "}
+                  9802542632
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <h4>
-          Sign Up <FileLockFill size={30} />
-        </h4>
-        <Form className={styles.signUpForm} onSubmit={handleSubmit}>
-          <Form.Group
-            controlId="Name"
-            style={{ display: "flex", justifyContent: "flex-start" }}
+          <h4>
+            Sign Up <FileLockFill size={30} />
+          </h4>
+          <Form className={styles.signUpForm} onSubmit={handleSubmit}>
+            <Form.Group
+              controlId="Name"
+              style={{ display: "flex", justifyContent: "flex-start" }}
+            >
+              <Form.Control
+                type="text"
+                placeholder="First Name"
+                style={{
+                  width: "150px",
+                  margin: "10px",
+                  marginBottom: "5px",
+                  border: "1px solid black",
+                  marginLeft: "70px",
+                }}
+                className={styles.fnameInputWrapper}
+                required
+              />
+              <Form.Control
+                type="text"
+                placeholder="Last Name"
+                style={{
+                  width: "150px",
+                  margin: "10px",
+                  marginBottom: "5px",
+                  marginLeft: "0px",
+                  border: "1px solid black",
+                }}
+                className={styles.lnameInputWrapper}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="Address">
+              <Form.Control
+                type="text"
+                placeholder="Address"
+                style={{
+                  width: "311px",
+                  marginLeft: "70px",
+                  marginTop: "8px",
+                  border: "1px solid black",
+                }}
+                className={styles.addressWrapper}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="email">
+              <Form.Control
+                type="text"
+                placeholder="Email Address"
+                style={{
+                  width: "311px",
+                  margin: "10px",
+                  border: "1px solid black",
+                  marginLeft: "70px",
+                  marginTop: "13px",
+                }}
+                className={styles.emailWrapper}
+                required
+                onChange={(e) => setEmailData(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <div style={{ display: "flex" }}>
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  style={{
+                    width: "311px",
+                    border: "1px solid black",
+                    margin: "10px",
+                    marginLeft: "70px",
+                    marginTop: "5px",
+                  }}
+                  className={styles.passwordWrapper}
+                  required
+                  onChange={handleChange}
+                />
+                {showPassword ? (
+                  <EyeSlashFill
+                    className={styles.eyeIcon}
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      marginTop: "14px",
+                      marginLeft: "345px",
+                      position: "absolute",
+                      color: "black",
+                    }}
+                  />
+                ) : (
+                  <EyeFill
+                    className={styles.eyeIcon}
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      marginTop: "14px",
+                      marginLeft: "345px",
+                      position: "absolute",
+                      color: "black",
+                    }}
+                  />
+                )}
+              </div>
+            </Form.Group>
+            <Form.Group controlId="confirmPassword">
+              <div style={{ display: "flex" }}>
+                <Form.Control
+                  type={showConPassword ? "text" : "password"}
+                  placeholder="Confirm password"
+                  style={{
+                    width: "311px",
+                    margin: "10px",
+                    border: "1px solid black",
+                    marginLeft: "70px",
+                    marginTop: "5px",
+                  }}
+                  className={styles.confirmWrapper}
+                  required
+                  onChange={handleChange}
+                />
+                {showConPassword ? (
+                  <EyeSlashFill
+                    className={styles.eyeIcon}
+                    onClick={() => setShowConPassword(!showConPassword)}
+                    style={{
+                      marginTop: "14px",
+                      marginLeft: "345px",
+                      position: "absolute",
+                      color: "black",
+                    }}
+                  />
+                ) : (
+                  <EyeFill
+                    className={styles.eyeIcon}
+                    onClick={() => setShowConPassword(!showConPassword)}
+                    style={{
+                      position: "absolute",
+                      marginTop: "14px",
+                      marginLeft: "345px",
+                      color: "black",
+                    }}
+                  />
+                )}
+              </div>
+            </Form.Group>
+            <br />
+            <Button className={styles.signupButton} type="submit">
+              Sign Up
+            </Button>
+          </Form>
+          <a
+            href="/login"
+            style={{
+              textAlign: "center",
+              marginTop: "0px",
+              color: "black",
+              fontSize: "14px",
+              marginLeft: "0px",
+              marginBottom: "50px",
+            }}
           >
-            <Form.Control
-              type="text"
-              placeholder="First Name"
-              style={{
-                width: "150px",
-                margin: "10px",
-                marginBottom: "5px",
-                border: "1px solid black",
-                marginLeft: "70px",
-              }}
-              className={styles.fnameInputWrapper}
-              required
-            />
-            <Form.Control
-              type="text"
-              placeholder="Last Name"
-              style={{
-                width: "150px",
-                margin: "10px",
-                marginBottom: "5px",
-                marginLeft: "0px",
-                border: "1px solid black",
-              }}
-              className={styles.lnameInputWrapper}
-              required
-            />
-          </Form.Group>
-          <Form.Group controlId="Address">
-            <Form.Control
-              type="text"
-              placeholder="Address"
-              style={{
-                width: "311px",
-                marginLeft: "70px",
-                marginTop: "8px",
-                border: "1px solid black",
-              }}
-              className={styles.addressWrapper}
-              required
-            />
-          </Form.Group>
-          <Form.Group controlId="email">
-            <Form.Control
-              type="text"
-              placeholder="Email Address"
-              style={{
-                width: "311px",
-                margin: "10px",
-                border: "1px solid black",
-                marginLeft: "70px",
-                marginTop: "13px",
-              }}
-              className={styles.emailWrapper}
-              required
-              onChange={(e) => setEmailData(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <div style={{ display: "flex" }}>
-              <Form.Control
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                style={{
-                  width: "311px",
-                  border: "1px solid black",
-                  margin: "10px",
-                  marginLeft: "70px",
-                  marginTop: "5px",
-                }}
-                className={styles.passwordWrapper}
-                required
-                onChange={handleChange}
-              />
-              {showPassword ? (
-                <EyeSlashFill
-                  className={styles.eyeIcon}
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={{
-                    marginTop: "14px",
-                    marginLeft: "345px",
-                    position: "absolute",
-                    color: "black",
-                  }}
-                />
-              ) : (
-                <EyeFill
-                  className={styles.eyeIcon}
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={{
-                    marginTop: "14px",
-                    marginLeft: "345px",
-                    position: "absolute",
-                    color: "black",
-                  }}
-                />
-              )}
-            </div>
-          </Form.Group>
-          <Form.Group controlId="confirmPassword">
-            <div style={{ display: "flex" }}>
-              <Form.Control
-                type={showConPassword ? "text" : "password"}
-                placeholder="Confirm password"
-                style={{
-                  width: "311px",
-                  margin: "10px",
-                  border: "1px solid black",
-                  marginLeft: "70px",
-                  marginTop: "5px",
-                }}
-                className={styles.confirmWrapper}
-                required
-                onChange={handleChange}
-              />
-              {showConPassword ? (
-                <EyeSlashFill
-                  className={styles.eyeIcon}
-                  onClick={() => setShowConPassword(!showConPassword)}
-                  style={{
-                    marginTop: "14px",
-                    marginLeft: "345px",
-                    position: "absolute",
-                    color: "black",
-                  }}
-                />
-              ) : (
-                <EyeFill
-                  className={styles.eyeIcon}
-                  onClick={() => setShowConPassword(!showConPassword)}
-                  style={{
-                    position: "absolute",
-                    marginTop: "14px",
-                    marginLeft: "345px",
-                    color: "black",
-                  }}
-                />
-              )}
-            </div>
-          </Form.Group>
-          <br />
-          <Button className={styles.signupButton} type="submit">
-            Sign Up
-          </Button>
-        </Form>
-        <a
-          href="/login"
-          style={{
-            textAlign: "center",
-            marginTop: "0px",
-            color: "black",
-            fontSize: "14px",
-            marginLeft: "0px",
-            marginBottom: "50px",
-          }}
-        >
-          Already have an account?
-        </a>
+            Already have an account?
+          </a>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

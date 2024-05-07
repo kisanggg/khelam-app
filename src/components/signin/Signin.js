@@ -47,142 +47,148 @@ const Signin = () => {
     return Object.keys(errors).length === 0;
   };
   return (
-    <div className={styles.mainContainer}>
+    <>
       <Link to="/usersignup">
         <ArrowLeftCircleFill size={30} className={styles.backArrow} />
       </Link>
-      <div className={styles.signInWrapper}>
-        <div className={styles.signIn}>
-          <img
-            src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
-            alt="err"
-            width={120}
-            height={100}
-          />
-          <div className={styles.wrapper}>
-            <h4>HiTech</h4>
-            <p>Imadol, Lalitpur</p>
-            <div className={styles.phoneWrapper}>
-              <p>
-                <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
-              </p>
-              <p>
-                <Phone style={{ color: "red", marginLeft: "10px" }} />{" "}
-                9802542632
-              </p>
+      <div className={styles.mainContainer}>
+        <div className={styles.signInWrapper}>
+          <div className={styles.signIn}>
+            <img
+              src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
+              alt="err"
+              width={120}
+              height={100}
+            />
+            <div className={styles.wrapper}>
+              <h4>HiTech</h4>
+              <p>Imadol, Lalitpur</p>
+              <div className={styles.phoneWrapper}>
+                <p>
+                  <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
+                </p>
+                <p>
+                  <Phone style={{ color: "red", marginLeft: "10px" }} />{" "}
+                  9802542632
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.formWrapper}>
-          <h3>
-            Sign In
-            <FileLockFill size={25} />
-          </h3>
-          <Form className={styles.signInForm} onSubmit={handleSubmit}>
-            <Form.Group controlId="username">
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                value={data.email}
-                style={{
-                  width: "320px",
-                  margin: "10px",
-                  marginLeft: "40px",
-                  height: "40px",
-                  border: "1px solid black",
-                }}
-                isInvalid={!!formErrors.email}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    email: e.target.value,
-                  })
-                }
-              />
-              <FormControl.Feedback
-                type="invalid"
-                style={{ textAlign: "left", marginLeft: "40px" }}
-              >
-                {formErrors.email}
-              </FormControl.Feedback>
-            </Form.Group>
-            <Form.Group controlId="password">
-              <div style={{ display: "flex" }}>
-                <div>
-                  <Form.Control
-                    type={displayPassword ? "text" : "password"}
-                    placeholder="Password"
-                    value={data.password}
-                    style={{
-                      width: "320px",
-                      margin: "10px",
-                      marginLeft: "40px",
-                      height: "40px",
-                      border: "1px solid black",
-                    }}
-                    onChange={(e) =>
-                      setData({
-                        ...data,
-                        password: e.target.value,
-                      })
-                    }
-                    isInvalid={!!formErrors.password}
-                  />
-                  <FormControl.Feedback
-                    type="invalid"
-                    style={{ textAlign: "left", marginLeft: "40px" }}
-                  >
-                    {formErrors.password}
-                  </FormControl.Feedback>
-                </div>
-                {displayPassword ? (
-                  <EyeSlashFill
-                    onClick={() => setDisplayPassword(!displayPassword)}
-                    style={{
-                      position: "absolute",
-                      marginLeft: "310px",
-                      marginTop: "22px",
-                    }}
-                  />
-                ) : (
-                  <EyeFill
-                    onClick={() => setDisplayPassword(!displayPassword)}
-                    style={{
-                      position: "absolute",
-                      marginLeft: "310px",
-                      marginTop: "22px",
-                    }}
-                  />
-                )}
-              </div>
-            </Form.Group>
-            <div className={styles.checkbox}>
-              <input type="checkbox" style={{ marginLeft: "0px" }} />
-              <label htmlFor="remember" style={{ marginLeft: "5px" }}>
-                Remember me
-              </label>
-            </div>
-            <Button
-              className={styles.signinButton}
-              type="submit"
-              style={{ width: "150px", marginTop: "25px", marginLeft: "10px" }}
-            >
+          <div className={styles.formWrapper}>
+            <h3>
               Sign In
-            </Button>
-            <div
-              style={{
-                marginTop: "10px",
-                marginLeft: "20px",
-              }}
-            >
-              <a href="/usersignup" className={styles.seconda}>
-                Don't have an account? Sign Up
-              </a>
-            </div>
-          </Form>
+              <FileLockFill size={25} />
+            </h3>
+            <Form className={styles.signInForm} onSubmit={handleSubmit}>
+              <Form.Group controlId="username">
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  value={data.email}
+                  style={{
+                    width: "320px",
+                    margin: "10px",
+                    marginLeft: "40px",
+                    height: "40px",
+                    border: "1px solid black",
+                  }}
+                  isInvalid={!!formErrors.email}
+                  onChange={(e) =>
+                    setData({
+                      ...data,
+                      email: e.target.value,
+                    })
+                  }
+                />
+                <FormControl.Feedback
+                  type="invalid"
+                  style={{ textAlign: "left", marginLeft: "40px" }}
+                >
+                  {formErrors.email}
+                </FormControl.Feedback>
+              </Form.Group>
+              <Form.Group controlId="password">
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <Form.Control
+                      type={displayPassword ? "text" : "password"}
+                      placeholder="Password"
+                      value={data.password}
+                      style={{
+                        width: "320px",
+                        margin: "10px",
+                        marginLeft: "40px",
+                        height: "40px",
+                        border: "1px solid black",
+                      }}
+                      onChange={(e) =>
+                        setData({
+                          ...data,
+                          password: e.target.value,
+                        })
+                      }
+                      isInvalid={!!formErrors.password}
+                    />
+                    <FormControl.Feedback
+                      type="invalid"
+                      style={{ textAlign: "left", marginLeft: "40px" }}
+                    >
+                      {formErrors.password}
+                    </FormControl.Feedback>
+                  </div>
+                  {displayPassword ? (
+                    <EyeSlashFill
+                      onClick={() => setDisplayPassword(!displayPassword)}
+                      style={{
+                        position: "absolute",
+                        marginLeft: "310px",
+                        marginTop: "22px",
+                      }}
+                    />
+                  ) : (
+                    <EyeFill
+                      onClick={() => setDisplayPassword(!displayPassword)}
+                      style={{
+                        position: "absolute",
+                        marginLeft: "310px",
+                        marginTop: "22px",
+                      }}
+                    />
+                  )}
+                </div>
+              </Form.Group>
+              <div className={styles.checkbox}>
+                <input type="checkbox" style={{ marginLeft: "0px" }} />
+                <label htmlFor="remember" style={{ marginLeft: "5px" }}>
+                  Remember me
+                </label>
+              </div>
+              <Button
+                className={styles.signinButton}
+                type="submit"
+                style={{
+                  width: "150px",
+                  marginTop: "25px",
+                  marginLeft: "10px",
+                }}
+              >
+                Sign In
+              </Button>
+              <div
+                style={{
+                  marginTop: "10px",
+                  marginLeft: "20px",
+                }}
+              >
+                <a href="/usersignup" className={styles.seconda}>
+                  Don't have an account? Sign Up
+                </a>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

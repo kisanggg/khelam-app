@@ -52,7 +52,6 @@ const Header = () => {
       <div className="header">
         <div
           className="divv"
-          style={{ height: "103px", backgroundColor: "#454242" }}
         >
           <div className="div-wrapper"></div>
           <div className="div1-wrapper"></div>
@@ -124,7 +123,7 @@ const Header = () => {
           </Offcanvas>
         ) : (
           <div className="sub-header">
-            <div className="signUp" style={{ height: "52px" }}>
+            <div className="signUp" >
               {isLoggedIn ? (
                 <div className="logoutWrapper">
                   <Link
@@ -139,7 +138,7 @@ const Header = () => {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     alignItems: "center",
                     marginLeft: "520px",
                   }}
@@ -148,7 +147,7 @@ const Header = () => {
                     <PersonCircle /> signup
                   </Link>
                 </div>
-              )}
+              )}  
             </div>
             <div className="navBar">
               <nav className="nav">

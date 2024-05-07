@@ -7,6 +7,7 @@ import {
   LockFill,
   EyeSlashFill,
   EyeFill,
+  ArrowLeftCircleFill
 } from "react-bootstrap-icons";
 import styles from "./adminsignin.module.css";
 import { DataContext } from "../../../DataContext";
@@ -48,6 +49,10 @@ const Adminsignin = () => {
   };
 
   return (
+    <>
+    <Link to="/adminsignup">
+        <ArrowLeftCircleFill size={30} className={styles.backArrow} />
+      </Link>
     <div className={styles.mainBody}>
       <div className={styles.container}>
         <div className={styles.signinWrapper}>
@@ -148,6 +153,7 @@ const Adminsignin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

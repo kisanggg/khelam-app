@@ -1,8 +1,11 @@
 .adminWrapper {
     background-color: rgb(255, 255, 255);
     color: white;
-    height: 1000px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 .adminWrapper h1 {
@@ -10,8 +13,6 @@
 }
 
 .bodyWrapper {
-    margin-left: 290px;
-    margin-right: 181px;
     width: 700px;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
@@ -162,7 +163,6 @@
 
     .bodyWrapper {
         width: 500px !important;
-        margin-left: 140px !important;
     }
 
     .signUp {
@@ -222,7 +222,6 @@
 
     .bodyWrapper {
         width: 451px !important;
-        margin-left: 70px !important;
     }
 
     .formWrapper {
