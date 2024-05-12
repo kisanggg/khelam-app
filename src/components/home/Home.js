@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import img1 from "../../images/img1.png";
 import img2 from "../../images/img2.png";
-import img3 from "../../images/img3.png";
-import img4 from "../../images/img4.png";
-import img5 from "../../images/img5.png";
-import img6 from "../../images/img6.png";
+// import img3 from "../../images/img3.png";
+// import img4 from "../../images/img4.png";
+// import img5 from "../../images/img5.png";
+// import img6 from "../../images/img6.png";
 import {
   Lock,
   Person,
@@ -22,21 +22,22 @@ const Home = () => {
   const { setIsLoggedIn } = useContext(DataContext);
   const { userData, setUserData } = useContext(DataContext);
   const navigate = useNavigate();
-  const settings = {
+  var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    prevArrow: <ArrowLeftCircleFill size={80} />,
-    nextArrow: <ArrowRightCircleFill size={80} />,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <ArrowLeftCircleFill size={90} />,
+    nextArrow: <ArrowRightCircleFill size={90} />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: false,
         },
       },
       {
@@ -52,11 +53,10 @@ const Home = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
     ],
-  };
+  };  
   const [signinErrors, setSigninErrors] = useState({});
   const [signinData, setSigninData] = useState({
     username: "",
@@ -93,6 +93,8 @@ const Home = () => {
       setIsLoggedIn(true);
     }
   };
+
+  console.log(userData, 'userdata')
 
   useEffect(() => {
     axios
@@ -210,13 +212,14 @@ const Home = () => {
                   style={{ width: "16rem !important" }}
                   className={styles.cardsContainer}
                 >
-                  <Card.Img src={item.image } alt="this is an image"/>
+                  <Card.Img src={`http://192.168.1.68:8000${item.image_url}`} alt="this is an image" />
                   <Card.Body className={styles.homeCardBody}>
                     <Card.Title>{item.title}</Card.Title>
                   </Card.Body>
                 </Card>
               </div>
             ))}
+              </Slider>
             {/* <div>
               <Card
                 style={{ width: "16rem !important" }}
@@ -254,8 +257,7 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </div> */}
-          </Slider>
-        </div>
+        </div>  
       </div>
       <div className={styles.footer}>
         <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>
