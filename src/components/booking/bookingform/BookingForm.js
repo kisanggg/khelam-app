@@ -73,8 +73,8 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
       time: bookingTimeRef.current.value,
       hour: reserveTimeRef.current.value,
       type: bookingTypeRef.current.value,
-      pradesh : pradeshRef.current.value,
-      district : districtRef.current.value,
+      pradesh: pradeshRef.current.value,
+      district: districtRef.current.value,
       note: noteRef.current.value,
     };
     addFormData(formData);
@@ -135,13 +135,18 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
             required
           />
           <div className={styles.emailWrapper}>
-            <div style={{ marginTop: "10px" }}>
-              <label htmlFor="Email" style={{ marginLeft: "0px" }}>
-                Email
-              </label>
-              <br />
+            <div
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
+              <label htmlFor="Email">Email</label>
               <input
                 type="text"
+                placeholder="Email"
                 className={styles.email}
                 ref={emailRef}
                 name="email"
@@ -149,13 +154,18 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               />
             </div>
 
-            <div style={{ marginTop: "10px" }}>
-              <label htmlFor="Phone" style={{ marginLeft: "0px" }}>
-                Phone
-              </label>
-              <br />
+            <div
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
+              <label htmlFor="Phone">Phone</label>
               <input
                 type="tel"
+                placeholder="Phone Number"
                 className={styles.tel}
                 name="phone"
                 ref={phoneRef}
@@ -166,12 +176,19 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               />
             </div>
           </div>
+
           <div className={styles.bookingWrapper}>
-            <div style={{ marginTop: "10px" }}>
+            <div
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
               <label htmlFor="bookingdate" style={{ marginLeft: "0px" }}>
                 Booking Date
               </label>
-              <br />
               <div style={{ display: "flex" }}>
                 <CalendarEvent
                   size={20}
@@ -194,6 +211,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
                 />
               </div>
             </div>
+
             <div style={{ marginTop: "10px" }}>
               <label htmlFor="bookingTime" style={{ marginLeft: "0px" }}>
                 Booking Time
@@ -229,7 +247,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               <select
                 name="reserveTime"
                 ref={reserveTimeRef}
-                style={{ width: "186px", height: "30px" }}
+                style={{ width: "186px", height: "30px", paddingLeft: "10px"}}
               >
                 <option>1 hour</option>
                 <option>2 hour</option>
@@ -244,21 +262,25 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               <select
                 name="bookingType"
                 ref={bookingTypeRef}
-                style={{ width: "184px", height: "30px" }}
+                style={{ width: "184px", height: "30px",  paddingLeft: "10px" }}
               >
                 <option>Full Court</option>
                 <option>Half Court</option>
               </select>
             </div>
           </div>
-          <div style={{display:"flex",marginTop:"10px"}}>
-            <div>
-              <label htmlFor="Pradesh" style={{ marginLeft: "25px" }}>
-                Pradesh
-              </label>
-              <br />
+          <div style={{ display: "flex", marginTop: "10px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                marginLeft: "22px",
+              }}
+            >
+              <label htmlFor="Pradesh">Pradesh</label>
               <select
-                style={{ marginLeft: "25px", width: "184px" }}
+                style={{ width: "186px", height: "30px",  paddingLeft: "10px"}}
                 ref={pradeshRef}
                 value={selectedProvince}
                 onChange={(e) => setSelectedProvince(e.target.value)}
@@ -271,13 +293,18 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               </select>
             </div>
             <div>
-              <label htmlFor="districtbypradesh" style={{marginLeft:"50px"}}>
+              <label htmlFor="districtbypradesh" style={{ marginLeft: "50px" }}>
                 District
               </label>
               <br />
-              <select style={{ width: "184px",marginLeft:"50px"}} ref={districtRef}>
+              <select
+                style={{ width: "184px", marginLeft: "50px", height: "30px" , paddingLeft: "10px"}}
+                ref={districtRef}
+              >
                 {districtByPradesh[selectedProvince].map((d, index) => (
-                  <option key={index} value={d}>{d}</option>
+                  <option key={index} value={d}>
+                    {d}
+                  </option>
                 ))}
               </select>
             </div>
@@ -291,7 +318,7 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
               type="text"
               name="note"
               ref={noteRef}
-              style={{ marginLeft: "24px", width: "418px", height: "80px" }}
+              style={{ marginLeft: "24px", width: "418px", height: "80px" , paddingLeft: "10px"}}
               required
             ></textarea>
           </div>
@@ -311,4 +338,4 @@ const BookingForm = ({ selectedTime, onClose, selectedDate, onSubmit }) => {
   );
 };
 
-export default BookingForm;
+export default BookingForm; 

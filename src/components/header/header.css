@@ -1,8 +1,22 @@
 .header {
   display: flex;
-  width: 100%;
+  width: 100% !important;
 }
-
+.divv {
+  width: 50% !important;
+  height: 103px;
+  background-color: #454242;
+}
+.div-wrapper {
+  width: 100% !important;
+  border-top: 52px solid red;
+  border-right: 40px solid black;
+}
+.div1-wrapper {
+  width: 93.7% !important;
+  border-top: 51px solid red;
+  border-right: 40px solid #454242;
+}
 .signupLink {
   background-color: black;
   height: 100px;
@@ -22,10 +36,13 @@
   padding: 10px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .header {
     width: 100%;
     height: 80px;
+  }
+  .divv {
+    display: none;
   }
 
   .header-wrapper {
@@ -148,7 +165,7 @@
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .header {
     width: 100% !important;
     box-sizing: border-box;
@@ -273,7 +290,6 @@
   .signupButton:hover {
     background-color: rgb(190, 16, 16) !important;
   }
-
 }
 
 .header-wrapper {
@@ -281,20 +297,6 @@
   display: flex;
   position: absolute;
   width: 30%;
-}
-
-.div-wrapper {
-  width: 650px;
-  height: 0px;
-  border-top: 52px solid red;
-  border-right: 40px solid black;
-}
-
-.div1-wrapper {
-  width: 610px;
-  height: 1px;
-  border-top: 51px solid red;
-  border-right: 40px solid #454242;
 }
 
 .div {
@@ -329,12 +331,13 @@
 }
 
 .sub-header {
-  width: 700px;
+  width: 50% !important;
 }
 
 .signUp {
   background-color: black;
-  width: 600;
+  width: 100%;
+  height: 52px;
 }
 
 .signUp a:hover {
@@ -342,15 +345,18 @@
 }
 
 .navBar {
+  width: 100%;
   height: 51px;
   background-color: rgb(67, 67, 67);
-
 }
 
 .nav {
   background-color: rgb(67, 67, 67);
   height: 40px;
-  margin-left: 49px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .nav-link {
@@ -386,7 +392,6 @@
   width: 50px;
   height: 51px;
   border-radius: 0px;
-
 }
 
 .nav button:hover {
@@ -394,8 +399,10 @@
   border: 1px solid rgb(177, 8, 8) !important;
 }
 
-
 .logoutWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   padding-top: 10px;
 }
 
@@ -525,7 +532,7 @@
 .closeIcon:hover {
   color: red !important;
 }
-.logoutModal{
+.logoutModal {
   display: flex !important;
   justify-content: center;
   align-items: center;

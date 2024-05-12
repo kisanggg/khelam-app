@@ -77,13 +77,13 @@ const Adminsignup = () => {
   };
   const filteredDistricts = districtByPradesh[selectedPradesh] || [];
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    console.log("upload Image", file);
-  };
-  const handleImageUpload = () => {
-    alert("image uploaded");
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   console.log("upload Image", file);
+  // };
+  // const handleImageUpload = () => {
+  //   alert("image uploaded");
+  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -136,323 +136,336 @@ const Adminsignup = () => {
     return error;
   };
   return (
-    <div className={styles.adminWrapper}>
+    <>
       <Link to="/signup">
         <ArrowLeftCircleFill size={30} className={styles.arrowLeft} />
       </Link>
-      <div className={styles.bodyWrapper}>
-        <div className={styles.signUp}>
-          <img
-            src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
-            alt="err"
-            width={120}
-            height={100}
-          />
-          <div className={styles.wrapper}>
-            <h5>HiTech</h5>
-            <p>Imadol, Lalitpur</p>
-            <div className={styles.phoneWrapper}>
-              <p>
-                <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
-              </p>
-              <p>
-                <Phone style={{ color: "red", marginLeft: "7px" }} /> 9802542632
-              </p>
+      <div className={styles.adminWrapper}>
+        <div className={styles.bodyWrapper}>
+          <div className={styles.signUp}>
+            <img
+              src="https://marketplace.canva.com/EAFL8GIA214/1/0/1600w/canva-modern-minimalist-basketball-team-logo-gnFZBqra6FQ.jpg"
+              alt="err"
+              width={120}
+              height={100}
+            />
+            <div className={styles.wrapper}>
+              <h5>HiTech</h5>
+              <p>Imadol, Lalitpur</p>
+              <div className={styles.phoneWrapper}>
+                <p>
+                  <TelephoneFill style={{ color: "red" }} /> 01-2453652 ,
+                </p>
+                <p>
+                  <Phone style={{ color: "red", marginLeft: "7px" }} />{" "}
+                  9802542632
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.formWrapper}>
-          <h1>
-            Sign Up <FileLockFill />
-          </h1>
-          <Form onSubmit={handleSubmit}>
-            <div>
-              <Form.Label htmlFor="name">Name</Form.Label>
-              <div className={styles.nameWrapper}>
-                <Form>
-                  <Form.Group>
-                    <Form.Control
-                      type="text"
-                      className={styles.firstName}
-                      name="firstName"
-                      required
-                      onChange={handleChange}
-                      isInvalid={error.firstName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {error.firstName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form>
-                <Form>
-                  <Form.Group>
-                    <Form.Control
-                      type="text"
-                      className={styles.lastName}
-                      name="lastName"
-                      required
-                      onChange={handleChange}
-                      isInvalid={error.lastName}
-                    />
-                    <Form.Control.Feedback
-                      type="invalid"
-                      style={{ marginLeft: "20px" }}
-                    >
-                      {error.lastName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form>
-              </div>
-              <div className={styles.passwordWrapper}>
-                <div>
+          <div className={styles.formWrapper}>
+            <h1>
+              Sign Up <FileLockFill />
+            </h1>
+            <Form onSubmit={handleSubmit}>
+              <div>
+                <Form.Label htmlFor="name">Name</Form.Label>
+                <div className={styles.nameWrapper}>
                   <Form>
                     <Form.Group>
-                      <Form.Label
-                        htmlFor="password"
-                        style={{ marginTop: "15px" }}
-                      >
-                        Password
-                      </Form.Label>
                       <Form.Control
-                        type="password"
-                        className={styles.passwordControl}
+                        type="text"
+                        placeholder="First Name"
+                        className={styles.firstName}
+                        name="firstName"
                         required
-                        name="password"
-                        placeholder="Password"
                         onChange={handleChange}
-                        isInvalid={error.password}
+                        isInvalid={error.firstName}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {error.firstName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form>
+                  <Form>
+                    <Form.Group>
+                      <Form.Control
+                        type="text"
+                        placeholder="Last Name"
+                        className={styles.lastName}
+                        name="lastName"
+                        required
+                        onChange={handleChange}
+                        isInvalid={error.lastName}
                       />
                       <Form.Control.Feedback
                         type="invalid"
                         style={{ marginLeft: "20px" }}
                       >
-                        {error.password}
+                        {error.lastName}
                       </Form.Control.Feedback>
                     </Form.Group>
                   </Form>
                 </div>
-                <div>
-                  <Form>
-                    <Form.Group>
-                      <Form.Label
-                        htmlFor="Confirmpassword"
-                        style={{ marginTop: "15px", marginLeft: "20px" }}
-                        className={styles.confirmLabel}
-                      >
-                        Confirm Password
-                      </Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Confirm Password"
-                        className={styles.confirmControl}
-                        required
-                        name="confirmPassword"
-                        onChange={handleChange}
-                        isInvalid={error.confirmPassword}
-                      />
-                      <Form.Control.Feedback
-                        type="invalid"
-                        style={{ marginLeft: "20px" }}
-                      >
-                        {error.confirmPassword}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form>
+                <div className={styles.passwordWrapper}>
+                  <div>
+                    <Form>
+                      <Form.Group>
+                        <Form.Label
+                          htmlFor="password"
+                          style={{ marginTop: "15px" }}
+                        >
+                          Password
+                        </Form.Label>
+                        <Form.Control
+                          type="password"
+                          className={styles.passwordControl}
+                          required
+                          name="password"
+                          placeholder="Password"
+                          onChange={handleChange}
+                          isInvalid={error.password}
+                        />
+                        <Form.Control.Feedback
+                          type="invalid"
+                          style={{ marginLeft: "20px" }}
+                        >
+                          {error.password}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form>
+                  </div>
+                  <div>
+                    <Form>
+                      <Form.Group>
+                        <Form.Label
+                          htmlFor="Confirmpassword"
+                          style={{ marginTop: "15px", marginLeft: "20px" }}
+                          className={styles.confirmLabel}
+                        >
+                          Confirm Password
+                        </Form.Label>
+                        <Form.Control
+                          type="password"
+                          placeholder="Confirm Password"
+                          className={styles.confirmControl}
+                          required
+                          name="confirmPassword"
+                          onChange={handleChange}
+                          isInvalid={error.confirmPassword}
+                        />
+                        <Form.Control.Feedback
+                          type="invalid"
+                          style={{ marginLeft: "20px" }}
+                        >
+                          {error.confirmPassword}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form>
+                  </div>
                 </div>
-              </div>
-              <Form.Label htmlFor="address" style={{ marginTop: "15px" }}>
-                Address
-              </Form.Label>
-              <div className={styles.addressWrapper}>
-                <InputGroup style={{ width: "310px" }} className={styles.pradeshWrapper}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Pradesh"
-                    style={{ border: "1px solid black" }}
-                    value={selectedPradesh}
-                    required
-                    readOnly
-                  />
-                  <DropdownButton>
-                    {pradesh.map((item, index) => (
-                      <Dropdown.Item
-                        onClick={() => handleClick(item)}
-                        key={index}
-                      >
-                        {item}
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
-                </InputGroup>
-                <InputGroup style={{ width: "330px" }} className={styles.districtWrapper}>
-                  <Form.Control
-                    type="text"
-                    placeholder="District"
-                    style={{ marginLeft: "20px", border: "1px solid black" }}
-                    className={styles.districtControl}
-                    value={selectedDistrict}
-                    required
-                    readOnly
-                  />
-                  <DropdownButton>
-                    {filteredDistricts.map((district, index) => (
-                      <Dropdown.Item
-                        onClick={() => handleDistrictClick(district)}
-                        key={index}
-                      >
-                        {district}
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
-                </InputGroup>
-              </div>
-              <div className={styles.sportsnumberWrapper}>
-                <div>
-                  <Form.Label
-                    htmlFor="sports type"
-                    style={{ marginTop: "15px" }}
-                  >
-                    Sports Type
-                  </Form.Label>
+                <Form.Label htmlFor="address" style={{ marginTop: "15px" }}>
+                  Address
+                </Form.Label>
+                <div className={styles.addressWrapper}>
                   <InputGroup
                     style={{ width: "310px" }}
-                    className={styles.sportstypeWrapper}
-                    required
+                    className={styles.pradeshWrapper}
                   >
                     <Form.Control
                       type="text"
-                      placeholder="Select the Sport"
-                      style={{
-                        width: "260px",
-                        border: "1px solid black",
-                      }}
-                      className={styles.sportscontrolWrapper}
-                      value={selectedSports}
+                      placeholder="Pradesh"
+                      style={{ border: "1px solid black" }}
+                      value={selectedPradesh}
+                      required
                       readOnly
                     />
                     <DropdownButton>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Futsal")}
-                      >
-                        Futsal
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Basketball")}
-                      >
-                        Basketball
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Cricket")}
-                      >
-                        Cricket
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Badminton")}
-                      >
-                        Badminton
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Volleyball")}
-                      >
-                        Volleyball
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => handleSportsClick("Swimming")}
-                      >
-                        Swimming
-                      </Dropdown.Item>
+                      {pradesh.map((item, index) => (
+                        <Dropdown.Item
+                          onClick={() => handleClick(item)}
+                          key={index}
+                        >
+                          {item}
+                        </Dropdown.Item>
+                      ))}
+                    </DropdownButton>
+                  </InputGroup>
+                  <InputGroup
+                    style={{ width: "330px" }}
+                    className={styles.districtWrapper}
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="District"
+                      style={{ marginLeft: "20px", border: "1px solid black" }}
+                      className={styles.districtControl}
+                      value={selectedDistrict}
+                      required
+                      readOnly
+                    />
+                    <DropdownButton>
+                      {filteredDistricts.map((district, index) => (
+                        <Dropdown.Item
+                          onClick={() => handleDistrictClick(district)}
+                          key={index}
+                        >
+                          {district}
+                        </Dropdown.Item>
+                      ))}
                     </DropdownButton>
                   </InputGroup>
                 </div>
-                <div>
-                  <Form>
-                    <Form.Group>
-                      <Form.Label
-                        htmlFor="phoneNo"
-                        style={{ marginTop: "15px", marginLeft: "20px" }}
-                        className={styles.phoneLabel}
-                      >
-                        Phone No
-                      </Form.Label>
+                <div className={styles.sportsnumberWrapper}>
+                  <div>
+                    <Form.Label
+                      htmlFor="sports type"
+                      style={{ marginTop: "15px" }}
+                    >
+                      Sports Type
+                    </Form.Label>
+                    <InputGroup
+                      style={{ width: "310px" }}
+                      className={styles.sportstypeWrapper}
+                      required
+                    >
                       <Form.Control
-                        type="tel"
-                        pattern="[0-9]*"
-                        placeholder="Phone No"
-                        className={styles.phoneControl}
-                        required
-                        name="phoneNo"
-                        onChange={handleChange}
-                        isInvalid={error.phoneNo}
-                        onInput={(e) => {
-                          e.target.value = e.target.value.replace(/\D/g, "");
-                          handleChange(e);
-                        }}
-                      />
-                      <Form.Control.Feedback
-                        type="invalid"
-                        style={{ marginLeft: "20px" }}
-                      >
-                        {error.phoneNo}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form>
-                </div>
-              </div>
-              <Form>
-                <Form.Group>
-                  <Form.Label htmlFor="mobileno" style={{ marginTop: "15px" }}>
-                    Mobile No
-                  </Form.Label>
-                  <div className={styles.mobileWrapper}>
-                    <div>
-                      <Form.Control
-                        type="tel"
-                        placeholder="Mobile No"
-                        style={{ width: "310px", border: "1px solid black" }}
-                        className={styles.mobile1Control}
-                        required
-                        name="mobileNo1"
-                        onChange={handleChange}
-                        isInvalid={error.mobileNo1}
-                        onInput={(e) => {
-                          e.target.value = e.target.value.replace(/\D/g, "");
-                          handleChange(e);
-                        }}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {error.mobileNo1}
-                      </Form.Control.Feedback>
-                    </div>
-                    <div>
-                      <Form.Control
-                        type="tel"
-                        placeholder=" Additional Mobile No"
+                        type="text"
+                        placeholder="Select the Sport"
                         style={{
-                          width: "310px",
-                          marginLeft: "20px",
+                          width: "260px",
                           border: "1px solid black",
                         }}
-                        className={styles.mobile2Control}
-                        required
-                        name="mobileNo2"
-                        onChange={handleChange}
-                        isInvalid={error.mobileNo2}
-                        onInput={(e) => {
-                          e.target.value = e.target.value.replace(/\D/g, "");
-                          handleChange(e);
-                        }}
+                        className={styles.sportscontrolWrapper}
+                        value={selectedSports}
+                        readOnly
                       />
-                      <Form.Control.Feedback
-                        type="invalid"
-                        style={{ marginLeft: "20px" }}
-                      >
-                        {error.mobileNo2}
-                      </Form.Control.Feedback>
-                    </div>
+                      <DropdownButton>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Futsal")}
+                        >
+                          Futsal
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Basketball")}
+                        >
+                          Basketball
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Cricket")}
+                        >
+                          Cricket
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Badminton")}
+                        >
+                          Badminton
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Volleyball")}
+                        >
+                          Volleyball
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => handleSportsClick("Swimming")}
+                        >
+                          Swimming
+                        </Dropdown.Item>
+                      </DropdownButton>
+                    </InputGroup>
                   </div>
-                </Form.Group>
-              </Form>
-              {/* <Form>
+                  <div>
+                    <Form>
+                      <Form.Group>
+                        <Form.Label
+                          htmlFor="phoneNo"
+                          style={{ marginTop: "15px", marginLeft: "20px" }}
+                          className={styles.phoneLabel}
+                        >
+                          Phone No
+                        </Form.Label>
+                        <Form.Control
+                          type="tel"
+                          pattern="[0-9]*"
+                          placeholder="Phone No"
+                          className={styles.phoneControl}
+                          required
+                          name="phoneNo"
+                          onChange={handleChange}
+                          isInvalid={error.phoneNo}
+                          onInput={(e) => {
+                            e.target.value = e.target.value.replace(/\D/g, "");
+                            handleChange(e);
+                          }}
+                        />
+                        <Form.Control.Feedback
+                          type="invalid"
+                          style={{ marginLeft: "20px" }}
+                        >
+                          {error.phoneNo}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Form>
+                  </div>
+                </div>
+                <Form>
+                  <Form.Group>
+                    <Form.Label
+                      htmlFor="mobileno"
+                      style={{ marginTop: "15px" }}
+                    >
+                      Mobile No
+                    </Form.Label>
+                    <div className={styles.mobileWrapper}>
+                      <div>
+                        <Form.Control
+                          type="tel"
+                          placeholder="Mobile No"
+                          style={{ width: "310px", border: "1px solid black" }}
+                          className={styles.mobile1Control}
+                          required
+                          name="mobileNo1"
+                          onChange={handleChange}
+                          isInvalid={error.mobileNo1}
+                          onInput={(e) => {
+                            e.target.value = e.target.value.replace(/\D/g, "");
+                            handleChange(e);
+                          }}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {error.mobileNo1}
+                        </Form.Control.Feedback>
+                      </div>
+                      <div>
+                        <Form.Control
+                          type="tel"
+                          placeholder=" Additional Mobile No"
+                          style={{
+                            width: "310px",
+                            marginLeft: "20px",
+                            border: "1px solid black",
+                          }}
+                          className={styles.mobile2Control}
+                          required
+                          name="mobileNo2"
+                          onChange={handleChange}
+                          isInvalid={error.mobileNo2}
+                          onInput={(e) => {
+                            e.target.value = e.target.value.replace(/\D/g, "");
+                            handleChange(e);
+                          }}
+                        />
+                        <Form.Control.Feedback
+                          type="invalid"
+                          style={{ marginLeft: "20px" }}
+                        >
+                          {error.mobileNo2}
+                        </Form.Control.Feedback>
+                      </div>
+                    </div>
+                  </Form.Group>
+                </Form>
+                {/* <Form>
                 <div style={{display:"flex"}}>
                 <Form.Group>
                   <Form.Label htmlFor="logo" style={{ marginTop: "15px" }}>
@@ -473,7 +486,7 @@ const Adminsignup = () => {
                 </Button>
                 </div>
               </Form> */}
-              {/* <div style={{ display: "flex" }}>
+                {/* <div style={{ display: "flex" }}>
                 <div>
                   <Form>
                     <Form.Group>
@@ -521,18 +534,19 @@ const Adminsignup = () => {
                   </Form>
                 </div>
               </div> */}
-              <Button
-                type="submit"
-                variant="danger"
-                className={styles.submitBtn}
-              >
-                Sign Up
-              </Button>
-            </div>
-          </Form>
+                <Button
+                  type="submit"
+                  variant="danger"
+                  className={styles.submitBtn}
+                >
+                  Sign Up
+                </Button>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

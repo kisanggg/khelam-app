@@ -13,14 +13,8 @@ const BigCalendar = () => {
   const location = useLocation();
   console.log("Current path:", id);
   console.log("Current location:", location.pathname);
-  const {
-    days,
-    times,
-    bookedTime,
-    setBookedTime,
-    disabledTimeSlots,
-    setDisabledTimeSlots,
-  } = useContext(DataContext);
+  const { days, times, bookedTime, setBookedTime, disabledTimeSlots } =
+    useContext(DataContext);
   useEffect(() => {
     console.log("BigCalendar mounted");
     return () => {
@@ -72,13 +66,13 @@ const BigCalendar = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const handleDisableTimeSlots = (date, time) => {
-    const disabledSlot = { date, time };
-    setDisabledTimeSlots((prevDisabledTimeSlots) => [
-      ...prevDisabledTimeSlots,
-      disabledSlot,
-    ]);
-  };
+  // const handleDisableTimeSlots = (date, time) => {
+  //   const disabledSlot = { date, time };
+  //   setDisabledTimeSlots((prevDisabledTimeSlots) => [
+  //     ...prevDisabledTimeSlots,
+  //     disabledSlot,
+  //   ]);
+  // };
 
   useEffect(() => {
     console.log("Updated bookedTime:", bookedTime);
@@ -144,7 +138,6 @@ const BigCalendar = () => {
     <>
       <div className={styles.calendarContainer}>
         {days.map((date, index) => {
-          console.log("date:", date);
           const modifiedDay = moment(date).format("dddd").toUpperCase();
           const modifiedDate = moment(date).format("MMMM D, YYYY");
 
@@ -187,11 +180,7 @@ const BigCalendar = () => {
                             key={time}
                             className={`${styles.timeSlot} ${
                               isBooked ? styles.booked : ""
-                            } ${
-                              isDisabled
-                                ? styles.disabled
-                                : ""
-                            }`}
+                            } ${isDisabled ? styles.disabled : ""}`}
                           >
                             {moment(time).format("hh A")}
                             <br />
@@ -235,11 +224,7 @@ const BigCalendar = () => {
                           key={time}
                           className={`${styles.timeSlot} ${
                             isBooked ? styles.booked : ""
-                          } ${
-                            isDisabled
-                              ? styles.disabled
-                              : ""
-                          }`}
+                          } ${isDisabled ? styles.disabled : ""}`}
                         >
                           {moment(time).format("hh A")}
                           <br />
@@ -289,6 +274,9 @@ const BigCalendar = () => {
           style={{
             backgroundColor: "rgba(43, 40, 40, 0.5)",
             backdropFilter: "blur(0.5px)",
+            display:"flex !important",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Modal.Body style={{ backgroundColor: "black" }}>
@@ -296,7 +284,7 @@ const BigCalendar = () => {
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               onClose={handleCloseModal}
-              onSubmit={(formData) => {
+              onSubmit={(formData) => { 
                 handleBooking(selectedDate, selectedTime, formData.hour);
               }}
             />

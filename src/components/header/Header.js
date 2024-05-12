@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataContext";
-import { Modal, Button, Offcanvas, ModalTitle } from "react-bootstrap";
+import { Modal, Button, Offcanvas} from "react-bootstrap";
 const Header = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
@@ -34,11 +34,11 @@ const Header = () => {
   const toggleDrawer = () => {
     setShowDrawer(true);
   };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log("Feedback received");
-    setFeedbackModal(false);
-  };
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Feedback received");
+  //   setFeedbackModal(false);
+  // };
 
   const handleSearch = () => {
     setShowSearch(true);
@@ -52,7 +52,6 @@ const Header = () => {
       <div className="header">
         <div
           className="divv"
-          style={{ height: "103px", backgroundColor: "#454242" }}
         >
           <div className="div-wrapper"></div>
           <div className="div1-wrapper"></div>
@@ -124,7 +123,7 @@ const Header = () => {
           </Offcanvas>
         ) : (
           <div className="sub-header">
-            <div className="signUp" style={{ height: "52px" }}>
+            <div className="signUp" >
               {isLoggedIn ? (
                 <div className="logoutWrapper">
                   <Link
@@ -139,7 +138,7 @@ const Header = () => {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
+                    justifyContent: "flex-end",
                     alignItems: "center",
                     marginLeft: "520px",
                   }}
@@ -148,7 +147,7 @@ const Header = () => {
                     <PersonCircle /> signup
                   </Link>
                 </div>
-              )}
+              )}  
             </div>
             <div className="navBar">
               <nav className="nav">

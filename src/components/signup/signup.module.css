@@ -1,123 +1,123 @@
 .container {
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    height: auto;
-    padding: 20px;
-    width: 100%;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  height: auto;
+  padding: 20px;
+  width: 100%;
 }
 
 .signupWrapper {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .signupButton {
-    width: 180px;
-    height: 45px;
-    margin-left: 195px;
-    margin-top: 20px;
-    background-color: red !important;
-    border: 1px solid red !important;
+  width: 180px;
+  height: 45px;
+  margin-left: 195px;
+  margin-top: 20px;
+  background-color: red !important;
+  border: 1px solid red !important;
 }
 
 .signupButton:hover {
-    background-color: rgb(204, 52, 52) !important;
-    border-color: rgb(204, 52, 52) !important;
+  background-color: rgb(204, 52, 52) !important;
+  border-color: rgb(204, 52, 52) !important;
 }
 
 @media (max-width: 768px) {
-    .playerCardWrapper {
-        width: 40rem !important;
-        height: 20rem !important;
-    }
+  .playerCardWrapper {
+    width: 40rem !important;
+    height: 20rem !important;
+  }
 
-    .clubCardWrapper {
-        width: 40rem !important;
-        height: 21rem !important;
-    }
+  .clubCardWrapper {
+    width: 40rem !important;
+    height: 21rem !important;
+  }
 
-    .cardTitleWrapper {
-        font-size: 30px !important;
-        text-align: left !important;
-        margin-bottom: 0px !important;
-    }
+  .cardTitleWrapper {
+    font-size: 30px !important;
+    text-align: left !important;
+    margin-bottom: 0px !important;
+  }
 
-    .cardBodyWrapper {
-        font-size: 15px !important;
-    }
+  .cardBodyWrapper {
+    font-size: 15px !important;
+  }
 
-    .clubImgWrapper {
-        width: 300px !important;
-    }
+  .clubImgWrapper {
+    width: 300px !important;
+  }
 
-    .signupWrapper {
-        padding: 20px !important;
-    }
+  .signupWrapper {
+    padding: 20px !important;
+  }
 
-    .signupWrapper h1 {
-        font-size: 25px !important;
-    }
+  .signupWrapper h1 {
+    font-size: 25px !important;
+  }
 
-    .signupWrapper h5 {
-        font-size: 17px !important;
-        font-weight: 400;
-        color: rgb(87, 86, 86);
-    }
+  .signupWrapper h5 {
+    font-size: 17px !important;
+    font-weight: 400;
+    color: rgb(87, 86, 86);
+  }
 
-    .signupButton {
-        width: 150px !important;
-        height: 40px !important;
-        margin-left: 20px !important;
-    }
+  .signupButton {
+    width: 150px !important;
+    height: 40px !important;
+    margin-left: 20px !important;
+  }
 }
 
 @media (max-width: 576px) {
-    .playerCardWrapper {
-        width: 30rem !important;
-        height: 20rem !important;
-    }
+  .playerCardWrapper {
+    width: 30rem !important;
+    height: 20rem !important;
+  }
 
-    .clubCardWrapper {
-        width: 30rem !important;
-        height: 17rem !important;
-    }
+  .clubCardWrapper {
+    width: 30rem !important;
+    height: 17rem !important;
+  }
 
-    .cardTitleWrapper {
-        font-size: 20px !important;
-        text-align: left !important;
-        margin-bottom: 0px !important;
-    }
+  .cardTitleWrapper {
+    font-size: 20px !important;
+    text-align: left !important;
+    margin-bottom: 0px !important;
+  }
 
-    .cardBodyWrapper {
-        font-size: 12px !important;
-    }
+  .cardBodyWrapper {
+    font-size: 12px !important;
+  }
 
-    .clubImgWrapper {
-        width: 200px !important;
-    }
+  .clubImgWrapper {
+    width: 200px !important;
+  }
 
-    .signupWrapper {
-        padding: 20px !important;
-    }
+  .signupWrapper {
+    padding: 20px !important;
+  }
 
-    .signupWrapper h1 {
-        font-size: 25px !important;
-    }
+  .signupWrapper h1 {
+    font-size: 25px !important;
+  }
 
-    .signupWrapper h5 {
-        font-size: 17px !important;
-        font-weight: 400;
-        color: rgb(87, 86, 86);
-    }
+  .signupWrapper h5 {
+    font-size: 17px !important;
+    font-weight: 400;
+    color: rgb(87, 86, 86);
+  }
 
-    .signupButton {
-        width: 140px !important;
-        height: 35px !important;
-        margin-left: 20px !important;
-        font-size: 14px !important;
-        margin-top: 10px !important;
-    }
+  .signupButton {
+    width: 140px !important;
+    height: 35px !important;
+    margin-left: 20px !important;
+    font-size: 14px !important;
+    margin-top: 10px !important;
+  }
 
-    .cardWrapper {
-        margin-top: 70px !important;
-    }
+  .cardWrapper {
+    margin-top: 70px !important;
+  }
 }

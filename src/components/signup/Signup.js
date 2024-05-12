@@ -6,10 +6,17 @@ const Signup = () => {
   return (
     <div className={styles.container}>
       <div className={styles.signupWrapper}>
-        <h1 style={{ color: "black", fontWeight: "600" }}>
+        <h1
+          style={{
+            color: "black",
+            fontWeight: "600",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
           Get started by creating an account now!
         </h1>
-        <h5 style={{ marginTop: "20px" }}>
+        <h5 style={{ marginTop: "20px", textAlign: "center" }}>
           Khelam's platforms can be tailored to meet your needs, whether you are
           a player trying to locate your local club or a corporation trying to
           automate its management procedures.

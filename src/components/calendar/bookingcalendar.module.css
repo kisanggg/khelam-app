@@ -1,167 +1,168 @@
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .days{
-    width: 100%;
-  }
-  .calendarContainer {
-    width: 100%;
-    margin-left: 0px;
-    background-color: black;
-    height: auto;
-  }
+.days{
+  width: 100%;
+}
+.calendarContainer {
+  width: 100%;
+  margin-left: 0px;
+  background-color: black;
+  height: auto;
+}
 
-  .dayContainer {
-    height: 140px;
-    width: 100%;
-    margin-left: 0px;
-  }
+.dayContainer {
+  height: 140px;
+  width: 100%;
+  margin-left: 0px;
+}
 
-  .timeSlider {
-    display: flex;
-    background-color: #f00c0c;
-    height: 130px;
-    width: 100%;
-  }
+.timeSlider {
+  display: flex;
+  background-color: #f00c0c;
+  height: 130px;
+  width: 100%;
+}
 
-  .timeContainer {
-    margin-left: 141px;
-    transform: translateY(-100%);
-    height: 135px;
-    margin-top: 5px;
-  }
+.timeContainer {
+  margin-left: 141px;
+  transform: translateY(-100%);
+  height: 135px;
+  margin-top: 5px;
+}
 
-  .timeSlider svg {
-    color: white;
-    margin-top: 40px;
-  }
+.timeSlider svg {
+  color: white;
+  margin-top: 40px;
+}
 
-  .timeSlider svg:hover {
-    color: #d3d0d0;
-  }
+.timeSlider svg:hover {
+  color: #d3d0d0;
+}
 
+.dateWrapper{
+  border: 1px solid black;
+  background-color: #ffffff;
+  height: 130px;
+  text-align: center;
+  width: 140px;
+}
+.dateHeader {
+  text-align: center;
+  width: 140px;
+  height: 130px;
+  background-color: rgb(187, 183, 183);
+  color: white;
+  padding: 5px;
+}
+
+.monthWrapper {
+  background-color: red;
+  height: 30px;
+  color: rgb(255, 255, 255);
+  width: 140px;
+  margin-left: -5px !important;
+  margin-top: -5px;
+}
+
+.month {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.dayNumber {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+.dayName {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.timeSlot {
+  width: 50px;
+  background: #f9f9f9;
+  border: 1px solid black;
+  text-align: center;
+  height: 130px;
+  width: 150px;
+  font-size: 25px;
+  padding-top: 15px;
+}
+
+.timeLabel {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.bookButton {
+  border: none;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 30px;
+  font-size: 14px;
+  width: 80px;
+  margin-top: -2px;
+}
+
+.bookButton {
+  margin-top: 20px;
+  background-color: #f00c0c;
+  width: 90px;
+}
+
+.bookButton:hover {
+  background-color: #a00404;
+
+}
+
+.sliderWrapper {
+  flex-grow: 1;
+  width: 0;
+  min-width: 0;
+}
+
+.bookedText {
+  font-size: 20px;
+}
+
+.days {
+  margin-left: 0px;
+  background-color: black;
+  height: 1030px;
+  width: 1263px;
+}
+
+.booked {
+  background-color: rgb(241, 131, 123);
+  pointer-events: none;
+}
+
+.notAvailableText {
+  font-size: 15px;
+}
+
+.disabled {
+  background-color: rgb(104, 104, 104);
+  border: 1px solid black;
+}
+
+.notAvailableText {
+  color: white;
+}
+
+@media(max-width:768px){
   .dateWrapper{
-    border: 1px solid black;
-    background-color: #ffffff;
-    height: 130px;
-    text-align: center;
-    width: 140px;
+    width: 140px !important;
   }
-  .dateHeader {
-    text-align: center;
-    width: 140px;
-    height: 130px;
-    background-color: rgb(187, 183, 183);
-    color: white;
-    padding: 5px;
+  .timeContainer{
+    margin-left: 140px !important;
   }
-
-  .monthWrapper {
-    background-color: red;
-    height: 30px;
-    color: rgb(255, 255, 255);
-    width: 140px;
-    margin-left: -5px !important;
-    margin-top: -5px;
-  }
-
-  .month {
-    font-weight: bold;
-    font-size: 1rem;
-  }
-
-  .dayNumber {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: black;
-  }
-
-  .dayName {
-    font-size: 1.1rem;
-    color: black;
-  }
-
-  .timeSlot {
-    width: 50px;
-    background: #f9f9f9;
-    border: 1px solid black;
-    text-align: center;
-    height: 130px;
-    width: 150px;
-    font-size: 25px;
-    padding-top: 15px;
-  }
-
-  .timeLabel {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-  }
-
-  .bookButton {
-    border: none;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 20px;
-    height: 30px;
-    font-size: 14px;
-    width: 80px;
-    margin-top: -2px;
-  }
-
-  .bookButton {
-    margin-top: 20px;
-    background-color: #f00c0c;
-    width: 90px;
-  }
-
-  .bookButton:hover {
-    background-color: #a00404;
-
-  }
-
-  .sliderWrapper {
-    flex-grow: 1;
-    width: 0;
-    min-width: 0;
-  }
-
-  .bookedText {
-    font-size: 20px;
-  }
-
-  .days {
-    margin-left: 0px;
-    background-color: black;
-    height: 1030px;
-    width: 1263px;
-  }
-
-  .booked {
-    background-color: rgb(255, 135, 135);
-    pointer-events: none;
-  }
-
-  .notAvailableText {
-    font-size: 15px;
-  }
-
-  .disabled {
-    background-color: rgb(104, 104, 104);
-    border: 1px solid black;
-  }
-
-  .notAvailableText {
-    color: white;
-  }
-  @media(max-width:768px){
-    .dateWrapper{
-      width: 140px !important;
-    }
-    .timeContainer{
-      margin-left: 140px !important;
-    }
-  }
+}

@@ -50,7 +50,7 @@ const Home = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide:2,
+          initialSlide: 2,
         },
       },
     ],
@@ -102,7 +102,7 @@ const Home = () => {
         ></img>
         <div
           className={styles.textWrapper}
-          style={{ width: "100%", maxWidth: "540px" }}
+          // style={{ width: "100%", maxWidth: "540px" }}
         >
           <p>Book YOUR Time</p>
         </div>

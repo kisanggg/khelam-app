@@ -15,17 +15,17 @@
 
 .textWrapper {
   position: absolute;
-  width: 540px;
+  width: 40%;
   height: 150px;
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin-top: 170px;
-  margin-left: 380px;
+  margin: auto;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
   background-color: rgba(43, 40, 40, 0.5);
-  backdrop-filter: blur(0.5px);
   padding: 20px;
-  border-radius: 00px;
   animation: 2s linear 0s infinite alternate slidein;
 }
 
@@ -85,8 +85,9 @@
   }
 
   .textWrapper {
-    margin-left: 170px;
-    width: 400px !important;
+    top: 10% !important;
+    left: 30% !important;
+    width: 40% !important;
     height: 100px;
     margin-top: 70px;
   }
@@ -101,7 +102,6 @@
     width: 200px !important;
     height: 20px !important;
     margin-right: 10px !important;
-
   }
 
   .passwordWrapper {
@@ -149,10 +149,12 @@
   .footer p {
     font-size: 12px;
   }
-  .facebookIcon,.whatsappIcon,.linkedinIcon,.githubIcon{
+  .facebookIcon,
+  .whatsappIcon,
+  .linkedinIcon,
+  .githubIcon {
     width: 17px;
   }
-
 }
 
 @media (max-width: 576px) {
@@ -166,16 +168,16 @@
 
   .textWrapper {
     position: absolute;
-    margin-left: 180px;
+    top: 5% !important;
     width: 200px !important;
-    height: 50px !important;
+    height: 60px !important;
     margin-top: 60px !important;
   }
-  .passwordWrapper{
+  .passwordWrapper {
     margin-left: 50px !important;
   }
 
-  .usernameWrapper{
+  .usernameWrapper {
     margin-left: 50px !important;
   }
 
@@ -212,8 +214,8 @@
     width: 300px !important;
     margin-top: 0px !important;
     text-align: center !important;
-  } 
-  .form h1{
+  }
+  .form h1 {
     color: black !important;
     margin-left: 0px !important;
     text-align: center !important;
@@ -225,18 +227,17 @@
   }
 
   .form button {
-    margin-left:7px !important;
+    margin-left: 7px !important;
     width: 100px !important;
     height: 35px !important;
     border: 1px solid red !important;
   }
-  .footer{
+  .footer {
     margin-top: 10px !important;
   }
-  .cardWrapper{
+  .cardWrapper {
     margin-top: 10px !important;
   }
-
 }
 
 .form {
@@ -376,15 +377,15 @@
   margin-right: 20px;
   width: 16rem;
 }
-.facebookIcon{
+.facebookIcon {
   margin-right: 20px;
 }
-.whatsappIcon{
+.whatsappIcon {
   margin-right: 20px;
 }
-.linkedinIcon{
+.linkedinIcon {
   margin-right: 20px;
 }
-.githubIcon{
+.githubIcon {
   margin-right: 20px;
 }
