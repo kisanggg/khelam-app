@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
 import img1 from "../../images/img1.png";
 import img2 from "../../images/img2.png";
 import img3 from "../../images/img3.png";
@@ -19,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataContext";
 const Home = () => {
   const { setIsLoggedIn } = useContext(DataContext);
+  const { userData, setUserData } = useContext(DataContext);
   const navigate = useNavigate();
   const settings = {
     dots: false,
@@ -91,6 +93,13 @@ const Home = () => {
       setIsLoggedIn(true);
     }
   };
+
+  useEffect(() => {
+    axios
+      .get("http://192.168.1.68:8000/api/get-category")
+      .then((response) => setUserData(response.data))
+      .catch((error) => console.error("Error getting user data.", error));
+  }, []);
 
   return (
     <>
@@ -195,14 +204,29 @@ const Home = () => {
         <h1>CHOOSE YOUR GAME</h1>
         <div className={styles.cards}>
           <Slider className={styles.innerSlider} useCSS={true} {...settings}>
-            <div>
+            {userData.map((item, index) => (
+              <div key={index}>
+                <Card
+                  style={{ width: "16rem !important" }}
+                  className={styles.cardsContainer}
+                >
+                  <Card.Img src={item.image } alt="this is an image"/>
+                  <Card.Body className={styles.homeCardBody}>
+                    <Card.Title>{item.title}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
+            {/* <div>
               <Card
                 style={{ width: "16rem !important" }}
                 className={styles.cardsContainer}
               >
                 <Card.Img src={img3} />
                 <Card.Body className={styles.homeCardBody}>
-                  <Card.Title>Futsal</Card.Title>
+                  <Card.Title>{userData.map((i,t)=>(
+                    <p key={i}>{t}</p>
+                  ))}</Card.Title>
                 </Card.Body>
               </Card>
             </div>
@@ -229,7 +253,7 @@ const Home = () => {
                   <Card.Title>Badminton</Card.Title>
                 </Card.Body>
               </Card>
-            </div>
+            </div> */}
           </Slider>
         </div>
       </div>

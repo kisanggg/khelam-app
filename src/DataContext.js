@@ -31,6 +31,7 @@ export const DataProvider = ({ children }) => {
   ].map((time) => moment(time, "hh A").toDate());
 
   const [bookedTime, setBookedTime] = useState({});
+  const [userData, setUserData] = useState([]);
   const [disabledTimeSlots, setDisabledTimeSlots] = useState([]);
   const [formDataList, setFormDataList] = useState([]);
   const [displayModal, setDisplayModal] = useState(false);
@@ -48,6 +49,8 @@ export const DataProvider = ({ children }) => {
     days,
     times,
     setDays,
+    userData,
+    setUserData,
     bookedTime,
     isLoggedIn,
     addFormData,
