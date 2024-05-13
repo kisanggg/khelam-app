@@ -130,8 +130,6 @@ const Clubbookingdata = () => {
     ]);
   };
 
-  console.log("disabled Time slots:", disabledTimeSlots);
-
   const renderSlotContent = (date, time, isBooked, isDisabled) => {
     const dateString = moment(date).format("YYYY-MM-DD");
     const timeString = moment(time).format("hh A");

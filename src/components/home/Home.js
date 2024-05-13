@@ -28,8 +28,8 @@ const Home = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <ArrowLeftCircleFill size={90} />,
-    nextArrow: <ArrowRightCircleFill size={90} />,
+    prevArrow: <ArrowLeftCircleFill size={30} />,
+    nextArrow: <ArrowRightCircleFill size={30} />,
     responsive: [
       {
         breakpoint: 1024,
@@ -56,7 +56,7 @@ const Home = () => {
         },
       },
     ],
-  };  
+  };
   const [signinErrors, setSigninErrors] = useState({});
   const [signinData, setSigninData] = useState({
     username: "",
@@ -94,8 +94,6 @@ const Home = () => {
     }
   };
 
-  console.log(userData, 'userdata')
-
   useEffect(() => {
     axios
       .get("http://192.168.1.68:8000/api/get-category")
@@ -111,10 +109,7 @@ const Home = () => {
           alt="err"
           style={{ width: "100%", maxWidth: "100%", height: "auto" }}
         ></img>
-        <div
-          className={styles.textWrapper}
-          // style={{ width: "100%", maxWidth: "540px" }}
-        >
+        <div className={styles.textWrapper}>
           <p>Book YOUR Time</p>
         </div>
       </div>
@@ -122,65 +117,61 @@ const Home = () => {
         <div className={styles.form}>
           <h1>JOIN US</h1>
           <Form onSubmit={handleSubmit}>
-            <Form>
-              <InputGroup
-                className={styles.usernameWrapper}
-                style={{ width: "270px ", height: "40px", marginLeft: "60px" }}
+            <InputGroup
+              className={styles.usernameWrapper}
+              style={{ width: "270px ", height: "40px", marginLeft: "60px" }}
+            >
+              <InputGroup.Text id="basic-addon1">
+                <Person size={22} />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Username"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                className={styles.formControl}
+                value={signinData.username}
+                onChange={(e) =>
+                  setSigninData((prevData) => ({
+                    ...prevData,
+                    username: e.target.value,
+                  }))
+                }
+                isInvalid={!!signinErrors.username}
+              />
+              <FormControl.Feedback type="invalid">
+                {signinErrors.username}
+              </FormControl.Feedback>
+            </InputGroup>
+            {/* <br /> */}
+            <InputGroup
+              className={styles.passwordWrapper}
+              style={{ height: "40px", width: "270px", marginLeft: "60px",marginTop:"20px" }}
+            >
+              <InputGroup.Text id="basic-addon1" style={{}}>
+                <Lock size={22} />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Password"
+                type="password"
+                aria-label="password"
+                aria-describedby="basic-addon1"
+                className={styles.formControl}
+                value={signinData.password}
+                onChange={(e) =>
+                  setSigninData((prevData) => ({
+                    ...prevData,
+                    password: e.target.value,
+                  }))
+                }
+                isInvalid={!!signinErrors.password}
+              />
+              <FormControl.Feedback
+                type="invalid"
+                style={{ marginBottom: "10px" }}
               >
-                <InputGroup.Text id="basic-addon1">
-                  <Person size={22} />
-                </InputGroup.Text>
-                <Form.Control
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  className={styles.formControl}
-                  value={signinData.username}
-                  onChange={(e) =>
-                    setSigninData((prevData) => ({
-                      ...prevData,
-                      username: e.target.value,
-                    }))
-                  }
-                  isInvalid={!!signinErrors.username}
-                />
-                <FormControl.Feedback type="invalid">
-                  {signinErrors.username}
-                </FormControl.Feedback>
-              </InputGroup>
-            </Form>
-            <br />
-            <Form>
-              <InputGroup
-                className={styles.passwordWrapper}
-                style={{ height: "40px", width: "270px", marginLeft: "60px" }}
-              >
-                <InputGroup.Text id="basic-addon1" style={{}}>
-                  <Lock size={22} />
-                </InputGroup.Text>
-                <Form.Control
-                  placeholder="Password"
-                  type="password"
-                  aria-label="password"
-                  aria-describedby="basic-addon1"
-                  className={styles.formControl}
-                  value={signinData.password}
-                  onChange={(e) =>
-                    setSigninData((prevData) => ({
-                      ...prevData,
-                      password: e.target.value,
-                    }))
-                  }
-                  isInvalid={!!signinErrors.password}
-                />
-                <FormControl.Feedback
-                  type="invalid"
-                  style={{ marginBottom: "10px" }}
-                >
-                  {signinErrors.password}
-                </FormControl.Feedback>
-              </InputGroup>
-            </Form>
+                {signinErrors.password}
+              </FormControl.Feedback>
+            </InputGroup>
             <div
               style={{ marginTop: "15px" }}
               className={styles.forgotDetailsWrapper}
@@ -206,21 +197,26 @@ const Home = () => {
         <h1>CHOOSE YOUR GAME</h1>
         <div className={styles.cards}>
           <Slider className={styles.innerSlider} useCSS={true} {...settings}>
-            {userData.map((item, index) => (
-              <div key={index}>
-                <Card
-                  style={{ width: "16rem !important" }}
-                  className={styles.cardsContainer}
-                >
-                  <Card.Img src={`http://192.168.1.68:8000${item.image_url}`} alt="this is an image" />
-                  <Card.Body className={styles.homeCardBody}>
-                    <Card.Title>{item.title}</Card.Title>
-                  </Card.Body>
-                </Card>
-              </div>
-            ))}
-              </Slider>
-            {/* <div>
+            <div>
+              {userData.map((item, index) => (
+                <div key={index}>
+                  <Card
+                    style={{ width: "16rem !important" }}
+                    className={styles.cardsContainer}
+                  >
+                    <Card.Img
+                      src={`http://192.168.1.68:8000${item.image_url}`}
+                      alt="this is an image"
+                    />
+                    <Card.Body className={styles.homeCardBody}>
+                      <Card.Title>{item.title}</Card.Title>
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </Slider>
+          {/* <div>
               <Card
                 style={{ width: "16rem !important" }}
                 className={styles.cardsContainer}
@@ -257,7 +253,7 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </div> */}
-        </div>  
+        </div>
       </div>
       <div className={styles.footer}>
         <p>&copy;2024 Khelam.com.np. All Rights Reserved'</p>

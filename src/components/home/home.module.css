@@ -244,6 +244,7 @@
   background-color: black;
   width: 500px;
   text-align: center;
+  padding-top: 50px;
 }
 
 .form h1 {
@@ -377,15 +378,19 @@
   margin-right: 20px;
   width: 16rem;
 }
+
 .facebookIcon {
   margin-right: 20px;
 }
+
 .whatsappIcon {
   margin-right: 20px;
 }
+
 .linkedinIcon {
   margin-right: 20px;
 }
+
 .githubIcon {
   margin-right: 20px;
 }

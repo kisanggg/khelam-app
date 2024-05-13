@@ -13,14 +13,12 @@ import Clubbookingdata from "./components/bookingdata/Clubbookingdata";
 import { DataProvider } from "./DataContext";
 import BigCalendar from "./components/calendar/BigCalendar";
 import Adminsignin from "./components/signup/admin/Adminsignin";
-import Data from "./components/Data";
 
 const App = () => {
   return (
     <>
       <DataProvider>
         <Header />
-        {/* <Data/> */}
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -32,13 +30,11 @@ const App = () => {
           <Route path="/usersignup" element={<Usersignup />} />
           <Route path="/calendar/:id" element={<BigCalendar />} />
           <Route path="/clubbookingdata" element={<Clubbookingdata />} />
-          <Route path="/adminsignin" element={<Adminsignin/>}/>
+          <Route path="/adminsignin" element={<Adminsignin />} />
         </Routes>
       </DataProvider>
     </>
   );
 };
 
-
 export default App;
-  

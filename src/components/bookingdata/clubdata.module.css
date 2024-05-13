@@ -1,290 +1,289 @@
 .clubdataWrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .headingWrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .subHeadingWrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .adminHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000f22;
-    color: white;
-    padding: 10px;
-    height: 150px;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000f22;
+  color: white;
+  padding: 10px;
+  height: 150px;
+  width: 100%;
 }
 
-@media(max-width:768px) {
-    .adminHeader {
-        padding: 10px;
-    }
+@media (max-width: 768px) {
+  .adminHeader {
+    padding: 10px;
+  }
 }
 
 .bookedWrapper p {
-    font-size: 20px;
-    margin-bottom: 0px;
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .wrapper {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .wrapper p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .phoneWrapper {
-    display: flex;
+  display: flex;
 }
 
 .clubdataWrapper table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .clubdataWrapper th,
 .clubdataWrapper td {
-    border: 1px solid black;
-    text-align: center;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .clubdataWrapper td {
-    padding-left: 0px !important;
-    padding-right: 0% !important;
+  padding-left: 0px !important;
+  padding-right: 0% !important;
 }
 
 .bookedSlot {
-    background-color: rgb(231, 132, 132) !important;
+  background-color: rgb(231, 132, 132) !important;
 }
 
 .disabledSlot {
-    background-color: rgb(109, 109, 109) !important;
-    color: white !important;
-    margin-top: 15px;
+  background-color: rgb(109, 109, 109) !important;
+  color: white !important;
+  margin-top: 15px;
 }
 
 .disabledSlot p {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .availableSlot p {
-    font-size: 20px;
-    margin-bottom: 0px;
-    margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 10px;
 }
 
 .detailsBtn {
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    width: 70px;
-    height: 30px;
-    background-color: #000000;
-    color: white;
-    margin-top: 0px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  width: 70px;
+  height: 30px;
+  background-color: #000000;
+  color: white;
+  margin-top: 0px;
 }
 
 .detailsBtn:hover {
-    background-color: #262424;
+  background-color: #262424;
 }
 
 .bookBtn {
-    color: rgb(104, 160, 55);
-    margin-top: 0px;
+  color: rgb(48 106 179);
+  margin-top: 0px;
 }
 
 .bookBtn:hover {
-    color: rgb(61, 101, 27);
+  color: rgb(38, 83, 139);
 }
 
 .disableBtn {
-    color: rgb(235, 12, 12);
-    margin-left: 20px;
-    margin-top: 0px;
+  color: rgb(235, 12, 12);
+  margin-left: 20px;
+  margin-top: 0px;
 }
 
 .disableBtn:hover {
-    color: rgb(158, 2, 2);
+  color: rgb(186, 7, 7);
 }
 
 .closeBtn {
-    border: 1px solid black;
-    width: 100px !important;
-    position: absolute;
+  border: 1px solid black;
+  width: 100px !important;
+  position: absolute;
 }
 
 .formModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vh;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .footerWrapper {
-    display: block !important;
-    margin-left: 160px;
+  display: block !important;
+  margin-left: 160px;
 }
 
 .input {
-    border: 1px solid black !important;
-    width: 300px !important;
-    height: 35px;
-    margin-left: 35px;
+  border: 1px solid black !important;
+  width: 300px !important;
+  height: 35px;
+  margin-left: 35px;
 }
 
 .confirmBtn {
-    margin-left: 130px;
-    margin-top: 20px;
-    width: 100px;
+  margin-left: 130px;
+  margin-top: 20px;
+  width: 100px;
 }
 
 .errorWrapper {
-    margin-left: 35px;
+  margin-left: 35px;
 }
 
 .detailsButton {
-    border: 1px solid #df1515;
-    background-color: #df1515;
-    color: white;
-    border-radius: 10px;
-    width: 70px;
-    height: 30px;
+  border: 1px solid #df1515;
+  background-color: #df1515;
+  color: white;
+  border-radius: 10px;
+  width: 70px;
+  height: 30px;
 }
 
 .detailsButton:hover {
-    background-color: #c00808;
+  background-color: #c00808;
 }
 
 .modal-header button {
-    color: red;
+  color: red;
 }
 
 .timeHead {
-    display: flex;
-    width: 100px;
+  display: flex;
+  width: 100px;
 }
 
 .timeCell {
-    width: 100px;
-    display: flex;
+  width: 100px;
+  display: flex;
 }
 
 .sliderWrapper {
-    display: flex;
-    width: 1100px;
+  display: flex;
+  width: 1100px;
 }
 
 .dayContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border: 1px solid black;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .dayLabel {
-    margin-right: 10px;
-    white-space: nowrap;
-    border: 1px solid black;
-    height: 110px;
-    width: 100px;
-    text-align: center;
-    padding-top: 28px;
+  margin-right: 10px;
+  white-space: nowrap;
+  border: 1px solid black;
+  height: 110px;
+  width: 100px;
+  text-align: center;
+  padding-top: 28px;
 }
 
 .timeSlotsWrapper {
-    overflow-x: auto;
-    padding: 8px;
-    white-space: nowrap;
-    -ms-overflow-style: none;
+  overflow-x: auto;
+  padding: 8px;
+  white-space: nowrap;
+  -ms-overflow-style: none;
 }
 
 .timeSlots {
-    display: inline-block;
-    width: 100px !important;
-    flex: none;
-    margin-right: 0px !important;
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
+  display: inline-block;
+  width: 100px !important;
+  flex: none;
+  margin-right: 0px !important;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
 }
 
 .tableWrapper {
-    width: 100vw;
-    border: 1px solid rgb(6, 6, 6) !important;
-    overflow: auto;
+  width: 100vw;
+  border: 1px solid rgb(6, 6, 6) !important;
+  overflow: auto;
 }
 
 @media (max-width: 768px) {
-    .tableWrapper {
-        width: auto;
-        overflow-x: scroll;
-    }
+  .tableWrapper {
+    width: auto;
+    overflow-x: scroll;
+  }
 }
 
 .tableWrapper th td {
-    width: 50px !important;
+  width: 50px !important;
 }
 
 .dayheadWrapper {
-    width: 100px;
+  width: 100px;
 }
 
 .timestableHead {
-    width: 100px;
+  width: 100px;
 }
 
 .daybodyWrapper {
-    height: 100px;
-    padding-top: 20px;
+  height: 100px;
+  padding-top: 20px;
 }
 
 .daydateCell {
-    position: absolute;
-    border: 1px solid rgb(0, 0, 0) !important;
-    width: 141px;
-    height: 112px;
-    color: rgb(0, 0, 0) !important;
+  position: absolute;
+  border: 1px solid rgb(0, 0, 0) !important;
+  width: 141px;
+  height: 112px;
+  color: rgb(0, 0, 0) !important;
 }
 
 .daydateHeadWrapper {
-    position: absolute;
-    width: 141px;
-    color: rgb(0, 0, 0) !important;
-    border: 1px solid rgb(4, 4, 4) !important;
-    border-top: 0px;
+  position: absolute;
+  width: 141px;
+  color: rgb(0, 0, 0) !important;
+  border: 1px solid rgb(4, 4, 4) !important;
+  border-top: 0px;
 }
 
 .bookingDetailsModal,
 .formModal,
 .internalModal {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
 }
 
-@media(min-width:768px) {
-    .modal-dialog {
-        max-width: 600px;
-    }
+@media (min-width: 768px) {
+  .modal-dialog {
+    max-width: 600px;
+  }
 }
 
 .modal-body {
-    padding: 40px;
-
+  padding: 40px;
 }
 
 .modalBody {
-    width: 400px !important;
+  width: 400px !important;
 }
